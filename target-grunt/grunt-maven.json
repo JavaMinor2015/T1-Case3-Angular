@@ -1,0 +1,10 @@
+{
+    "filesToWatch": "/home/koen/WebStormProjects/T2C3-Angular/src/main/webapp/./**",
+    "directoryToWatch": "/home/koen/WebStormProjects/T2C3-Angular/src/main/webapp/.",
+    "projectRootPath": "/home/koen/WebStormProjects/T2C3-Angular",
+    "targetPath": "/home/koen/WebStormProjects/T2C3-Angular/target",
+    "sourceDirectory": "src/main/webapp",
+    "jsSourceDirectory": ".",
+    "warTargetDirectory": "/",
+    "filteredFiles": ["**/node_modules.tar", "maven-properties.json", "exclude.me"]
+}
