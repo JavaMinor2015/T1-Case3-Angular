@@ -6,12 +6,12 @@
  * # MainCtrl
  * Controller of the t2C3AngularApp
  */
-angular.module('t2C3AngularApp')
-    .controller('MainCtrl', function () {
+angular.module('kantileverAngular').controller('MainCtrl', function () {
     this.awesomeThings = [
         'HTML5 Boilerplate',
         'AngularJS',
-        'Karma'
+        'Karma',
+        'Test'
     ];
 });
 //# sourceMappingURL=main.js.map
