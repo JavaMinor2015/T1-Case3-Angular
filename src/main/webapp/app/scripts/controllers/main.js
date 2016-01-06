@@ -14,15 +14,4 @@ angular.module('kantileverAngular').controller('MainCtrl', function () {
         'Test'
     ];
 });
-angular.module('kantileverAngular').controller('shoppingCartController', function($scope, $http){
-
-  $scope.products = null;
-  $http.get('productTest.json')
-    .success(function(data){
-      $scope.products = data;
-  })
-    .error(function(data, status, error, config){
-      $scope.products = [{heading:"Error",description:"Could not load json   data"}];
-  });
-});
 //# sourceMappingURL=main.js.map
