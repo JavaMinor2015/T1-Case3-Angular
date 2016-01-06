@@ -38,5 +38,4 @@ angular.module('kantileverAngular')
     var handleError = function () {
       console.log('error');
     }
-
 });

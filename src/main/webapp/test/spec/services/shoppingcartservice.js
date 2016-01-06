@@ -10,8 +10,5 @@ describe('Service: shoppingCartService', function () {
     beforeEach(inject(function (_shoppingCartService_) {
         shoppingCartService = _shoppingCartService_;
     }));
-    it('should do something', function () {
-        expect(!!shoppingCartService).toBe(true);
-    });
 });
 //# sourceMappingURL=shoppingcartservice.js.map
