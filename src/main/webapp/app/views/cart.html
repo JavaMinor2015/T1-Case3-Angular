@@ -28,7 +28,7 @@
       <td>{{product.name}}</td>
       <td>{{product.price | currency:"€":2}}</td>
       <td>{{product.amount}}</td>
-      <td>{{(product.price) * (product.amount)}}</td>
+      <td>{{(product.price) * (product.amount) | currency:"€":2}}</td>
     </tr>
     </tbody>
   </table>

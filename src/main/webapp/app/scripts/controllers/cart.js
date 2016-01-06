@@ -6,14 +6,10 @@
  * # CartController
  * Controller
  */
-angular.module('kantileverAngular').controller('cartController', function ($scope, $http) {
-    $scope.products = null;
-    $http.get('productTest.json')
-        .success(function ($data) {
-        $scope.products = $data;
-    })
-        .error(function ($error) {
-        $scope.products = $error;
-    });
+angular.module('kantileverAngular').controller('cartController', function ($scope) {
+    $scope.products = [];
+    $scope.addToCart = function (product) {
+        $scope.products.push(product);
+    };
 });
 //# sourceMappingURL=cart.js.map
