@@ -2,9 +2,9 @@
 
 /**
  * @ngdoc overview
- * @name t2C3AngularApp
+ * @name kantileverApp
  * @description
- * # t2C3AngularApp
+ * # kantileverApp
  *
  * Main module of the application.
  */

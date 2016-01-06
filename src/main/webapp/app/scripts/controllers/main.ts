@@ -2,10 +2,10 @@
 
 /**
  * @ngdoc function
- * @name t2C3AngularApp.controller:MainCtrl
+ * @name MainController
  * @description
  * # MainCtrl
- * Controller of the t2C3AngularApp
+ * Controller
  */
 angular.module('kantileverAngular')
   .controller('MainCtrl', function () {

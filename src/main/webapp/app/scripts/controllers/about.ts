@@ -5,7 +5,7 @@
  * @name KantileverAngular.controller:AboutCtrl
  * @description
  * # AboutCtrl
- * Controller of the t2C3AngularApp
+ *
  */
 
 angular.module('t2C3AngularApp')
