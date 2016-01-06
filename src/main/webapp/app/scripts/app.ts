@@ -35,7 +35,8 @@ angular
       })
       .when('/cart', {
         templateUrl: 'views/cart.html',
-        controller: 'cartController'
+        controller: 'cartController',
+        controllerAs: 'cart'
       })
       .otherwise({
         redirectTo: '/'
