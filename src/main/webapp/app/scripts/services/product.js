@@ -1,3 +1,4 @@
+'use strict';
 angular.module('kantileverAngular').service('ProductService', function ($http) {
     this.getAllProducts = function () {
         return $http.get('products/');

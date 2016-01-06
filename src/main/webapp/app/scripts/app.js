@@ -7,7 +7,7 @@
  *
  * Main module of the application.
  */
-angular.module('kantileverAngular', [
+var kantilever = angular.module('kantileverAngular', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
@@ -26,8 +26,15 @@ angular.module('kantileverAngular', [
     }).when('/catalog', {
         templateUrl: 'views/catalog.html',
         controller: 'catalogController'
+    }).when('/orders', {
+        templateUrl: 'views/orderlist.html',
+        controller: 'orderController'
+    }).when('/orders/:orderId', {
+        templateUrl: 'views/order-detail.html',
+        controller: 'orderController'
     }).otherwise({
         redirectTo: '/'
     });
 });
+angular.module('kantileverAngular.services', []);
 //# sourceMappingURL=app.js.map
