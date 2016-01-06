@@ -13,13 +13,13 @@ angular.module('kantileverAngular')
     $scope.searchProduct = ''; // set the default search/filter term
     $scope.products = [
         {
-            id: "98765",
-            name: "Wheel",
+            id: '98765',
+            name: 'Wheel',
             price: 45.5
         },
         {
-            id: "56789",
-            name: "Bike",
+            id: '56789',
+            name: 'Bike',
             price: 125.2
         }
     ];
