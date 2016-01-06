@@ -1,0 +1,10 @@
+{
+    "filesToWatch": "C:/Users/luppi/Documents/T1-Case3-Angular/src/main/webapp/./**",
+    "directoryToWatch": "C:/Users/luppi/Documents/T1-Case3-Angular/src/main/webapp/.",
+    "projectRootPath": "C:/Users/luppi/Documents/T1-Case3-Angular",
+    "targetPath": "C:/Users/luppi/Documents/T1-Case3-Angular/target",
+    "sourceDirectory": "src/main/webapp",
+    "jsSourceDirectory": ".",
+    "warTargetDirectory": "/",
+    "filteredFiles": ["**/node_modules.tar", "maven-properties.json", "exclude.me"]
+}
