@@ -31,7 +31,13 @@ angular
       })
       .when('/catalog', {
         templateUrl: 'views/catalog.html',
-        controller: 'catalogController'
+        controller: 'CatalogCtrl',
+        controllerAs: 'catalog'
+      })
+      .when('/product', {
+        templateUrl: 'views/product.html',
+        controller: 'ProductCtrl',
+        controllerAs: 'product'
       })
       .otherwise({
         redirectTo: '/'
