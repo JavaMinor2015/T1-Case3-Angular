@@ -48,3 +48,4 @@ angular
         redirectTo: '/'
       });
   });
+angular.module('kantileverAngular.services', []);

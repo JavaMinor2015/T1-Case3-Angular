@@ -47,4 +47,5 @@ angular
         redirectTo: '/'
     });
 });
+angular.module('kantileverAngular.services', []);
 //# sourceMappingURL=app.js.map
