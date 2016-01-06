@@ -33,6 +33,62 @@
           "href": "http://localhost:6789/products/98765/"
         }
       ]
+    },
+    {
+      "id": "98764",
+      "name": "lamp",
+      "amount": 10,
+      "price": 7.5,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:6789/products/98764/"
+        },
+        {
+          "rel": "previous_step",
+          "href": "http://localhost:6789/products/98763/"
+        },
+        {
+          "rel": "next_step",
+          "href": "http://localhost:6789/products/98765/"
+        },
+        {
+          "rel": "update",
+          "href": "http://localhost:6789/products/98764/"
+        },
+        {
+          "rel": "delete",
+          "href": "http://localhost:6789/products/98764/"
+        }
+      ]
+    },
+    {
+      "id": "98766",
+      "name": "wheel",
+      "amount": 10,
+      "price": 13.67,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:6789/products/98766/"
+        },
+        {
+          "rel": "previous_step",
+          "href": "http://localhost:6789/products/98765/"
+        },
+        {
+          "rel": "next_step",
+          "href": "http://localhost:6789/products/98767/"
+        },
+        {
+          "rel": "update",
+          "href": "http://localhost:6789/products/98766/"
+        },
+        {
+          "rel": "delete",
+          "href": "http://localhost:6789/products/98766/"
+        }
+      ]
     }
   ],
   "links": [

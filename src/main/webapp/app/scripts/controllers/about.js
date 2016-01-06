@@ -6,7 +6,8 @@
  * # AboutCtrl
  *
  */
-angular.module('t2C3AngularApp').controller('AboutCtrl', function () {
+angular.module('t2C3AngularApp')
+    .controller('AboutCtrl', function () {
     this.awesomeThings = [
         'HTML5 Boilerplate',
         'AngularJS',

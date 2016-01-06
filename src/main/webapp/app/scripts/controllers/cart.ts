@@ -1,12 +1,12 @@
 'use strict';
 /**
  * @ngdoc function
- * @name ShoppingCartController
+ * @name CartController
  * @description
- * # ShoppingCartController
+ * # CartController
  * Controller
  */
-angular.module('kantileverAngular').controller('shoppingCartController', function($scope, $http) {
+angular.module('kantileverAngular').controller('cartController', function($scope, $http) {
 
   $scope.products = null;
   $http.get('productTest.json')
@@ -16,5 +16,4 @@ angular.module('kantileverAngular').controller('shoppingCartController', functio
     .error(function($error){
       $scope.products = $error;
     });
-  $scope.test = 'testString';
 });
