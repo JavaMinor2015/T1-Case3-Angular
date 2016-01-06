@@ -1,17 +1,17 @@
 'use strict';
 /**
  * @ngdoc function
- * @name t2C3AngularApp.controller:MainCtrl
+ * @name MainController
  * @description
  * # MainCtrl
- * Controller of the t2C3AngularApp
+ * Controller
  */
-angular.module('t2C3AngularApp')
-    .controller('MainCtrl', function () {
+angular.module('kantileverAngular').controller('MainCtrl', function () {
     this.awesomeThings = [
         'HTML5 Boilerplate',
         'AngularJS',
-        'Karma'
+        'Karma',
+        'Test'
     ];
 });
 //# sourceMappingURL=main.js.map
