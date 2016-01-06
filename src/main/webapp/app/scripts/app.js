@@ -1,14 +1,14 @@
 'use strict';
 /**
  * @ngdoc overview
- * @name t2C3AngularApp
+ * @name kantileverApp
  * @description
- * # t2C3AngularApp
+ * # kantileverApp
  *
  * Main module of the application.
  */
 angular
-    .module('t2C3AngularApp', [
+    .module('kantileverAngular', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
@@ -27,6 +27,10 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl',
         controllerAs: 'about'
+    })
+        .when('/catalog', {
+        templateUrl: 'views/catalog.html',
+        controller: 'catalogController'
     })
         .otherwise({
         redirectTo: '/'
