@@ -7,7 +7,7 @@
  *
  */
 angular.module('kantileverAngular')
-    .controller('CatalogCtrl', function ($scope, $location) {
+    .controller('CatalogCtrl', function ($scope) {
     $scope.sortType = 'name'; // set the default sort type
     $scope.sortReverse = false; // set the default sort order
     $scope.searchProduct = ''; // set the default search/filter term
@@ -23,11 +23,8 @@ angular.module('kantileverAngular')
             price: 125.2
         }
     ];
-    $scope.addToCart = function (product) {
-        //TODO: Add the product to the cart
-    };
-    $scope.redirect = function (product) {
-        $location.url('/main.html');
-    };
+    //$scope.addToCart = function(product){
+    //  //TODO: Add the product to the cart
+    //};
 });
 //# sourceMappingURL=catalog.js.map
