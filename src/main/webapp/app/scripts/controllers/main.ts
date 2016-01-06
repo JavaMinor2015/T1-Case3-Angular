@@ -14,8 +14,5 @@ angular.module('kantileverAngular')
       'AngularJS',
       'Karma',
       'Test'
-
     ];
-
-
   });
