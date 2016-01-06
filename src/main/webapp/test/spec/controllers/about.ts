@@ -3,7 +3,7 @@
 describe('Controller: AboutCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('t2C3AngularApp'));
+  beforeEach(module('kantileverAngular'));
 
   var AboutCtrl,
     scope;
