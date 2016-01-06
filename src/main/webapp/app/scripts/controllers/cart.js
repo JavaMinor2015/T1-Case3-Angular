@@ -41,5 +41,8 @@ angular.module('kantileverAngular').controller('cartController', function ($scop
             }
         }
     };
+    $scope.emptyCart = function () {
+        $scope.products.length = 0;
+    };
 });
 //# sourceMappingURL=cart.js.map

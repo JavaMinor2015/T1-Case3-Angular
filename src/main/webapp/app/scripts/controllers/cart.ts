@@ -48,4 +48,8 @@ angular.module('kantileverAngular').controller('cartController', function($scope
     }
   }
 
+  $scope.emptyCart = function(){
+    $scope.products.length = 0;
+  }
+
 });
