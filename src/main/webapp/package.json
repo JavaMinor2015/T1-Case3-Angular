@@ -33,9 +33,13 @@
     "phantomjs":"^0.2.0",
     "karma-phantomjs-launcher": "^0.2.1",
     "karma-jasmine": "^0.3.5",
-    "grunt-karma": "^0.12.1"
+    "grunt-karma": "^0.12.1",
+    "protractor": "2.2.0"
   },
   "engines": {
     "node": ">=0.10.0"
+  },
+  "scripts": {
+    "install": "node ./node_modules/protractor/bin/webdriver-manager update"
   }
 }

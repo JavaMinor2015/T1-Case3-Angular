@@ -16,7 +16,7 @@
     <table class="table table-striped">
       <tr>
         <th>
-          <a ng-click="sortType = 'name'; sortReverse = !sortReverse">
+          <a id="sortName" ng-click="sortType = 'name'; sortReverse = !sortReverse">
             Name
             <span ng-show="sortType == 'name' && !sortReverse" class="glyphicon glyphicon-triangle-bottom"></span>
             <span ng-show="sortType == 'name' && sortReverse" class="glyphicon glyphicon-triangle-top"></span>
@@ -40,7 +40,7 @@
         </td>
         <td>
           <span ng-controller="cartController">
-          <button class="btn btn-success" ng-click="addToCart(product)">Add to cart</button>
+          <button id="add" class="btn btn-success" ng-click="addToCart(product)">Add to cart</button>
             </span>
         </td>
       </tr>
