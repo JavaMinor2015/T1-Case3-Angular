@@ -9,7 +9,7 @@
     {
       "id": "98765",
       "name": "bike",
-      "amount": 5,
+      "amount": 1,
       "price": 125.50,
       "links": [
         {
@@ -37,7 +37,7 @@
     {
       "id": "98764",
       "name": "lamp",
-      "amount": 10,
+      "amount": 1,
       "price": 7.5,
       "links": [
         {
@@ -65,7 +65,7 @@
     {
       "id": "98766",
       "name": "wheel",
-      "amount": 10,
+      "amount": 1,
       "price": 13.67,
       "links": [
         {
