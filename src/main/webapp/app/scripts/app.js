@@ -24,8 +24,11 @@ angular.module('kantileverAngular', [
         controller: 'AboutCtrl',
         controllerAs: 'about'
     }).when('/catalog', {
-        templateUrl: 'views/catalog.html',
-        controller: 'catalogController'
+      templateUrl: 'views/catalog.html',
+      controller: 'catalogController'
+    }).when('/shoppingCart', {
+      templateUrl: 'views/shoppingCart.html',
+      controller: 'shoppingCartController'
     }).otherwise({
         redirectTo: '/'
     });
