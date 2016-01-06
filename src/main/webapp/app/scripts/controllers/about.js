@@ -6,8 +6,7 @@
  * # AboutCtrl
  *
  */
-angular.module('kantileverAngular')
-    .controller('AboutCtrl', function () {
+angular.module('kantileverAngular').controller('AboutCtrl', function () {
     this.awesomeThings = [
         'HTML5 Boilerplate',
         'AngularJS',
