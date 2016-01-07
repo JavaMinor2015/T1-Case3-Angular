@@ -1,5 +1,5 @@
 'use strict';
-kantilever.service('orderService', function ($http, $q) {
+angular.module('kantileverAngular').service('orderService', function ($http, $q) {
     this.getOrders = function () {
         var $list = [
             {

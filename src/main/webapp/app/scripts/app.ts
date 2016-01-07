@@ -31,7 +31,18 @@ var kantilever = angular
       })
       .when('/catalog', {
         templateUrl: 'views/catalog.html',
-        controller: 'catalogController'
+        controller: 'CatalogCtrl',
+        controllerAs: 'catalog'
+      })
+      .when('/product', {
+        templateUrl: 'views/product.html',
+        controller: 'ProductCtrl',
+        controllerAs: 'product'
+      })
+      .when('/cart', {
+        templateUrl: 'views/cart.html',
+        controller: 'cartController',
+        controllerAs: 'cart'
       })
       .when('/orders', {
         templateUrl: 'views/orderlist.html',

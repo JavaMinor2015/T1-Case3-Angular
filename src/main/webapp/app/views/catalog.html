@@ -1,17 +1,50 @@
+<div>
 
+  <div class="row top-buffer">
 
+    <form>
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
 
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
+          <input type="text" class="form-control" placeholder="Search products" ng-model="searchProduct">
 
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
+        </div>
+      </div>
+    </form>
 
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
+    <table class="table table-striped">
+      <tr>
+        <th>
+          <a id="sortName" ng-click="sortType = 'name'; sortReverse = !sortReverse">
+            Name
+            <span ng-show="sortType == 'name' && !sortReverse" class="glyphicon glyphicon-triangle-bottom"></span>
+            <span ng-show="sortType == 'name' && sortReverse" class="glyphicon glyphicon-triangle-top"></span>
+          </a>
+        </th>
+        <th>
+          <a ng-click="sortType = 'price'; sortReverse = !sortReverse">
+            Price
+            <span ng-show="sortType == 'price' && !sortReverse" class="glyphicon glyphicon-triangle-bottom"></span>
+            <span ng-show="sortType == 'price' && sortReverse" class="glyphicon glyphicon-triangle-top"></span>
+          </a>
+        </th>
+        <th></th>
+      </tr>
+      <tr ng-repeat="product in products.products | orderBy:sortType:sortReverse | filter:searchProduct">
+        <td>
+          {{ product.name }}
+        </td>
+        <td>
+          {{ product.price | currency:"€":2 }}
+        </td>
+        <td>
+          <span ng-controller="cartController">
+          <button id="add" class="btn btn-success" ng-click="addToCart(product)">Add to cart</button>
+            </span>
+        </td>
+      </tr>
+    </table>
+  </div>
+
 </div>

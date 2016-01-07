@@ -9,7 +9,7 @@
  */
 
 
-kantilever.controller('orderController',['$scope', 'orderService', function ($scope, orderService) {
+angular.module('kantileverAngular').controller('orderController',['$scope', 'orderService', function ($scope, orderService) {
 
   $scope.orders = [];
 
