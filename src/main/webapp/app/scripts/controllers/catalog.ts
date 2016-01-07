@@ -7,20 +7,11 @@
  * # CatalogCtrl
  *
  */
-
 angular.module('kantileverAngular')
-  .controller('CatalogCtrl', function ($scope, $http) {
-
-    $scope.sortType     = 'name'; // set the default sort type
-    $scope.sortReverse  = false;  // set the default sort order
-    $scope.searchProduct  = '';   // set the default search/filter term
-
-    $scope.products = null;
-    $http.get('productTest.json')
-      .success(function($data) {
-        $scope.products = $data;
-      })
-      .error(function($error){
-        $scope.products = $error;
-      });
+  .controller('CatalogCtrl', function ($scope) {
+    var ProductService = angular.module('ProductService');
+    $scope.sortType = 'name'; // set the default sort type
+    $scope.sortReverse = false; // set the default sort order
+    $scope.searchProduct = ''; // set the default search/filter term
+    $scope.products = ProductService.getAllProducts();
   });
