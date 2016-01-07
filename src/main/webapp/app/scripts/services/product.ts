@@ -1,4 +1,6 @@
-'use strict'
+
+'use strict';
+
 angular.module('kantileverAngular')
   .service('ProductService', function ($resource, $http) {
 
@@ -16,13 +18,15 @@ angular.module('kantileverAngular')
       return productResource.get({ productId: id});
     };
 
-    this.postProduct = function(product) {
+    this.postProduct = function(hateoasItem) {
+      var product = getContent(hateoasItem);
       productResource.save(product, function() { }, function() {
         handleError();
       });
     };
 
-    this.updateProduct = function(product){
+    this.updateProduct = function(hateoasItem){
+      var product = getContent(hateoasItem);
       productResource.update({ productId: product.id }, product, function() { }, function() {
         handleError();
       });
@@ -32,7 +36,12 @@ angular.module('kantileverAngular')
       productResource.delete({ productId: product.id }, function(){ }, function() {
         handleError();
       });
-    }
+    };
+
+    var getContent = function(hateoasItem) {
+      return hateoasItem.content;
+    };
+
     var handleError = function () {
       console.log('error');
     }

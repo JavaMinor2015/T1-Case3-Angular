@@ -16,21 +16,22 @@ angular.module('kantileverAngular')
 
     this.updateItem = function(hateoasItem){
       var link = getLink(hateoasItem, 'update');
-      $resource(link).update(hateoasItem, function() { }, function() {
+      var content = getContent(hateoasItem);
+      $resource(link).update(content, function() { }, function() {
         handleError();
       });
     };
 
     this.nextItem = function(hateoasItem){
       var link = getLink(hateoasItem, 'next');
-      $resource(link).update(hateoasItem, function() { }, function() {
+      $resource(link).get(function() { }, function() {
         handleError();
       });
     };
 
     this.prevItem = function(hateoasItem){
       var link = getLink(hateoasItem, 'prev');
-      $resource(link).update(hateoasItem, function() { }, function() {
+      $resource(link).get(function() { }, function() {
         handleError();
       });
     };
@@ -40,6 +41,10 @@ angular.module('kantileverAngular')
       $resource(link).delete(function(){ }, function() {
         handleError();
       });
+    };
+
+    var getContent = function(hateoasItem) {
+      return hateoasItem.content;
     };
 
     var getLink = function(hateoasItem, rel){

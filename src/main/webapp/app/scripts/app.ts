@@ -8,8 +8,7 @@
  *
  * Main module of the application.
  */
-angular
-  .module('kantileverAngular', [
+angular.module('kantileverAngular', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
@@ -44,6 +43,14 @@ angular
         controller: 'cartController',
         controllerAs: 'cart'
       })
+      .when('/orders', {
+        templateUrl: 'views/orderlist.html',
+        controller: 'orderController'
+      })
+      .when('/orders/:orderId',{
+        templateUrl: 'views/order-detail.html',
+        controller: 'orderController'
+    })
       .otherwise({
         redirectTo: '/'
       });
