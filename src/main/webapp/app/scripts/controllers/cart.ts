@@ -14,7 +14,7 @@ angular.module('kantileverAngular').controller('cartController', function($scope
     var isInCart = false;
 
     for (var i = 0; i < $scope.products.length; i++){
-      if ($scope.products[i].id == product.id){
+      if ($scope.products[i].id === product.id){
         isInCart = true;
         $scope.products[i].amount += 1;
         break;
@@ -32,11 +32,11 @@ angular.module('kantileverAngular').controller('cartController', function($scope
       amount += $scope.products[i].amount;
     }
     return amount;
-  }
+  };
 
   $scope.removeProduct = function(product){
     for (var i = 0; i < $scope.products.length; i++){
-      if (product.id == $scope.products[i].id){
+      if (product.id === $scope.products[i].id){
         var cartProduct = $scope.products[i];
         if (cartProduct.amount > 1){
           cartProduct.amount -= 1;
@@ -46,10 +46,10 @@ angular.module('kantileverAngular').controller('cartController', function($scope
         }
       }
     }
-  }
+  };
 
   $scope.emptyCart = function(){
     $scope.products.length = 0;
-  }
+  };
 
 });
