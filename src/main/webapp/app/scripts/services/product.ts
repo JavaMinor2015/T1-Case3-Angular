@@ -2,7 +2,7 @@
 'use strict';
 
 angular.module('kantileverAngular')
-  .service('ProductService', function ($resource, $http) {
+  .service('ProductService', function ($resource) {
 
     var productResource = $resource(
       'http://localhost:6789/products/:productId' ,
