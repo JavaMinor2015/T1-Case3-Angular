@@ -38,7 +38,7 @@
   </table>
 </div>
 
-<div class="container">
+<div class="container" ng-show="products.length > 0 ? true : false">
   <button class="btn btn-primary" ng-click="emptyCart()">Empty cart</button>
   <a href="#/order"><button class="btn btn-primary">Checkout</button></a>
 </div>
