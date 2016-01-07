@@ -27,7 +27,7 @@ angular.module('kantileverAngular').controller('orderController', function($scop
 
   $scope.getOrderList = function(){
 
-    var temp = orderService.getOrders();
+    var temp = orderService.getAllOrder();
     $scope.orders = temp;
     return $scope.orders;
   };

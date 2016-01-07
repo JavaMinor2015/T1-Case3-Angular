@@ -6,7 +6,7 @@
  * # CartController
  * Controller
  */
-angular.module('kantileverAngular').controller('cartController', function ($scope, ShoppingCartService, orderService) {
+angular.module('kantileverAngular').controller('cartController', function ($scope, orderService) {
     $scope.order = orderService.newOrder;
     $scope.products = $scope.order.products;
     $scope.addToCart = function (product) {
