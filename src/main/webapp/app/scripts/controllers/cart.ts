@@ -10,7 +10,6 @@ angular.module('kantileverAngular').controller('cartController', function($scope
 
   $scope.order = orderService.newOrder;
   $scope.products = $scope.order.products;
-  $scope.itemCounter = 0;
 
   $scope.addToCart = function (product) {
     var isInCart = false;
@@ -21,8 +20,6 @@ angular.module('kantileverAngular').controller('cartController', function($scope
         $scope.products[i].amount += 1;
         break;
       }
-
-      $scope.itemCounter += 1;
     }
 
     if (!isInCart){

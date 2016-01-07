@@ -33,15 +33,8 @@ angular.module('kantileverAngular').service('orderService', function ($http) {
         }
     };
     this.createNewOrder = function () {
-        this.newOrder = {
-            "orderId": "1",
-            "customerId": "0",
-            "orderStatus": "OPEN",
-            "deliveryStatus": "NOT SCHEDULED",
-            "totalPrice": 0,
-            "version": 5,
-            "products": []
-        };
+        this.newOrder.products.length = 0;
+        this.newOrder.totalPrice = 0;
     };
 });
 //# sourceMappingURL=orderService.js.map

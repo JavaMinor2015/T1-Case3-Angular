@@ -9,8 +9,8 @@
 angular.module('kantileverAngular').controller('orderController', function ($scope, $window, orderService) {
     $scope.order = orderService.newOrder;
     $scope.emptyCart = function () {
-        $scope.order.products.length = 0;
         orderService.createNewOrder();
+        $scope.order = orderService.newOrder;
     };
     $scope.completeOrder = function () {
         //TODO Send the order to the backend

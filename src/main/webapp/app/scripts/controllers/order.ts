@@ -12,8 +12,8 @@ angular.module('kantileverAngular').controller('orderController', function($scop
   $scope.order = orderService.newOrder;
 
   $scope.emptyCart = function(){
-    $scope.order.products.length = 0;
     orderService.createNewOrder();
+    $scope.order = orderService.newOrder;
   };
 
   $scope.completeOrder = function() {
