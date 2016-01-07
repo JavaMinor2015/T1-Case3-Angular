@@ -18,7 +18,7 @@ angular.module('kantileverAngular').controller('orderController', function($scop
 
   $scope.completeOrder = function() {
     //TODO Send the order to the backend
-    alert('Thank you for your order!');
+    console.info('Thank you for your order!');
     $scope.emptyCart();
     $window.location.href = '#/orders/' + $scope.order.orderId;
   };
