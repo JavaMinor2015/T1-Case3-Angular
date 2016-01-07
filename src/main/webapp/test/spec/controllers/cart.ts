@@ -29,7 +29,7 @@ describe('Controller: cartController', function () {
         }
       }
     };
-  beforeEach(inject(function ($controller, $rootScope, ) {
+  beforeEach(inject(function ($controller, $rootScope ) {
     scope = $rootScope.$new();
     cartController = $controller('cartController', {
       $scope: scope
@@ -43,7 +43,7 @@ describe('Controller: cartController', function () {
   it('should remove an item from the shopping cart', function () {
     cartController.addToCart(testJSON);
     expect(cartController.getCartItemAmount()).toBe(1);
-    cartController.removeProduct(testJSON)
+    cartController.removeProduct(testJSON);
     expect(cartController.getCartItemAmount()).toBe(0);
   });
   it('should remove all items from the shopping cart', function () {
