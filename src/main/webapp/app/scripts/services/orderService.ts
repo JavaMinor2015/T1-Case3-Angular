@@ -58,7 +58,7 @@ angular.module('kantileverAngular').service('orderService', function ($resource)
 
   this.calculateTotal = function(){
     for (var i = 0; i < this.newOrder.products.length; i++){
-      this.newOrder.totalPrice += this.newOrder.products[i].amount * this.newOrder.products[i].price;
+      this.newOrder.totalPrice += this.newOrder.products[i].content.amount * this.newOrder.products[i].content.price;
     }
   };
 
