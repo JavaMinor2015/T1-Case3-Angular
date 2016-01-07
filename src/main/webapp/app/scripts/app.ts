@@ -2,14 +2,13 @@
 
 /**
  * @ngdoc overview
- * @name t2C3AngularApp
+ * @name kantileverApp
  * @description
- * # t2C3AngularApp
+ * # kantileverApp
  *
  * Main module of the application.
  */
-angular
-  .module('t2C3AngularApp', [
+angular.module('kantileverAngular', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
@@ -29,7 +28,38 @@ angular
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
+      .when('/catalog', {
+        templateUrl: 'views/catalog.html',
+        controller: 'CatalogCtrl',
+        controllerAs: 'catalog'
+      })
+      .when('/product', {
+        templateUrl: 'views/product.html',
+        controller: 'ProductCtrl',
+        controllerAs: 'product'
+      })
+      .when('/cart', {
+        templateUrl: 'views/cart.html',
+        controller: 'cartController',
+        controllerAs: 'cart'
+      })
+      .when('/order', {
+        templateUrl: 'views/orderConfirmation.html',
+        controller: 'orderController',
+        controllerAs: 'order'
+      })
+      .when('/orders', {
+        templateUrl: 'views/orderlist.html',
+        controller: 'orderController',
+        controllerAs: 'order'
+      })
+      .when('/orders/:orderId',{
+        templateUrl: 'views/order-detail.html',
+        controller: 'orderController',
+        controllerAs: 'order'
+    })
       .otherwise({
         redirectTo: '/'
       });
   });
+angular.module('kantileverAngular.services', []);

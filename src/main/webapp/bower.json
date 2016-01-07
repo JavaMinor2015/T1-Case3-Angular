@@ -1,5 +1,5 @@
 {
-  "name": "t2-c3-angular",
+  "name": "t1-c3-angular",
   "version": "0.0.0",
   "dependencies": {
     "angular": "^1.4.0",
@@ -15,7 +15,7 @@
     "angular-mocks": "^1.4.0"
   },
   "appPath": "app",
-  "moduleName": "t2C3AngularApp",
+  "moduleName": "kantileverAngular",
   "overrides": {
     "bootstrap": {
       "main": [
