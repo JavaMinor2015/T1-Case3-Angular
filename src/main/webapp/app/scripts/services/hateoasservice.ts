@@ -21,6 +21,20 @@ angular.module('kantileverAngular')
       });
     };
 
+    this.nextItem = function(hateoasItem){
+      var link = getLink(hateoasItem, 'next');
+      $resource(link).update(hateoasItem, function() { }, function() {
+        handleError();
+      });
+    };
+
+    this.prevItem = function(hateoasItem){
+      var link = getLink(hateoasItem, 'prev');
+      $resource(link).update(hateoasItem, function() { }, function() {
+        handleError();
+      });
+    };
+
     this.deleteItem = function(hateoasItem){
       var link = getLink(hateoasItem, 'update');
       $resource(link).delete(function(){ }, function() {
