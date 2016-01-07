@@ -31,12 +31,12 @@
         </th>
         <th></th>
       </tr>
-      <tr ng-repeat="product in products.products | orderBy:sortType:sortReverse | filter:searchProduct">
+      <tr ng-repeat="product in products.content | orderBy:sortType:sortReverse | filter:searchProduct">
         <td>
-          {{ product.name }}
+          {{ product.content.name }}
         </td>
         <td>
-          {{ product.price | currency:"€":2 }}
+          {{ product.content.price | currency:"€":2 }}
         </td>
         <td>
           <span ng-controller="cartController">
