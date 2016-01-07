@@ -1,6 +1,6 @@
 'use strict'
 angular.module('kantileverAngular')
-  .service('ProductService', function ($resource) {
+  .service('ProductService', function ($resource, $http) {
 
     var productResource = $resource(
       'http://localhost:6789/products/:productId' ,
@@ -8,9 +8,8 @@ angular.module('kantileverAngular')
       { update: { method: 'PUT' } }
     );
 
-
     this.getAllProducts = function(){
-      return productResource.query();
+      return productResource.get();
     };
 
     this.getProduct = function(id){
