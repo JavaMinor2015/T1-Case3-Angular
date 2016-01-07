@@ -19,7 +19,7 @@ angular.module('kantileverAngular').controller('cartController', function ($scop
             }
         }
         if (!isInCart) {
-            product.content["amount"] = 1;
+            product.content.amount = 1;
             $scope.products.push(product);
         }
         $scope.order.totalPrice += product.content.price;
