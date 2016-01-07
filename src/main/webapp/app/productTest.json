@@ -1,15 +1,15 @@
 {
-  "order_id": "897846165794",
-  "customer_id": "1234",
-  "order_status": "OPEN",
-  "delivery_status": "NOT SCHEDULED",
-  "total_price": 652.5,
+  "orderId": "897846165794",
+  "customerId": "1234",
+  "orderStatus": "OPEN",
+  "deliveryStatus": "NOT SCHEDULED",
+  "totalPrice": 652.5,
   "version": 5,
   "products": [
     {
       "id": "98765",
       "name": "bike",
-      "amount": 5,
+      "amount": 1,
       "price": 125.50,
       "links": [
         {
@@ -37,7 +37,7 @@
     {
       "id": "98764",
       "name": "lamp",
-      "amount": 10,
+      "amount": 1,
       "price": 7.5,
       "links": [
         {
@@ -65,7 +65,7 @@
     {
       "id": "98766",
       "name": "wheel",
-      "amount": 10,
+      "amount": 1,
       "price": 13.67,
       "links": [
         {

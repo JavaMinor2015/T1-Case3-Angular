@@ -31,7 +31,7 @@
         </th>
         <th></th>
       </tr>
-      <tr ng-repeat="product in products | orderBy:sortType:sortReverse | filter:searchProduct">
+      <tr ng-repeat="product in products.products | orderBy:sortType:sortReverse | filter:searchProduct">
         <td>
           {{ product.name }}
         </td>
@@ -39,7 +39,9 @@
           {{ product.price | currency:"€":2 }}
         </td>
         <td>
+          <span ng-controller="cartController">
           <button class="btn btn-success" ng-click="addToCart(product)">Add to cart</button>
+            </span>
         </td>
       </tr>
     </table>
