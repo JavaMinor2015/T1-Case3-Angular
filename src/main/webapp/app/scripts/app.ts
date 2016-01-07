@@ -8,8 +8,7 @@
  *
  * Main module of the application.
  */
-var kantilever = angular
-  .module('kantileverAngular', [
+angular.module('kantileverAngular', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
