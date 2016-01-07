@@ -32,13 +32,13 @@ angular.module('kantileverAngular').service('orderService', function ($resource)
         console.log('error');
     };
     this.newOrder = {
-        "orderId": "0",
-        "customerId": "0",
-        "orderStatus": "OPEN",
-        "deliveryStatus": "NOT SCHEDULED",
-        "totalPrice": 0,
-        "version": 5,
-        "products": []
+        'orderId': '0',
+        'customerId': '0',
+        'orderStatus': 'OPEN',
+        'deliveryStatus': 'NOT SCHEDULED',
+        'totalPrice': 0,
+        'version': 5,
+        'products': []
     };
     this.calculateTotal = function () {
         for (var i = 0; i < this.newOrder.products.length; i++) {
