@@ -7,19 +7,20 @@
  * # CartController
  * Controller
  */
-angular.module('kantileverAngular').controller('orderController', function($scope, ShoppingCartService, $window, orderService) {
+angular.module('kantileverAngular').controller('orderController', function($scope, $window, orderService) {
 
-  $scope.products = ShoppingCartService.products;
+  $scope.order = orderService.newOrder;
 
   $scope.emptyCart = function(){
-    $scope.products.length = 0;
+    $scope.order.products.length = 0;
+    orderService.createNewOrder();
   };
 
   $scope.completeOrder = function() {
     //TODO Send the order to the backend
     alert('Thank you for your order!');
     $scope.emptyCart();
-    $window.location.href = '#/catalog';
+    $window.location.href = '#/orders/' + $scope.order.orderId;
   };
 
   $scope.orders = [];
@@ -32,4 +33,5 @@ angular.module('kantileverAngular').controller('orderController', function($scop
   };
 
   $scope.getOrderList();
+
 });

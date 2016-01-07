@@ -1,6 +1,6 @@
 'use strict';
 angular.module('kantileverAngular')
-    .service('ShoppingCartService', function ($resource) {
+    .service('ShoppingCartService', function ($resource, orderService) {
     var orderResource = $resource('http://localhost:6789/order/:orderId', { orderId: '@orderId' }, { update: { method: 'PUT' } });
     this.getAllOrder = function () {
         return orderResource.query();
@@ -26,6 +26,6 @@ angular.module('kantileverAngular')
     var handleError = function () {
         console.log('error');
     };
-    this.products = [];
+    this.products = orderService.newOrder.products;
 });
 //# sourceMappingURL=shoppingcartservice.js.map

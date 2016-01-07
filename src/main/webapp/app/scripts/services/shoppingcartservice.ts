@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('kantileverAngular')
-  .service('ShoppingCartService', function ($resource) {
+  .service('ShoppingCartService', function ($resource, orderService) {
 
     var orderResource = $resource(
       'http://localhost:6789/order/:orderId' ,
@@ -39,5 +39,5 @@ angular.module('kantileverAngular')
       console.log('error');
     };
 
-    this.products = [];
+    this.products = orderService.newOrder.products;
 });

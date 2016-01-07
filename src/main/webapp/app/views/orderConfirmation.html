@@ -1,4 +1,4 @@
-<div>
+<div ng-controller="orderController">
 
   <div class="row top-buffer">
 
@@ -15,7 +15,7 @@
           Price
         </th>
       </tr>
-      <tr ng-repeat="product in products">
+      <tr ng-repeat="product in order.products">
         <td>
           {{ product.name }}
         </td>
@@ -27,6 +27,9 @@
         </td>
       </tr>
     </table>
+    <strong>
+      Total: {{order.totalPrice | currency:"€":2}}
+    </strong>
   </div>
 
   <div class="row top-buffer">
@@ -37,5 +40,7 @@
   <div class="row top-buffer">
     <button class="btn btn-primary" ng-click="completeOrder()">Complete order</button>
   </div>
+
+  <h3>{{order}}</h3>
 
 </div>
