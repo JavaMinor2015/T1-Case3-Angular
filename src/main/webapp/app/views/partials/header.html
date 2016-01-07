@@ -18,7 +18,13 @@
         <ul class="nav navbar-nav">
           <li class="active"><a href="#/">Home</a></li>
           <li><a href="#/catalog">Catalog</a></li>
-          <li><a href="#/cart">Shopping cart</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right" ng-controller="cartController">
+          <li><a href="#/cart" class="glyphicon glyphicon-shopping-cart">
+            <span id="cartAmount">
+              {{ getCartItemAmount() }}
+            </span>
+          </a></li>
         </ul>
       </div>
     </div>

@@ -12,7 +12,7 @@
   </div>
 </div>
 <div class="container">
-  <table class="table table-bordered">
+  <table class="table table-striped">
     <thead>
     <tr>
       <th>Product ID</th>
@@ -20,16 +20,25 @@
       <th>Product Prijs</th>
       <th>Product Aantal</th>
       <th>Product Totaalprijs</th>
+      <th></th>
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="product in products.products">
+    <tr ng-repeat="product in products">
       <td>{{product.id}}</td>
       <td>{{product.name}}</td>
       <td>{{product.price | currency:"€":2}}</td>
       <td>{{product.amount}}</td>
-      <td>{{(product.price) * (product.amount)}}</td>
+      <td>{{(product.price) * (product.amount) | currency:"€":2}}</td>
+      <td>
+        <button class="btn btn-primary" ng-click="removeProduct(product)">Remove</button>
+      </td>
     </tr>
     </tbody>
   </table>
+</div>
+
+<div class="container">
+  <button class="btn btn-primary" ng-click="emptyCart()">Empty cart</button>
+  <button class="btn btn-primary">Checkout</button>
 </div>
