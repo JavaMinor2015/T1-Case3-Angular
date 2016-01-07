@@ -1,4 +1,6 @@
-'use strict'
+
+'use strict';
+
 angular.module('kantileverAngular')
   .service('ProductService', function ($resource) {
 

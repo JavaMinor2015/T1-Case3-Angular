@@ -1,6 +1,5 @@
 'use strict';
-angular.module('kantileverAngular')
-    .service('ShoppingCartService', function ($resource) {
+angular.module('kantileverAngular').service('ShoppingCartService', function ($resource) {
     var orderResource = $resource('http://localhost:6789/order/:orderId', { orderId: '@orderId' }, { update: { method: 'PUT' } });
     this.getAllOrder = function () {
         return orderResource.query();
@@ -9,17 +8,20 @@ angular.module('kantileverAngular')
         return orderResource.get({ orderId: id });
     };
     this.postOrder = function (order) {
-        orderResource.save(order, function () { }, function () {
+        orderResource.save(order, function () {
+        }, function () {
             handleError();
         });
     };
     this.updateOrder = function (order) {
-        orderResource.update({ orderId: order.id }, order, function () { }, function () {
+        orderResource.update({ orderId: order.id }, order, function () {
+        }, function () {
             handleError();
         });
     };
     this.deleteOrder = function (product) {
-        orderResource.delete({ orderId: product.id }, function () { }, function () {
+        orderResource.delete({ orderId: product.id }, function () {
+        }, function () {
             handleError();
         });
     };
