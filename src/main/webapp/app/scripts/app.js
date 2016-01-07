@@ -43,6 +43,11 @@ angular
         controller: 'cartController',
         controllerAs: 'cart'
     })
+        .when('/order', {
+        templateUrl: 'views/orderConfirmation.html',
+        controller: 'orderController',
+        controllerAs: 'order'
+    })
         .otherwise({
         redirectTo: '/'
     });

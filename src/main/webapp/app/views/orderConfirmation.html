@@ -1,0 +1,41 @@
+<div>
+
+  <div class="row top-buffer">
+
+    <h3>Order details</h3>
+    <table class="table table-striped">
+      <tr>
+        <th>
+          Name
+        </th>
+        <th>
+          Amount
+        </th>
+        <th>
+          Price
+        </th>
+      </tr>
+      <tr ng-repeat="product in products">
+        <td>
+          {{ product.name }}
+        </td>
+        <td>
+          {{ product.amount }}
+        </td>
+        <td>
+          {{ (product.price) * (product.amount) | currency:"€":2 }}
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="row top-buffer">
+    <h3>Customer details</h3>
+    Out of scope for now
+  </div>
+
+  <div class="row top-buffer">
+    <button class="btn btn-primary" ng-click="completeOrder()">Complete order</button>
+  </div>
+
+</div>
