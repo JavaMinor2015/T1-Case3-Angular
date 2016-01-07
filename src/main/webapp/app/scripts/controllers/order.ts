@@ -1,4 +1,5 @@
 'use strict';
+
 /**
  * @ngdoc function
  * @name CartController
@@ -6,7 +7,7 @@
  * # CartController
  * Controller
  */
-angular.module('kantileverAngular').controller('orderController', function($scope, ShoppingCartService, $window) {
+angular.module('kantileverAngular').controller('orderController', function($scope, ShoppingCartService, $window, orderService) {
 
   $scope.products = ShoppingCartService.products;
 
@@ -21,4 +22,14 @@ angular.module('kantileverAngular').controller('orderController', function($scop
     $window.location.href = '#/catalog';
   };
 
+  $scope.orders = [];
+
+  $scope.getOrderList = function(){
+
+    var temp = orderService.getOrders();
+    $scope.orders = temp;
+    return $scope.orders;
+  };
+
+  $scope.getOrderList();
 });

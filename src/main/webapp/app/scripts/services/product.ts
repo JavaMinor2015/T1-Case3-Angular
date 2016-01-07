@@ -33,7 +33,7 @@ angular.module('kantileverAngular')
       productResource.delete({ productId: product.id }, function(){ }, function() {
         handleError();
       });
-    }
+    };
     var handleError = function () {
       console.log('error');
     }

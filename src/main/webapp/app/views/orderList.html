@@ -1,0 +1,30 @@
+<div ng-controller="orderController">
+
+  <table class="table" ng-controller="orderController">
+    <tr>
+      <th>Order Date</th>
+      <th>Order ID</th>
+      <th>Total Amount</th>
+    </tr>
+    <tr ng-repeat="order in orders">
+      <td>
+        {{order.orderDate}}
+      </td>
+      <td>
+        {{order.orderId}}
+      </td>
+      <td>
+        {{order.totalAmount}}
+      </td>
+      <td>
+        <a href="#/orders/{{order.orderId}}" ng-click="getOrder(order.orderId)">view more...</a>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+
+
+
+

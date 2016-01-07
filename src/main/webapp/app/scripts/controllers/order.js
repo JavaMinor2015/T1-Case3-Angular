@@ -6,7 +6,7 @@
  * # CartController
  * Controller
  */
-angular.module('kantileverAngular').controller('orderController', function ($scope, ShoppingCartService, $window) {
+angular.module('kantileverAngular').controller('orderController', function ($scope, ShoppingCartService, $window, orderService) {
     $scope.products = ShoppingCartService.products;
     $scope.emptyCart = function () {
         $scope.products.length = 0;
@@ -17,5 +17,12 @@ angular.module('kantileverAngular').controller('orderController', function ($sco
         $scope.emptyCart();
         $window.location.href = '#/catalog';
     };
+    $scope.orders = [];
+    $scope.getOrderList = function () {
+        var temp = orderService.getOrders();
+        $scope.orders = temp;
+        return $scope.orders;
+    };
+    $scope.getOrderList();
 });
 //# sourceMappingURL=order.js.map
