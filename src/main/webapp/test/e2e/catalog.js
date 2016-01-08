@@ -12,4 +12,8 @@ describe('E2E: Catalog', function() {
     expect(cartAmountSpan.getText()).toEqual('1');
   });
 
+  it('should sort the cart by name when name is clicked', function() {
+
+  });
+
 });
