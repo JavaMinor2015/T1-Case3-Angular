@@ -49,7 +49,7 @@ angular.module('kantileverAngular', [
         controllerAs: 'order'
       })
       .when('/orders', {
-        templateUrl: 'views/orderlist.html',
+        templateUrl: 'views/orderList.html',
         controller: 'orderController',
         controllerAs: 'order'
       })

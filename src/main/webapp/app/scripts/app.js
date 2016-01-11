@@ -14,50 +14,40 @@ angular.module('kantileverAngular', [
     'ngRoute',
     'ngSanitize',
     'ngTouch'
-])
-    .config(function ($routeProvider) {
-    $routeProvider
-        .when('/', {
+]).config(function ($routeProvider) {
+    $routeProvider.when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
         controllerAs: 'main'
-    })
-        .when('/about', {
+    }).when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl',
         controllerAs: 'about'
-    })
-        .when('/catalog', {
+    }).when('/catalog', {
         templateUrl: 'views/catalog.html',
         controller: 'CatalogCtrl',
         controllerAs: 'catalog'
-    })
-        .when('/product', {
+    }).when('/product', {
         templateUrl: 'views/product.html',
         controller: 'ProductCtrl',
         controllerAs: 'product'
-    })
-        .when('/cart', {
+    }).when('/cart', {
         templateUrl: 'views/cart.html',
         controller: 'cartController',
         controllerAs: 'cart'
-    })
-        .when('/order', {
+    }).when('/order', {
         templateUrl: 'views/orderConfirmation.html',
         controller: 'orderController',
         controllerAs: 'order'
-    })
-        .when('/orders', {
-        templateUrl: 'views/orderlist.html',
+    }).when('/orders', {
+        templateUrl: 'views/orderList.html',
         controller: 'orderController',
         controllerAs: 'order'
-    })
-        .when('/orders/:orderId', {
+    }).when('/orders/:orderId', {
         templateUrl: 'views/order-detail.html',
         controller: 'orderController',
         controllerAs: 'order'
-    })
-        .otherwise({
+    }).otherwise({
         redirectTo: '/'
     });
 });

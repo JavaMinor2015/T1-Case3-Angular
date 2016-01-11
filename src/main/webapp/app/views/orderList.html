@@ -1,26 +1,28 @@
-<div ng-controller="orderController">
+<div>
 
-  <table class="table" ng-controller="orderController">
+  <table class="table">
     <tr>
       <th>Order Date</th>
       <th>Order ID</th>
       <th>Total Amount</th>
     </tr>
-    <tr ng-repeat="order in orders">
+    <tr ng-repeat="order in oldOrders.content">
       <td>
-        {{order.orderDate}}
+        {{order.content.orderStatus}}
       </td>
       <td>
-        {{order.orderId}}
+        {{order.content.orderId}}
       </td>
       <td>
-        {{order.totalAmount}}
+        {{order.content.totalPrice}}
       </td>
       <td>
-        <a href="#/orders/{{order.orderId}}" ng-click="getOrder(order.orderId)">view more...</a>
+        <a href="#/orders/{{order.content.orderId}}" ng-click="getOrder(order.content.orderId)">view more...</a>
       </td>
     </tr>
   </table>
+
+  {{oldOrders}}
 </div>
 
 

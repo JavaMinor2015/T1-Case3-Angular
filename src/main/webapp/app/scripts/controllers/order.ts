@@ -11,6 +11,7 @@ angular.module('kantileverAngular').controller('orderController', function($scop
 
   $scope.order = orderService.newOrder;
 
+
   $scope.emptyCart = function(){
     orderService.createNewOrder();
     $scope.order = orderService.newOrder;
@@ -19,19 +20,20 @@ angular.module('kantileverAngular').controller('orderController', function($scop
   $scope.completeOrder = function() {
     //TODO Send the order to the backend
     console.info('Thank you for your order!');
+    orderService.postOrder($scope.order);
     $scope.emptyCart();
     $window.location.href = '#/orders/' + $scope.order.orderId;
   };
 
-  $scope.orders = [];
-
-  $scope.getOrderList = function(){
-
-    var temp = orderService.getAllOrder();
-    $scope.orders = temp;
-    return $scope.orders;
+  $scope.getOrder = function(orderId){
+    orderService.setOrderInfo(orderId);
   };
 
-  $scope.getOrderList();
+  $scope.getOrderList = function(){
+    return orderService.getAllOrder();
+
+  };
+  $scope.oldOrders =$scope.getOrderList();
+  $scope.orderInfo = orderService.orderInfo;
 
 });
