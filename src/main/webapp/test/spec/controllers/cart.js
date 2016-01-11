@@ -1,5 +1,5 @@
 'use strict';
-finally test fix
+
 describe('Controller: cartController', function () {
 
   var scope, ctrl;
