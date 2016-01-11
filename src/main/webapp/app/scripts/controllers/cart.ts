@@ -9,6 +9,7 @@
 angular.module('kantileverAngular').controller('cartController', function($scope, ShoppingCartService) {
 
   $scope.products = ShoppingCartService.products;
+  $scope.test = true;
 
   $scope.addToCart = function (product) {
     var isInCart = false;
