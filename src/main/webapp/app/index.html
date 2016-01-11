@@ -26,17 +26,19 @@
   <!--Controller Scripts -->
   <script src="scripts/controllers/main.js"></script>
   <script src="scripts/controllers/about.js"></script>
+  <script src="scripts/controllers/order.js"></script>
   <script src="scripts/controllers/catalog.js"></script>
   <script src="scripts/controllers/cart.js"></script>
+
 
   <!-- Angular Directives -->
   <!--... add directives here ... -->
 
   <!-- Angular Services -->
-  <!--... add services here ... -->
+  <script src="scripts/services/orderService.js"></script>
   <script src="scripts/services/product.js"></script>
-  <script src="scripts/services/shoppingcartservice.js"></script>
   <script src="scripts/services/hateoasservice.js"></script>
+
 
 </head>
 <body data-ng-app="kantileverAngular">
@@ -46,6 +48,6 @@
     <div ng-view=""></div>
   </div>
 
-<footer data-ng-include="'views/partials/footer.html'"></footer>
+<footer class="top-buffer" data-ng-include="'views/partials/footer.html'"></footer>
 </body>
 </html>
