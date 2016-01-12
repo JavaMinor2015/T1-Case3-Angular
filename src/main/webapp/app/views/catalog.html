@@ -41,9 +41,13 @@
         <td>
           <span ng-controller="cartController">
           <button id="add" class="btn btn-success" ng-click="addToCart(product)">Add to cart</button>
+            <h3>{{product}}</h3>
             </span>
         </td>
       </tr>
     </table>
+
+    <h3 ng-controller="cartController">{{products}}</h3>
+
   </div>
 </div>
