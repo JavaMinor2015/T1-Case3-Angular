@@ -1,0 +1,35 @@
+<div class="row top-buffer">
+
+  <form ng-submit="registerCustomer()" name="registerForm" novalidate>
+    <!--Name-->
+    <label for="inputFirstName">First name:</label>
+    <input type="text" ng-model="newCustomer.firstName" id="inputFirstName" class="form-control" ng-required="true">
+    <label for="inputLastName">Last name:</label>
+    <input type="text" ng-model="newCustomer.lastName" id="inputLastName" class="form-control" ng-required="true">
+    <label for="inputInitials">Initials</label>
+    <input type="text" ng-model="newCustomer.initials" id="inputInitials" class="form-control" ng-required="true">
+
+    <!--Address-->
+    <label for="inputCity">City</label>
+    <input type="text" ng-model="newCustomer.address.city" id="inputCity" class="form-control" ng-required="true">
+    <label for="inputStreetname">Streetname</label>
+    <input type="text" ng-model="newCustomer.address.streetname" id="inputStreetname" class="form-control" ng-required="true">
+    <label for="inputNumber">Number</label>
+    <input type="text" ng-model="newCustomer.address.number" id="inputNumber" class="form-control" ng-required="true">
+    <label for="inputZipcode">ZIP code</label>
+    <input type="text" ng-model="newCustomer.address.zipcode" id="inputZipcode" class="form-control" ng-required="true">
+
+    <!--Delivery Address-->
+    <label for="inputDeliveryCity">City</label>
+    <input type="text" ng-model="newCustomer.deliveryAddress.city" id="inputDeliveryCity" class="form-control" ng-required="true">
+    <label for="inputDeliveryStreetname">Streetname</label>
+    <input type="text" ng-model="newCustomer.deliveryAddress.streetname" id="inputDeliveryStreetname" class="form-control" ng-required="true">
+    <label for="inputDeliveryNumber">Number</label>
+    <input type="text" ng-model="newCustomer.deliveryAddress.number" id="inputDeliveryNumber" class="form-control" ng-required="true">
+    <label for="inputDeliveryZipcode">ZIP code</label>
+    <input type="text" ng-model="newCustomer.deliveryAddress.zipcode" id="inputDeliveryZipcode" class="form-control" ng-required="true">
+
+    <button id="registerButton" type="submit" class="top-buffer btn btn-success" >Register</button>
+  </form>
+
+</div>
