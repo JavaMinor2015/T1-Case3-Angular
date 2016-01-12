@@ -41,5 +41,8 @@
   },
   "scripts": {
     "install": "node ./node_modules/protractor/bin/webdriver-manager update"
+  },
+  "dependcies": {
+    "imagemin": "^4.0.0"
   }
 }
