@@ -72,4 +72,5 @@ angular.module('kantileverAngular', [
     });
 });
 angular.module('kantileverAngular.services', []);
+angular.module('kantileverAngular.directives', []);
 //# sourceMappingURL=app.js.map
