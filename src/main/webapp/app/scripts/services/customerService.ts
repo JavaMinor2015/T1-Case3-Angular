@@ -37,6 +37,7 @@ angular.module('kantileverAngular').service('customerService', function ($resour
   };
 
   var getContent = function(hateoasItem) {
+    console.info(hateoasItem);
     return hateoasItem.content;
   };
 
