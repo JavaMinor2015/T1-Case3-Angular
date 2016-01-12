@@ -42,7 +42,7 @@
   "scripts": {
     "install": "node ./node_modules/protractor/bin/webdriver-manager update"
   },
-  "dependcies": {
+  "dependencies": {
     "imagemin": "^4.0.0"
   }
 }
