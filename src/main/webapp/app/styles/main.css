@@ -92,9 +92,9 @@ body {
 }
 
 /* Form validation */
-input.form-control.ng-valid, input:focus.form-control.ng-valid {
+input.form-control.validate.ng-valid, input:focus.form-control.validate.ng-valid {
   box-shadow: 0 0 5px 2px lawngreen;
 }
-input.ng-invalid.ng-dirty, input:focus.ng-invalid {
+input.validate.ng-invalid.ng-dirty, input:focus.validate.ng-invalid {
   box-shadow: 0 0 5px 2px red;
 }

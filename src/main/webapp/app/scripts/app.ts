@@ -73,3 +73,4 @@ angular.module('kantileverAngular', [
       });
   });
 angular.module('kantileverAngular.services', []);
+angular.module('kantileverAngular.directives', []);

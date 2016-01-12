@@ -1,4 +1,4 @@
-<div class="header">
+<div class="header" ng-controller="MainController">
   <div class="navbar navbar-default" role="navigation">
     <div class="container">
       <div class="navbar-header">
@@ -26,6 +26,9 @@
               {{ getCartItemAmount() }}
             </span>
           </a></li>
+          <form class="navbar-form navbar-right">
+            <button class="btn" goto="/register">Register</button>
+          </form>
         </ul>
       </div>
     </div>
