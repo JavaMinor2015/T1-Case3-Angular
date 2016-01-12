@@ -8,10 +8,10 @@ describe('E2E: Register', function () {
     var checkbox = element(by.id('checkbox'));
     var deliveryDiv = element(by.id('deliveryAddress'));
 
-    expect(checkbox.isSelected()).toBe(false);
+    expect(checkbox.isSelected()).toBe(true);
     expect(deliveryDiv.isDisplayed()).toBe(false);
     checkbox.click();
-    expect(checkbox.isSelected()).toBe(true);
+    expect(checkbox.isSelected()).toBe(false);
     expect(deliveryDiv.isDisplayed()).toBe(true);
   });
 
@@ -55,7 +55,7 @@ describe('E2E: Register', function () {
     element(by.id('inputDeliveryNumber')).sendKeys('123A');
     element(by.id('inputDeliveryZipcode')).sendKeys('9999AB');
     var checkbox = element(by.id('checkbox'));
-    expect(checkbox.isSelected()).toBe(true);
+    expect(checkbox.isSelected()).toBe(false);
     expect(button.isEnabled()).toBe(true);
   });
 });
