@@ -1,35 +1,58 @@
 <div class="row top-buffer">
 
   <form ng-submit="registerCustomer()" name="registerForm" novalidate>
+
     <!--Name-->
-    <label for="inputFirstName">First name:</label>
-    <input type="text" ng-model="newCustomer.firstName" id="inputFirstName" class="form-control validate validate" ng-required="true">
-    <label for="inputLastName">Last name:</label>
-    <input type="text" ng-model="newCustomer.lastName" id="inputLastName" class="form-control validate validate" ng-required="true">
-    <label for="inputInitials">Initials</label>
-    <input type="text" ng-model="newCustomer.initials" id="inputInitials" class="form-control validate validate" ng-required="true">
+    <div id="name">
+      <h3>Customer details</h3>
+      <label for="inputFirstName">First name:</label>
+      <input type="text" ng-model="newCustomer.firstName" id="inputFirstName" class="form-control validate validate"
+             ng-required="true">
+      <label for="inputLastName">Last name:</label>
+      <input type="text" ng-model="newCustomer.lastName" id="inputLastName" class="form-control validate validate"
+             ng-required="true">
+      <label for="inputInitials">Initials</label>
+      <input type="text" ng-model="newCustomer.initials" id="inputInitials" class="form-control validate validate"
+             ng-required="true">
+    </div>
 
     <!--Address-->
-    <label for="inputCity">City</label>
-    <input type="text" ng-model="newCustomer.address.city" id="inputCity" class="form-control validate" ng-required="true">
-    <label for="inputStreetname">Streetname</label>
-    <input type="text" ng-model="newCustomer.address.streetname" id="inputStreetname" class="form-control validate" ng-required="true">
-    <label for="inputNumber">Number</label>
-    <input type="text" ng-model="newCustomer.address.number" id="inputNumber" class="form-control validate" ng-required="true">
-    <label for="inputZipcode">ZIP code</label>
-    <input type="text" ng-model="newCustomer.address.zipcode" id="inputZipcode" class="form-control validate" ng-required="true">
+    <div id="address">
+      <h3>Address details</h3>
+      <label for="inputCity">City</label>
+      <input type="text" ng-model="newCustomer.address.city" id="inputCity" class="form-control validate"
+             ng-required="true">
+      <label for="inputStreetname">Streetname</label>
+      <input type="text" ng-model="newCustomer.address.streetname" id="inputStreetname" class="form-control validate"
+             ng-required="true">
+      <label for="inputNumber">Number</label>
+      <input type="text" ng-model="newCustomer.address.number" id="inputNumber" class="form-control validate"
+             ng-required="true">
+      <label for="inputZipcode">ZIP code</label>
+      <input type="text" ng-model="newCustomer.address.zipcode" id="inputZipcode" class="form-control validate"
+             ng-required="true">
+
+      <input type="checkbox" id="checkbox" ng-model="sameAddress">Deliver at this address?</input>
+    </div>
 
     <!--Delivery Address-->
-    <label for="inputDeliveryCity">City</label>
-    <input type="text" ng-model="newCustomer.deliveryAddress.city" id="inputDeliveryCity" class="form-control validate" ng-required="true">
-    <label for="inputDeliveryStreetname">Streetname</label>
-    <input type="text" ng-model="newCustomer.deliveryAddress.streetname" id="inputDeliveryStreetname" class="form-control validate" ng-required="true">
-    <label for="inputDeliveryNumber">Number</label>
-    <input type="text" ng-model="newCustomer.deliveryAddress.number" id="inputDeliveryNumber" class="form-control validate" ng-required="true">
-    <label for="inputDeliveryZipcode">ZIP code</label>
-    <input type="text" ng-model="newCustomer.deliveryAddress.zipcode" id="inputDeliveryZipcode" class="form-control validate" ng-required="true">
-
-    <button id="registerButton" type="submit" class="top-buffer btn btn-success" >Register</button>
+    <div id="deliveryAddress" ng-show="!sameAddress">
+      <h3>Delivery address details</h3>
+      <label for="inputDeliveryCity">City</label>
+      <input type="text" ng-model="newCustomer.deliveryAddress.city" id="inputDeliveryCity"
+             class="form-control validate"
+             ng-required="{{!sameAddress}}">
+      <label for="inputDeliveryStreetname">Streetname</label>
+      <input type="text" ng-model="newCustomer.deliveryAddress.streetname" id="inputDeliveryStreetname"
+             class="form-control validate" ng-required="{{!sameAddress}}">
+      <label for="inputDeliveryNumber">Number</label>
+      <input type="text" ng-model="newCustomer.deliveryAddress.number" id="inputDeliveryNumber"
+             class="form-control validate" ng-required="{{!sameAddress}}">
+      <label for="inputDeliveryZipcode">ZIP code</label>
+      <input type="text" ng-model="newCustomer.deliveryAddress.zipcode" id="inputDeliveryZipcode"
+             class="form-control validate" ng-required="{{!sameAddress}}">
+    </div>
+    <button id="registerButton" type="submit" class="top-buffer btn btn-success" ng-disabled="registerForm.$invalid">Register</button>
   </form>
 
 </div>

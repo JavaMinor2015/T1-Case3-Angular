@@ -10,8 +10,11 @@ angular.module('kantileverAngular').controller('customerController', function ($
         deliveryAddress: null,
         orders: []
     };
+    $scope.sameAddress = true;
     $scope.registerCustomer = function () {
-        console.log($scope.newCustomer);
+        if ($scope.sameAddress) {
+            $scope.newCustomer.deliveryAddress = $scope.newCustomer.address;
+        }
         customerService.postCustomer($scope.newcustomer);
         $scope.newCustomer = {
             id: 0
