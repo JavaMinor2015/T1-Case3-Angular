@@ -27,7 +27,6 @@ angular.module('kantileverAngular').controller('orderController', function($scop
   };
 
   $scope.getOrder = function(){
-
     var orderid = $routeParams.orderId;
     $scope.orderInfo = orderService.setOrderInfo(orderid);
     console.info($scope.orderInfo);

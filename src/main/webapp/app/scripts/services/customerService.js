@@ -8,19 +8,22 @@ angular.module('kantileverAngular').service('customerService', function ($resour
         return customerResource.get({ customerId: id });
     };
     this.postCustomer = function (customer) {
-        customerResource.save(customer, function () { }, function () {
+        customerResource.save(customer, function () {
+        }, function () {
             handleError();
         });
     };
     this.updateCustomer = function (hateoasItem) {
         var customer = getContent(hateoasItem);
-        customerResource.update({ customerId: customer.id }, customer, function () { }, function () {
+        customerResource.update({ customerId: customer.id }, customer, function () {
+        }, function () {
             handleError();
         });
     };
     this.deleteCustomer = function (hateoasItem) {
         var customer = getContent(hateoasItem);
-        customerResource.delete({ customerId: customer.id }, function () { }, function () {
+        customerResource.delete({ customerId: customer.id }, function () {
+        }, function () {
             handleError();
         });
     };
