@@ -37,22 +37,22 @@ angular.module('kantileverAngular').service('orderService', function ($resource)
         'version': 5,
         'products': []
     };
-    this.orderInfo = {
-        'orderId': '0',
-        'customerId': '0',
-        'orderStatus': 'OPEN',
-        'deliveryStatus': 'NOT SCHEDULED',
-        'totalPrice': 0,
-        'version': 5,
-        'products': []
-    };
+    //this.orderInfo = {
+    //  'orderId': '0',
+    //  'customerId': '0',
+    //  'orderStatus': 'OPEN',
+    //  'deliveryStatus': 'NOT SCHEDULED',
+    //  'totalPrice': 0,
+    //  'version': 5,
+    //  'products': []
+    //};
     this.calculateTotal = function () {
         for (var i = 0; i < this.newOrder.products.length; i++) {
             this.newOrder.totalPrice += this.newOrder.products[i].content.amount * this.newOrder.products[i].content.price;
         }
     };
     this.setOrderInfo = function (orderId) {
-        this.orderInfo = this.getOrder(orderId);
+        return this.getOrder(orderId);
     };
     this.createNewOrder = function () {
         this.newOrder.products.length = 0;

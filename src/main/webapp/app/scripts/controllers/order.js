@@ -6,8 +6,9 @@
  * # CartController
  * Controller
  */
-angular.module('kantileverAngular').controller('orderController', function ($scope, $window, orderService) {
+angular.module('kantileverAngular').controller('orderController', function ($scope, $window, orderService, $routeParams) {
     $scope.order = orderService.newOrder;
+    $scope.orderInfo = [];
     $scope.emptyCart = function () {
         orderService.createNewOrder();
         $scope.order = orderService.newOrder;
@@ -17,15 +18,16 @@ angular.module('kantileverAngular').controller('orderController', function ($sco
         console.info('Thank you for your order!');
         orderService.postOrder($scope.order);
         $scope.emptyCart();
-        $window.location.href = '#/orders/' + $scope.order.orderId;
+        $window.location.href = '#/orders/' + $routeParams.orderId;
     };
-    $scope.getOrder = function (orderId) {
-        orderService.setOrderInfo(orderId);
+    $scope.getOrder = function () {
+        var orderid = $routeParams.orderId;
+        $scope.orderInfo = orderService.setOrderInfo(orderid);
+        console.info($scope.orderInfo);
     };
     $scope.getOrderList = function () {
         return orderService.getAllOrder();
     };
     $scope.oldOrders = $scope.getOrderList();
-    $scope.orderInfo = orderService.orderInfo;
 });
 //# sourceMappingURL=order.js.map
