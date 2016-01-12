@@ -90,3 +90,11 @@ body {
 .bottom-buffer {
   margin-bottom: 5px;
 }
+
+/* Form validation */
+input.form-control.validate.ng-valid, input:focus.form-control.validate.ng-valid {
+  box-shadow: 0 0 5px 2px lawngreen;
+}
+input.validate.ng-invalid.ng-dirty, input:focus.validate.ng-invalid {
+  box-shadow: 0 0 5px 2px red;
+}

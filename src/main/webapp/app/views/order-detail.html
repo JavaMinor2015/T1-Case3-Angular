@@ -1,2 +1,32 @@
 
-//to implement.
+<h3>Order details</h3>
+<div>
+
+<table class="table table-striped" ng-init="getOrder()">
+  <tr>
+    <th>
+      Product
+    </th>
+    <th>
+      Amount
+    </th>
+    <th>
+      Price
+    </th>
+  </tr>
+  <tr ng-repeat="product in orderInfo.content.products">
+    <td>
+      {{product.name }}
+    </td>
+    <td>
+      {{ product.amount }}
+    </td>
+    <td>
+      {{product.price}}
+    </td>
+  </tr>
+</table>
+
+
+
+</div>

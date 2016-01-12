@@ -15,6 +15,11 @@ angular.module('kantileverAngular', [
     'ngSanitize',
     'ngTouch'
 ])
+    .controller('MainController', function ($scope, $location) {
+    $scope.isActive = function (route) {
+        return route === $location.path();
+    };
+})
     .config(function ($routeProvider) {
     $routeProvider
         .when('/', {
@@ -48,7 +53,7 @@ angular.module('kantileverAngular', [
         controllerAs: 'order'
     })
         .when('/orders', {
-        templateUrl: 'views/orderlist.html',
+        templateUrl: 'views/orderList.html',
         controller: 'orderController',
         controllerAs: 'order'
     })
@@ -57,9 +62,15 @@ angular.module('kantileverAngular', [
         controller: 'orderController',
         controllerAs: 'order'
     })
+        .when('/register', {
+        templateUrl: 'views/registration.html',
+        controller: 'customerController',
+        controllerAs: 'customer'
+    })
         .otherwise({
         redirectTo: '/'
     });
 });
 angular.module('kantileverAngular.services', []);
+angular.module('kantileverAngular.directives', []);
 //# sourceMappingURL=app.js.map
