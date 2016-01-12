@@ -1,3 +1,4 @@
+'use strict';
 angular.module('kantileverAngular').directive('goto', function ($location) {
     return function (scope, element, attrs) {
         var path;
