@@ -1,14 +1,13 @@
 'use strict';
 angular.module('kantileverAngular').service('customerService', function ($resource) {
-    var customerResource = $resource('htpp://localhost:6789/customers/:customerId', { customerId: '@customerId' }, { update: { method: 'PUT' } });
+    var customerResource = $resource('http://localhost:6789/customers/:customerId', { customerId: '@customerId' }, { update: { method: 'PUT' } });
     this.getCustomers = function () {
         return customerResource.query();
     };
     this.getCustomer = function (id) {
         return customerResource.get({ customerId: id });
     };
-    this.postCustomer = function (hateoasItem) {
-        var customer = getContent(hateoasItem);
+    this.postCustomer = function (customer) {
         customerResource.save(customer, function () { }, function () {
             handleError();
         });
