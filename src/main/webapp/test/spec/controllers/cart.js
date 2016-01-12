@@ -4,10 +4,12 @@ describe('Controller: cartController', function () {
 
   var scope, ctrl;
   var productJSON = {
-    "id": "98765",
-    "name": "bike",
-    "amount": 1,
-    "price": 125.5,
+    "content": {
+      "id": "98765",
+      "name": "bike",
+      "amount": 1,
+      "price": 125.5
+    },
     "links": [
       {
         "rel": "self",
@@ -37,7 +39,7 @@ describe('Controller: cartController', function () {
     inject(function ($controller, _$rootScope_) {
       scope = _$rootScope_.$new();
       ctrl = $controller('cartController', {$scope: scope});
-      productJSON.amount = 1;
+      productJSON.content.amount = 1;
     });
   });
   it('should check if a product is already present in the shopping cart', function () {
@@ -45,7 +47,7 @@ describe('Controller: cartController', function () {
     scope.addToCart(productJSON);
     scope.addToCart(productJSON);
     scope.addToCart(productJSON);
-    expect(scope.products[0].amount).toBe(4);
+    expect(scope.products[0].content.amount).toBe(4);
   });
   it('should remove an item from the shopping cart', function () {
     scope.addToCart(productJSON);
