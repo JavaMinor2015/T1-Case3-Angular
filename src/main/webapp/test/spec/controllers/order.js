@@ -86,5 +86,5 @@ describe('Controller: orderController', function () {
     });
 
   });
-  
+
 });
