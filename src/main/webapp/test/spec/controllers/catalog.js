@@ -20,24 +20,12 @@ describe('Controller: CatalogCtrl', function () {
   });
 
   it('should retrieve a list of products', function () {
-    //Arrange
     var response = {
-      content: [
-        {
-        },
-        {
-        },
-        {
-        }
-      ],
+      content: [{},{},{}],
       _links: {}
     };
     httpBackend.expectGET(baseUrl).respond(response);
-
-    //Act
     httpBackend.flush();
-
-    //Assert
     expect(scope.products.content.length).toBe(response.content.length);
   });
 
