@@ -7,40 +7,38 @@
  * # CartController
  * Controller
  */
-angular.module('kantileverAngular').controller('orderController', function($scope, $window, orderService,$routeParams) {
+angular.module('kantileverAngular').controller('orderController', function ($scope, $window, orderService, $routeParams) {
 
   $scope.order = orderService.newOrder;
-  $scope.orderInfo= [];
+  $scope.orderInfo = [];
 
 
-  $scope.emptyCart = function(){
+  $scope.emptyCart = function () {
     orderService.createNewOrder();
     $scope.order = orderService.newOrder;
   };
 
-  $scope.completeOrder = function() {
-    //TODO Send the order to the backend
+  $scope.completeOrder = function () {
     console.info('Thank you for your order!');
-    console.info($scope.order);
+    console.log($scope.order);
     var order = $scope.order;
     orderService.postOrder(order);
     $scope.emptyCart();
     $window.location.href = '#/orders/' + $routeParams.orderId;
   };
 
-  $scope.getOrder = function(){
+  $scope.getOrder = function () {
 
     var orderid = $routeParams.orderId;
     $scope.orderInfo = orderService.setOrderInfo(orderid);
     console.info($scope.orderInfo);
   };
 
-  $scope.getOrderList = function(){
+  $scope.getOrderList = function () {
     return orderService.getAllOrder();
 
   };
-  $scope.oldOrders =$scope.getOrderList();
-
+  $scope.oldOrders = $scope.getOrderList();
 
 
 });

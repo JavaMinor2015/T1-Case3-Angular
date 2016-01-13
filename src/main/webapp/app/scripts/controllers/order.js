@@ -14,9 +14,8 @@ angular.module('kantileverAngular').controller('orderController', function ($sco
         $scope.order = orderService.newOrder;
     };
     $scope.completeOrder = function () {
-        //TODO Send the order to the backend
         console.info('Thank you for your order!');
-        console.info($scope.order);
+        console.log($scope.order);
         var order = $scope.order;
         orderService.postOrder(order);
         $scope.emptyCart();
