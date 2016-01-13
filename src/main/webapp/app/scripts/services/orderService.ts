@@ -6,15 +6,7 @@ angular.module('kantileverAngular').service('orderService', function ($resource)
   var orderResource = $resource(
     'http://localhost:6789/customerorders/:orderId' ,
     { orderId: '@orderId' },
-    { save: { method: 'POST'},
-      update: { method: 'PUT' }
-    }
-  );
-
-  var postResource = $resource(
-    'http://localhost:6789/customerorders',
-    {save: { method: 'POST'}
-    }
+    { update: { method: 'PUT' } }
   );
 
   this.getAllOrder = function(){
@@ -26,8 +18,8 @@ angular.module('kantileverAngular').service('orderService', function ($resource)
   };
 
   this.postOrder = function(order) {
-    console.info(order);
-    postResource.save(order, function() { }, function() {
+    var copiedOrder = angular.copy(order);
+    orderResource.save(copiedOrder, function() { }, function() {
       handleError();
     });
   };
@@ -50,13 +42,11 @@ angular.module('kantileverAngular').service('orderService', function ($resource)
   };
 
   this.newOrder = {
-    'orderId': '0',
-    'customerId': '0',
-    'orderStatus': 'OPEN',
-    'deliveryStatus': 'NOT SCHEDULED',
-    'totalPrice': 0,
-    'version': 5,
-    'products': []
+    customerId: 0,
+    orderStatus: 'OPEN',
+    deliveryStatus: 'NOT SCHEDULED',
+    totalPrice: 0,
+    products: []
   };
 
   //this.orderInfo = {
