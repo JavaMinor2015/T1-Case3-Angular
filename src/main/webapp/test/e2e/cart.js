@@ -14,6 +14,10 @@ describe('E2E: Cart', function() {
     cartRedirect.click();
   });
 
+  afterEach(function() {
+    browser.executeScript('window.localStorage.clear();');
+  });
+
   it('should reduce the number of cartitems when remove is clicked', function() {
     var removeButton = element(by.id('remove'));
     var cartAmount = element(by.id('cartAmount'));
