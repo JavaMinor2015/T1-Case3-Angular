@@ -39,29 +39,6 @@ describe('Controller: orderController', function () {
       httpBackend.flush();
     });
 
-    it('should empty the shopping cart', function() {
-      scope.order = {
-        'orderId': '0',
-        'customerId': '0',
-        'orderStatus': 'OPEN',
-        'deliveryStatus': 'NOT SCHEDULED',
-        'totalPrice': 0,
-        'version': 5,
-        'products': [
-          {
-            id: 1
-          },
-          {
-            id: 2
-          }
-        ]
-      };
-
-      expect(scope.order.products.length).toBe(2);
-      scope.emptyCart();
-      expect(scope.order.products.length).toBe(0);
-    });
-
     it('should send the order to the backend when order is completed', function(){
       scope.order = {
         'orderId': '0',
@@ -81,7 +58,9 @@ describe('Controller: orderController', function () {
       };
 
       httpBackend.expectPOST(baseUrl + '/' + scope.order.orderId).respond(201, {});
+      expect(scope.order.products.length).toBe(2);
       scope.completeOrder();
+      expect(scope.order.products.length).toBe(0);
       httpBackend.flush();
     });
 

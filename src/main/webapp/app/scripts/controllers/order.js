@@ -9,14 +9,10 @@
 angular.module('kantileverAngular').controller('orderController', function ($scope, $window, orderService, $routeParams) {
     $scope.order = orderService.newOrder;
     $scope.orderInfo = [];
-    $scope.emptyCart = function () {
-        orderService.createNewOrder();
-        $scope.order = orderService.newOrder;
-    };
     $scope.completeOrder = function () {
         console.info('Thank you for your order!');
         orderService.postOrder($scope.order);
-        $scope.emptyCart();
+        $scope.order = orderService.emptyCart();
         $window.location.href = '#/orders/' + $routeParams.orderId;
     };
     $scope.getOrder = function () {

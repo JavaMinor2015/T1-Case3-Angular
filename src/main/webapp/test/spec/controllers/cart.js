@@ -42,6 +42,11 @@ describe('Controller: cartController', function () {
       productJSON.content.amount = 1;
     });
   });
+
+  afterEach(function() {
+    browser.executeScript('window.localStorage.clear();');
+  });
+
   it('should check if a product is already present in the shopping cart', function () {
     scope.addToCart(productJSON);
     scope.addToCart(productJSON);
