@@ -4,14 +4,15 @@ angular.module('kantileverAngular')
       console.info('test');
       console.info($scope.user);
       $auth.login($scope.user)
-        .then(function () {
+      //  .then(function () {
           toastr.success('You have successfully signed in!');
 
+
           $location.path('/');
-        })
-        .catch(function (error) {
-          toastr.error(error.data.message, error.status);
-        });
+      //  })
+      //  .catch(function (error) {
+        //  toastr.error(error.data.message, error.status);
+      //  });
     };
 
   });
