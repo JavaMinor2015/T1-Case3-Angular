@@ -59,7 +59,7 @@ describe('Controller: orderController', function () {
 
       expect(scope.order.products.length).toBe(2);
       scope.emptyCart();
-      expect(scope.order.products.length).toBe(0)
+      expect(scope.order.products.length).toBe(0);
     });
 
     it('should send the order to the backend when order is completed', function(){
