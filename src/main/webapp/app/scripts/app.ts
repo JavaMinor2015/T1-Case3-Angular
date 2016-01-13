@@ -26,7 +26,7 @@ var kantilever = angular.module('kantileverAngular', [
       return route === $location.path();
     };
   })
-  .config(function ($routeProvider, $stateProvider, $urlRouterProvider) {
+  .config(function ($routeProvider, $stateProvider, $urlRouterProvider, $authProvider) {
     $stateProvider
       .state('home', {
         url: '/',
@@ -90,8 +90,10 @@ var kantilever = angular.module('kantileverAngular', [
         controllerAs: 'login'
       });
       $urlRouterProvider.otherwise('/');
+    $authProvider.baseUrl = "http://localhost:6789";
 
-  })
+
+  });
 
 kantilever.run(
   [          '$rootScope', '$state', '$stateParams',
@@ -105,7 +107,7 @@ kantilever.run(
       $rootScope.$stateParams = $stateParams;
     }
   ]
-)
+);
 
 angular.module('kantileverAngular.services', []);
 angular.module('kantileverAngular.directives', []);

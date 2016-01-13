@@ -1,6 +1,5 @@
 'use strict';
-angular.module('kantileverAngular')
-    .directive('passwordMatch', function () {
+angular.module('kantileverAngular').directive('passwordMatch', function () {
     return {
         require: 'ngModel',
         scope: {

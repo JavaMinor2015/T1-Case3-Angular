@@ -1,6 +1,5 @@
 'use strict';
-angular.module('kantileverAngular')
-    .directive('passwordStrength', function () {
+angular.module('kantileverAngular').directive('passwordStrength', function () {
     return {
         restrict: 'A',
         require: 'ngModel',
