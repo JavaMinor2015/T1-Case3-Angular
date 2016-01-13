@@ -18,7 +18,7 @@
         {{order.content.totalPrice}}
       </td>
       <td>
-        <a href="#/orders/{{order.content.orderId}}" ng-click="getOrder(order.content.orderId)">view more...</a>
+        <a ui-sref="test({orderId: order.content.orderId})" href="/#/orders/{{order.content.orderId}}"  ng-click="getOrder(order.content.orderId)">view more...</a>
       </td>
     </tr>
   </table>

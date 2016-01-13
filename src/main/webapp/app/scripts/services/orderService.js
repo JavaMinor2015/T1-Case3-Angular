@@ -1,8 +1,7 @@
 'use strict';
 angular.module('kantileverAngular').service('orderService', function ($resource) {
-    var orderResource = $resource('http://localhost:6789/customerorders/:orderId', { orderId: '@orderId' }, { save: { method: 'POST' },
-        update: { method: 'PUT' }
-    });
+    var orderResource = $resource('http://localhost:6789/customerorders/:orderId', { orderId: '@orderId' }, { save: { method: 'POST' }, update: { method: 'PUT' } });
+    var postResource = $resource('http://localhost:6789/customerorders', { save: { method: 'POST' } });
     this.getAllOrder = function () {
         return orderResource.get();
     };
@@ -10,17 +9,21 @@ angular.module('kantileverAngular').service('orderService', function ($resource)
         return orderResource.get({ orderId: id });
     };
     this.postOrder = function (order) {
-        orderResource.save(order, function () { }, function () {
+        console.info(order);
+        postResource.save(order, function () {
+        }, function () {
             handleError();
         });
     };
     this.updateOrder = function (order) {
-        orderResource.update({ orderId: order.id }, order, function () { }, function () {
+        orderResource.update({ orderId: order.id }, order, function () {
+        }, function () {
             handleError();
         });
     };
     this.deleteOrder = function (order) {
-        orderResource.delete({ orderId: order.id }, function () { }, function () {
+        orderResource.delete({ orderId: order.id }, function () {
+        }, function () {
             handleError();
         });
     };

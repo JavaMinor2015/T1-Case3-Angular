@@ -1,13 +1,7 @@
-'use strict';
-/**
- * @ngdoc function
- * @name KantileverAngular.controller:AboutCtrl
- * @description
- * # AboutCtrl
- *
- */
-angular.module('kantileverAngular').controller('LoginCtrl', function ($scope, $location, $auth, toastr) {
+angular.module('kantileverAngular').controller('loginController', function ($scope, $location, $auth, toastr) {
     $scope.login = function () {
+        console.info('test');
+        console.info($scope.user);
         $auth.login($scope.user).then(function () {
             toastr.success('You have successfully signed in!');
             $location.path('/');
@@ -16,4 +10,4 @@ angular.module('kantileverAngular').controller('LoginCtrl', function ($scope, $l
         });
     };
 });
-//# sourceMappingURL=about.js.map
+//# sourceMappingURL=login.js.map

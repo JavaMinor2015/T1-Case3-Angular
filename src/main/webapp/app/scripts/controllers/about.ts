@@ -9,10 +9,16 @@
  */
 
 angular.module('kantileverAngular')
-  .controller('AboutCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('LoginCtrl', function($scope, $location, $auth, toastr) {
+    $scope.login = function() {
+      $auth.login($scope.user)
+        .then(function() {
+          toastr.success('You have successfully signed in!');
+          $location.path('/');
+        })
+        .catch(function(error) {
+          toastr.error(error.data.message, error.status);
+        });
+    };
+
   });

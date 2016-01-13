@@ -11,6 +11,12 @@ angular.module('kantileverAngular').service('orderService', function ($resource)
     }
   );
 
+  var postResource = $resource(
+    'http://localhost:6789/customerorders',
+    {save: { method: 'POST'}
+    }
+  );
+
   this.getAllOrder = function(){
     return orderResource.get();
   };
@@ -20,7 +26,8 @@ angular.module('kantileverAngular').service('orderService', function ($resource)
   };
 
   this.postOrder = function(order) {
-    orderResource.save(order, function() { }, function() {
+    console.info(order);
+    postResource.save(order, function() { }, function() {
       handleError();
     });
   };

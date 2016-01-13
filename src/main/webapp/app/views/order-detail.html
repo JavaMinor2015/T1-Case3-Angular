@@ -1,8 +1,10 @@
 
 <h3>Order details</h3>
+
 <div>
 
 <table class="table table-striped" ng-init="getOrder()">
+
   <tr>
     <th>
       Product
@@ -14,7 +16,7 @@
       Price
     </th>
   </tr>
-  <tr ng-repeat="product in orderInfo.content.products">
+  <tr ng-repeat="product in orderInfo.content[0].content.products">
     <td>
       {{product.name }}
     </td>
