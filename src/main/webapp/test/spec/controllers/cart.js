@@ -2,7 +2,7 @@
 
 describe('Controller: cartController', function () {
 
-  var scope, ctrl;
+  var scope, ctrl, window;
   var productJSON = {
     "content": {
       "id": "98765",
@@ -33,18 +33,19 @@ describe('Controller: cartController', function () {
       }
     ]
   };
-
+  
   beforeEach(function () {
     module('kantileverAngular');
-    inject(function ($controller, _$rootScope_) {
+    inject(function ($controller, _$rootScope_, $window) {
       scope = _$rootScope_.$new();
+      window = $window;
       ctrl = $controller('cartController', {$scope: scope});
       productJSON.content.amount = 1;
     });
   });
 
   afterEach(function() {
-    browser.executeScript('window.localStorage.clear();');
+    window.localStorage.clear();
   });
 
   it('should check if a product is already present in the shopping cart', function () {
