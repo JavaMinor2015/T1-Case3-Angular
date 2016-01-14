@@ -46,7 +46,7 @@ angular.module('kantileverAngular').service('orderService', function ($resource)
     console.log('error');
   };
 
-  var fetchOrder = function () {
+  this.fetchOrder = function () {
     if (localStorage.getItem("order") === null) {
       return {
         'orderId': '0',
@@ -64,7 +64,7 @@ angular.module('kantileverAngular').service('orderService', function ($resource)
     }
   };
 
-  this.newOrder = fetchOrder();
+  this.newOrder = this.fetchOrder();
 
   this.setOrderInfo = function (orderId) {
     return this.getOrder(orderId);
@@ -78,7 +78,7 @@ angular.module('kantileverAngular').service('orderService', function ($resource)
 
   this.emptyCart = function(){
     localStorage.removeItem('order');
-    this.newOrder = fetchOrder();
+    this.newOrder = this.fetchOrder();
     return this.newOrder;
     };
 
