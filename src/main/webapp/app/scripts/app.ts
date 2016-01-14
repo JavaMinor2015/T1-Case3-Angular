@@ -9,20 +9,20 @@
  * Main module of the application.
  */
 var kantilever = angular.module('kantileverAngular', [
-    'ngAnimate',
-    'ngCookies',
-    'ngResource',
-    'ngRoute',
-    'ngSanitize',
-    'ngTouch',
-    'toastr',
-    'ui.router',
-    'satellizer'
+  'ngAnimate',
+  'ngCookies',
+  'ngResource',
+  'ngRoute',
+  'ngSanitize',
+  'ngTouch',
+  'toastr',
+  'ui.router',
+  'satellizer'
 
 
-  ])
-  .controller('MainController', function($scope, $location) {
-    $scope.isActive = function(route) {
+])
+  .controller('MainController', function ($scope, $location) {
+    $scope.isActive = function (route) {
       return route === $location.path();
     };
   })
@@ -60,37 +60,44 @@ var kantilever = angular.module('kantileverAngular', [
         params: {tabName: 'cart'}
       })
       .state('confirm', {
-        url:'/confirm',
+        url: '/confirm',
         templateUrl: 'views/orderConfirmation.html',
         controller: 'orderController',
-        controllerAs: 'order'
+        controllerAs: 'order',
       })
       .state('orders', {
-        url:'/orders',
+        url: '/orders',
         templateUrl: 'views/orderList.html',
         controller: 'orderController',
-        controllerAs: 'order'
+        controllerAs: 'order',
       })
-      .state('test',{
+      .state('test', {
         url: '/order/:orderId',
         templateUrl: 'views/order-detail.html',
         controller: 'orderController',
         controllerAs: 'order'
-    })
+      })
       .state('register', {
-        url:'/register',
+        url: '/register',
         templateUrl: 'views/registration.html',
         controller: 'customerController',
         controllerAs: 'customer'
       })
-      .state('login',{
-        url:'/login',
+      .state('login', {
+        url: '/login',
         templateUrl: 'views/login.html',
         controller: 'loginController',
         controllerAs: 'login'
-      });
-      $urlRouterProvider.otherwise('/');
+      })
+      .state('logout', {
+        url: '/logout',
+        template: null,
+        controller: 'LogoutCtrl'
+       });
+//});
+    $urlRouterProvider.otherwise('/');
     $authProvider.baseUrl = "http://localhost:6789";
+    $authProvider.tokenRoot ="entity";
 
 
   });
@@ -108,6 +115,26 @@ kantilever.run(
     }
   ]
 );
+function skipIfLoggedIn($q, $auth) {
+  var deferred = $q.defer();
+  if ($auth.isAuthenticated()) {
+    deferred.reject();
+  } else {
+    deferred.resolve();
+  }
+  return deferred.promise;
+};
+
+function loginRequired($q, $location, $auth) {
+  var deferred = $q.defer();
+  if ($auth.isAuthenticated()) {
+    deferred.resolve();
+  } else {
+    $location.path('/login');
+  }
+  return deferred.promise;
+};
+
 
 angular.module('kantileverAngular.services', []);
 angular.module('kantileverAngular.directives', []);
