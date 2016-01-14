@@ -1,12 +1,12 @@
 'use strict';
 angular.module('kantileverAngular').controller('customerController', function ($scope, customerService) {
     $scope.newCustomer = {
-        firstName: "",
-        lastName: "",
-        initials: "",
-        address: null,
-        deliveryAddress: null,
-        orders: []
+        "firstName": "",
+        "lastName": "",
+        "initials": "",
+        "address": null,
+        "deliveryAddress": null,
+        "orders": []
     };
     $scope.sameAddress = true;
     $scope.registerCustomer = function () {
