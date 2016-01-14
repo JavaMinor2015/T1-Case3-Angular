@@ -4,39 +4,44 @@ angular.module('kantileverAngular').service('customerService', function ($resour
 
   var customerResource = $resource(
     'http://localhost:6789/customers/:customerId',
-    { customerId: '@customerId' },
-    { update: { method: 'PUT' } }
+    {customerId: '@customerId'},
+    {
+      update: {method: 'PUT'}
+    }
   );
 
-  this.getCustomers = function(){
+  this.getCustomers = function () {
     return customerResource.query();
   };
 
-  this.getCustomer = function(id){
-    return customerResource.get({ customerId: id });
+  this.getCustomer = function (id) {
+    return customerResource.get({customerId: id});
   };
 
-  this.postCustomer = function(customer){
-    customerResource.save(customer, function() { }, function() {
+  this.postCustomer = function (customer) {
+    customerResource.save(customer, function () {
+    }, function () {
       handleError();
     });
   };
 
-  this.updateCustomer = function(hateoasItem) {
+  this.updateCustomer = function (hateoasItem) {
     var customer = getContent(hateoasItem);
-    customerResource.update({ customerId: customer.id}, customer, function() { }, function() {
+    customerResource.update({customerId: customer.id}, customer, function () {
+    }, function () {
       handleError();
     })
   };
 
-  this.deleteCustomer = function(hateoasItem){
+  this.deleteCustomer = function (hateoasItem) {
     var customer = getContent(hateoasItem);
-    customerResource.delete({ customerId: customer.id }, function() {}, function() {
+    customerResource.delete({customerId: customer.id}, function () {
+    }, function () {
       handleError();
     });
   };
 
-  var getContent = function(hateoasItem) {
+  var getContent = function (hateoasItem) {
     return hateoasItem.content;
   };
 

@@ -85,8 +85,6 @@ describe('Controller: customerController', function() {
     expect(scope.newCustomer).toBe(customer);
     scope.resetCustomer();
     expect(scope.newCustomer).toEqual({
-      id: 0,
-      version: 0,
       firstName: "",
       lastName: "",
       initials: "",
