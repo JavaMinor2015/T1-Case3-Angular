@@ -3,12 +3,31 @@
 /// <reference path="../../../app/scripts/services/hateoasservice.ts" />
 'use strict';
 describe('Service: HateoasService', function () {
-    // load the service's module
     beforeEach(module('kantileverAngular'));
-    // instantiate service
     var HateoasService;
     beforeEach(inject(function (_HateoasService_) {
         HateoasService = _HateoasService_;
-    }));
+    })); /*
+    it('should return all items'), function(){
+  
+    };
+    it('should return a single item'), function(){
+  
+    };
+    it('should update a single item'), function(){
+  
+    };
+    it('should return the link to the next item'), function(){
+  
+    };
+    it('should return the link to the previous item'), function(){
+  
+    };
+    it('should delete the selected item'), function(){
+  
+    };
+    it('should return the selected item'), function(){
+  
+    };*/
 });
 //# sourceMappingURL=hateoasservice.js.map

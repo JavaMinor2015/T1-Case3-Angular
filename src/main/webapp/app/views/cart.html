@@ -1,17 +1,5 @@
 <div class="container">
-  <div class="row">
-    <div class=col-md-4>
-      <h4>Klant ID: {{products.customer_id}}</h4>
-    </div>
-    <div class=col-md-4>
-      <h4>Order ID: {{products.order_id}}</h4>
-    </div>
-    <div class=col-md-4>
-      <h4>Order Status: {{products.order_status}}</h4>
-    </div>
-  </div>
-</div>
-<div class="container">
+
   <table class="table table-striped">
     <thead>
     <tr>
@@ -28,17 +16,19 @@
       <td>{{product.content.id}}</td>
       <td>{{product.content.name}}</td>
       <td>{{product.content.price | currency:"€":2}}</td>
-      <td>{{product.content.amount}}</td>
+      <td id="amount">{{product.content.amount}}</td>
       <td>{{(product.content.price) * (product.content.amount) | currency:"€":2}}</td>
       <td>
-        <button class="btn btn-primary" ng-click="removeProduct(product)">Remove</button>
+        <button id="remove" class="btn btn-primary" ng-click="removeProduct(product)">Remove</button>
       </td>
     </tr>
     </tbody>
   </table>
 </div>
 
-<div class="container" ng-show="products.length > 0 ? true : false">
-  <button class="btn btn-primary" ng-click="emptyCart()">Empty cart</button>
-  <a href="#/order"><button class="btn btn-primary">Checkout</button></a>
+<div id="cartOptions" class="container" ng-show="products.length > 0 ? true : false">
+  <button id="empty" class="btn btn-primary" ng-click="emptyCart()">Empty cart</button>
+  <a href="#/order">
+    <button class="btn btn-primary">Checkout</button>
+  </a>
 </div>
