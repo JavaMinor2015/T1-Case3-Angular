@@ -12,24 +12,18 @@ angular.module('kantileverAngular').controller('cartController', function ($scop
     $scope.addToCart = function (product) {
         var isInCart = false;
         for (var i = 0; i < $scope.products.length; i++) {
-            if ($scope.products[i].id === product.content.id) {
+            if ($scope.products[i].content.id === product.content.id) {
                 isInCart = true;
-                $scope.products[i].amount += 1;
+                $scope.products[i].content.amount += 1;
                 break;
             }
         }
         if (!isInCart) {
             product.content.amount = 1;
-            $scope.products.push(product.content);
+            $scope.products.push(product);
         }
         $scope.order.totalPrice += product.content.price;
-    };
-    $scope.getCartItemAmount = function () {
-        var amount = 0;
-        for (var i = 0; i < $scope.products.length; i++) {
-            amount += $scope.products[i].amount;
-        }
-        return amount;
+        localStorage.setItem('order', JSON.stringify($scope.order));
     };
     $scope.removeProduct = function (product) {
         for (var i = 0; i < $scope.products.length; i++) {
@@ -44,10 +38,24 @@ angular.module('kantileverAngular').controller('cartController', function ($scop
             }
         }
         $scope.order.totalPrice -= product.content.price;
+        localStorage.setItem('order', JSON.stringify($scope.order));
     };
     $scope.emptyCart = function () {
+        $scope.order = orderService.emptyCart();
         $scope.products.length = 0;
-        $scope.order.totalPrice = 0;
+    };
+    $scope.getCartItemAmount = function () {
+        var order = JSON.parse(localStorage.getItem('order'));
+        var amount = 0;
+        if (order === null) {
+            return 0;
+        }
+        else {
+            for (var i = 0; i < order.products.length; i++) {
+                amount += order.products[i].content.amount;
+            }
+            return amount;
+        }
     };
 });
 //# sourceMappingURL=cart.js.map

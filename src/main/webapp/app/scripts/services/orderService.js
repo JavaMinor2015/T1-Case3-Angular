@@ -1,6 +1,9 @@
 'use strict';
 angular.module('kantileverAngular').service('orderService', function ($resource) {
-    var orderResource = $resource('http://localhost:6789/customerorders/:orderId', { orderId: '@orderId' }, { update: { method: 'PUT' } });
+    var orderResource = $resource('http://localhost:6789/customerorders/:orderId', { orderId: '@orderId' }, {
+        save: { method: 'POST' },
+        update: { method: 'PUT' }
+    });
     this.getAllOrder = function () {
         return orderResource.get();
     };
@@ -8,8 +11,7 @@ angular.module('kantileverAngular').service('orderService', function ($resource)
         return orderResource.get({ orderId: id });
     };
     this.postOrder = function (order) {
-        var copiedOrder = angular.copy(order);
-        orderResource.save(copiedOrder, function () {
+        orderResource.save(order, function () {
         }, function () {
             handleError();
         });
@@ -29,33 +31,35 @@ angular.module('kantileverAngular').service('orderService', function ($resource)
     var handleError = function () {
         console.log('error');
     };
-    this.newOrder = {
-        customerId: 0,
-        orderStatus: 'OPEN',
-        deliveryStatus: 'NOT SCHEDULED',
-        totalPrice: 0,
-        products: []
-    };
-    //this.orderInfo = {
-    //  'orderId': '0',
-    //  'customerId': '0',
-    //  'orderStatus': 'OPEN',
-    //  'deliveryStatus': 'NOT SCHEDULED',
-    //  'totalPrice': 0,
-    //  'version': 5,
-    //  'products': []
-    //};
-    this.calculateTotal = function () {
-        for (var i = 0; i < this.newOrder.products.length; i++) {
-            this.newOrder.totalPrice += this.newOrder.products[i].content.amount * this.newOrder.products[i].content.price;
+    var fetchOrder = function () {
+        if (localStorage.getItem("order") === null) {
+            return {
+                'orderId': '0',
+                'customerId': '0',
+                'orderStatus': 'OPEN',
+                'deliveryStatus': 'NOT SCHEDULED',
+                'totalPrice': 0,
+                'version': 5,
+                'products': []
+            };
+        }
+        else {
+            var retrievedOrder = localStorage.getItem('order');
+            return JSON.parse(retrievedOrder);
         }
     };
+    this.newOrder = fetchOrder();
     this.setOrderInfo = function (orderId) {
         return this.getOrder(orderId);
     };
     this.createNewOrder = function () {
         this.newOrder.products.length = 0;
         this.newOrder.totalPrice = 0;
+    };
+    this.emptyCart = function () {
+        localStorage.removeItem('order');
+        this.newOrder = fetchOrder();
+        return this.newOrder;
     };
 });
 //# sourceMappingURL=orderService.js.map

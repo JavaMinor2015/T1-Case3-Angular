@@ -12,33 +12,23 @@ angular.module('kantileverAngular').controller('orderController', function ($sco
   $scope.order = orderService.newOrder;
   $scope.orderInfo = [];
 
-
-  $scope.emptyCart = function () {
-    orderService.createNewOrder();
-    $scope.order = orderService.newOrder;
-  };
-
-  $scope.completeOrder = function () {
+  $scope.completeOrder = function() {
     console.info('Thank you for your order!');
-    console.log($scope.order);
-    var order = $scope.order;
-    orderService.postOrder(order);
-    $scope.emptyCart();
+    orderService.postOrder($scope.order);
+    $scope.order = orderService.emptyCart();
     $window.location.href = '#/orders/' + $routeParams.orderId;
   };
 
-  $scope.getOrder = function () {
+  $scope.getOrder = function() {
 
     var orderid = $routeParams.orderId;
     $scope.orderInfo = orderService.setOrderInfo(orderid);
     console.info($scope.orderInfo);
   };
 
-  $scope.getOrderList = function () {
+  $scope.getOrderList = function() {
     return orderService.getAllOrder();
 
   };
   $scope.oldOrders = $scope.getOrderList();
-
-
 });
