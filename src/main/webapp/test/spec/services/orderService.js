@@ -78,12 +78,10 @@ describe('Service: orderService', function () {
   it('should get an order from localstorage', function() {
     expect(window.localStorage.getItem('order')).toBeNull();
     var response = {
-      'orderId': '0',
       'customerId': '0',
       'orderStatus': 'OPEN',
       'deliveryStatus': 'NOT SCHEDULED',
       'totalPrice': 0,
-      'version': 5,
       'products': []
     };
     expect(service.fetchOrder()).toEqual(response);

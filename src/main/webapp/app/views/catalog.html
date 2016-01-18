@@ -16,17 +16,17 @@
     <table class="table table-striped">
       <tr>
         <th>
-          <a id="sortName" ng-click="sortType = 'name'; sortReverse = !sortReverse">
+          <a id="sortName" ng-click="sortType = 'content.name'; sortReverse = !sortReverse">
             Name
-            <span ng-show="sortType == 'name' && !sortReverse" class="glyphicon glyphicon-triangle-bottom"></span>
-            <span ng-show="sortType == 'name' && sortReverse" class="glyphicon glyphicon-triangle-top"></span>
+            <span ng-show="sortType == 'content.name' && !sortReverse" class="glyphicon glyphicon-triangle-bottom"></span>
+            <span ng-show="sortType == 'content.name' && sortReverse" class="glyphicon glyphicon-triangle-top"></span>
           </a>
         </th>
         <th>
-          <a id="sortPrice" ng-click="sortType = 'price'; sortReverse = !sortReverse">
+          <a id="sortPrice" ng-click="sortType = 'content.price'; sortReverse = !sortReverse">
             Price
-            <span ng-show="sortType == 'price' && !sortReverse" class="glyphicon glyphicon-triangle-bottom"></span>
-            <span ng-show="sortType == 'price' && sortReverse" class="glyphicon glyphicon-triangle-top"></span>
+            <span ng-show="sortType == 'content.price' && !sortReverse" class="glyphicon glyphicon-triangle-bottom"></span>
+            <span ng-show="sortType == 'content.price' && sortReverse" class="glyphicon glyphicon-triangle-top"></span>
           </a>
         </th>
         <th></th>

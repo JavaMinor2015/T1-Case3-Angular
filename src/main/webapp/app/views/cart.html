@@ -13,11 +13,11 @@
     </thead>
     <tbody>
     <tr ng-repeat="product in products">
-      <td>{{product.content.id}}</td>
-      <td>{{product.content.name}}</td>
-      <td>{{product.content.price | currency:"€":2}}</td>
-      <td id="amount">{{product.content.amount}}</td>
-      <td>{{(product.content.price) * (product.content.amount) | currency:"€":2}}</td>
+      <td>{{product .id}}</td>
+      <td>{{product .name}}</td>
+      <td>{{product .price | currency:"€":2}}</td>
+      <td id="amount">{{product .amount}}</td>
+      <td>{{(product .price) * (product .amount) | currency:"€":2}}</td>
       <td>
         <button id="remove" class="btn btn-primary" ng-click="removeProduct(product)">Remove</button>
       </td>
