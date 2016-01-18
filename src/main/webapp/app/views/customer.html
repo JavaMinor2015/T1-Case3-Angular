@@ -1,0 +1,20 @@
+<div class="row top-buffer">
+
+  <form ng-submit="registerCustomer()" name="editCustomerForm" novalidate>
+
+    <!--Name-->
+    <div id="name">
+      <h3>Customer details</h3>
+      <label for="editFirstName">First name:</label>
+      <input type="text" ng-model="editCustomer.firstName" id="editFirstName" class="form-control validate validate"
+             ng-required="true">
+      <label for="editLastName">Last name:</label>
+      <input type="text" ng-model="editCustomer.lastName" id="editLastName" class="form-control validate validate"
+             ng-required="true">
+      <label for="editInitials">Initials</label>
+      <input type="text" ng-model="editCustomer.initials" id="editInitials" class="form-control validate validate"
+             ng-required="true">
+    </div>
+  </form>
+
+</div>

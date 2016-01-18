@@ -68,6 +68,11 @@ angular.module('kantileverAngular', [
         controller: 'customerController',
         controllerAs: 'customer'
       })
+      .when('/profile',{
+        templateUrl: 'views/customer.html',
+        controller: 'customerController',
+        controllerAs: 'customer'
+      })
       .otherwise({
         redirectTo: '/'
       });
