@@ -1,0 +1,136 @@
+<div class="row top-buffer" ng-init="getCustomer(1)">
+
+  <form ng-submit="registerCustomer()" name="editCustomerForm" novalidate>
+
+    <!--Name-->
+
+    <div id="name">
+      <a id="nameEdit" ng-click="editmode.customer=true" ng-show="!editmode.customer"
+         class="glyphicon glyphicon-pencil pull-right"></a>
+      <button id="nameSave" ng-click="editmode.customer=false" ng-show="editmode.customer"
+              class="btn btn-success col-lg-1 pull-right">Save</button>
+      <h3>Customer Name</h3>
+      <div class="row">
+        <div class="col-xs-2">
+
+          <label for="firstName">First Name:</label>
+        </div>
+        <div class="col-xs-5">
+          <input ng-show=editmode.customer type="text" id="firstName" ng-model="customer.firstName" class="form-control validate"
+                 ng-required="true">
+          <label ng-hide="editmode.customer">{{customer.firstName}}</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-2">
+          <label for="lastName">Last Name:</label>
+        </div>
+        <div class="col-xs-5">
+          <input ng-show=editmode.customer type="text" id="lastName" ng-model="customer.lastName" class="form-control validate"
+                 ng-required="true">
+          <label ng-hide="editmode.customer">{{customer.lastName}}</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-2">
+          <label for="initials">Initials:</label>
+        </div>
+        <div class="col-xs-5">
+          <input ng-show=editmode.customer type="text" id="initials" ng-model="customer.initials" class="form-control validate"
+                 ng-required="true">
+          <label ng-hide="editmode.customer">{{customer.initials}}</label>
+        </div>
+      </div>
+    </div>
+
+    <!--Customer Address-->
+
+    <div id="customerAddress">
+      <a id="customerEdit" class="glyphicon glyphicon-pencil pull-right"></a>
+      <h3>Customer Address</h3>
+      <div class="row">
+        <div class="col-xs-2">
+          <label for="city">City:</label>
+        </div>
+        <div class="col-xs-5">
+          <input type="text" id="city" ng-model="customer.address.city" class="form-control validate"
+                 ng-required="true">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-2">
+          <label for="streetname">Streetname:</label>
+        </div>
+        <div class="col-xs-5">
+          <input type="text" id="streetname" ng-model="customer.address.streetname" class="form-control validate"
+                 ng-required="true">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-2">
+          <label for="number">Number:</label>
+        </div>
+        <div class="col-xs-5">
+          <input type="text" id="number" ng-model="customer.address.number" class="form-control validate"
+                 ng-required="true">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-2">
+          <label for="zipcode">Zipcode:</label>
+        </div>
+        <div class="col-xs-5">
+          <input type="text" id="zipcode" ng-model="customer.address.zipcode" class="form-control validate"
+                 ng-required="true">
+        </div>
+      </div>
+    </div>
+
+    <!--Delivery Address-->
+
+    <div id="deliveryAddress">
+      <a id="deliveryEdit" class="glyphicon glyphicon-pencil pull-right"></a>
+      <h3>Delivery Address</h3>
+      <div class="row">
+        <div class="col-xs-2">
+          <label for="deliveryCity">City:</label>
+        </div>
+        <div class="col-xs-5">
+          <input type="text" id="deliveryCity" ng-model="customer.deliveryAddress.city" class="form-control validate"
+                 ng-required="true">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-2">
+          <label for="deliveryStreetname">Streetname:</label>
+        </div>
+        <div class="col-xs-5">
+          <input type="text" id="deliveryStreetname" ng-model="customer.deliveryAddress.streetname"
+                 class="form-control validate"
+                 ng-required="true">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-2">
+          <label for="deliveryNumber">Number:</label>
+        </div>
+        <div class="col-xs-5">
+          <input type="text" id="deliveryNumber" ng-model="customer.deliveryAddress.number"
+                 class="form-control validate"
+                 ng-required="true">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-2">
+          <label for="deliveryZipcode">Zipcode:</label>
+        </div>
+        <div class="col-xs-5">
+          <input type="text" id="deliveryZipcode" ng-model="customer.deliveryAddress.zipcode"
+                 class="form-control validate"
+                 ng-required="true">
+        </div>
+      </div>
+    </div>
+  </form>
+
+</div>

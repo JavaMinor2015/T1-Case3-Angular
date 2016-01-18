@@ -6,7 +6,8 @@
  * # CatalogCtrl
  *
  */
-angular.module('kantileverAngular').controller('CatalogCtrl', function ($scope, productService) {
+angular.module('kantileverAngular')
+    .controller('CatalogCtrl', function ($scope, productService) {
     $scope.productService = productService;
     $scope.products = $scope.productService.getAllProducts();
     $scope.sortType = 'name'; // set the default sort type
