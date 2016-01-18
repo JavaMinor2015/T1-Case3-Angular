@@ -33,17 +33,17 @@ angular.module('kantileverAngular').controller('cartController', function ($scop
 
   $scope.removeProduct = function (product) {
     for (var i = 0; i < $scope.products.length; i++) {
-      if (product.content.id === $scope.products[i].content.id) {
+      if (product.id === $scope.products[i].id) {
         var cartProduct = $scope.products[i];
-        if (cartProduct.content.amount > 1) {
-          cartProduct.content.amount -= 1;
+        if (cartProduct.amount > 1) {
+          cartProduct.amount -= 1;
         }
         else {
           $scope.products.splice(i, 1);
         }
       }
     }
-    $scope.order.totalPrice -= product.content.price;
+    $scope.order.totalPrice -= product.price;
     localStorage.setItem('order', JSON.stringify($scope.order));
   };
 

@@ -27,7 +27,7 @@ angular.module('kantileverAngular').controller('cartController', function ($scop
     };
     $scope.removeProduct = function (product) {
         for (var i = 0; i < $scope.products.length; i++) {
-            if (product.content.id === $scope.products[i].id) {
+            if (product.id === $scope.products[i].id) {
                 var cartProduct = $scope.products[i];
                 if (cartProduct.amount > 1) {
                     cartProduct.amount -= 1;
@@ -37,7 +37,7 @@ angular.module('kantileverAngular').controller('cartController', function ($scop
                 }
             }
         }
-        $scope.order.totalPrice -= product.content.price;
+        $scope.order.totalPrice -= product.price;
         localStorage.setItem('order', JSON.stringify($scope.order));
     };
     $scope.emptyCart = function () {
