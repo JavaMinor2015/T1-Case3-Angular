@@ -12,8 +12,7 @@ angular.module('kantileverAngular').service('orderService', function ($resource)
     };
     this.postOrder = function (order) {
         var copiedOrder = angular.copy(order);
-        orderResource.save(copiedOrder, function () {
-        }, function () {
+        orderResource.save(copiedOrder, function () { }, function () {
             handleError();
         });
     };

@@ -14,8 +14,12 @@ angular.module('kantileverAngular').service('customerService', function ($resour
     return customerResource.query();
   };
 
-  this.getCustomer = function (id) {
-    return customerResource.get({customerId: id});
+  this.getCustomer = function (id, scope) {
+    return customerResource.get({customerId: id}, function(response) {
+      scope.setCustomer(response);
+    }, function() {
+      handleError();
+    });
   };
 
   this.postCustomer = function (customer) {

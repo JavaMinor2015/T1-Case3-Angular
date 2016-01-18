@@ -9,18 +9,18 @@
  * Main module of the application.
  */
 var kantilever = angular.module('kantileverAngular', [
-  'ngAnimate',
-  'ngCookies',
-  'ngResource',
-  'ngRoute',
-  'ngSanitize',
-  'ngTouch',
-  'toastr',
-  'ui.router',
-  'satellizer'
+    'ngAnimate',
+    'ngCookies',
+    'ngResource',
+    'ngRoute',
+    'ngSanitize',
+    'ngTouch',
+    'toastr',
+    'ui.router',
+    'satellizer'
 
 
-])
+  ])
   .controller('MainController', function ($scope, $location) {
     $scope.isActive = function (route) {
       return route === $location.path();
@@ -93,18 +93,24 @@ var kantilever = angular.module('kantileverAngular', [
         url: '/logout',
         template: null,
         controller: 'LogoutCtrl'
-       });
+      })
+      .state('customer', {
+        url: '/profile',
+        templateUrl: 'views/customer.html',
+        controller: 'customerController',
+        controllerAs: 'customer'
+      });
 //});
     $urlRouterProvider.otherwise('/');
     $authProvider.baseUrl = "http://localhost:6789";
-    $authProvider.tokenRoot ="entity";
+    $authProvider.tokenRoot = "entity";
 
 
   });
 
 kantilever.run(
-  [          '$rootScope', '$state', '$stateParams',
-    function ($rootScope,   $state,   $stateParams) {
+  ['$rootScope', '$state', '$stateParams',
+    function ($rootScope, $state, $stateParams) {
 
       // It's very handy to add references to $state and $stateParams to the $rootScope
       // so that you can access them from any scope within your applications.For example,
