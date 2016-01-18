@@ -25,7 +25,8 @@ angular.module('kantileverAngular').controller('cartController', function ($scop
 
     if (!isInCart) {
       product.content.amount = 1;
-      $scope.products.push(product);
+      console.log(product);
+      $scope.products.push(product.content);
     }
     $scope.order.totalPrice += product.content.price;
     localStorage.setItem('order', JSON.stringify($scope.order));
@@ -60,7 +61,7 @@ angular.module('kantileverAngular').controller('cartController', function ($scop
     }
     else {
       for (var i = 0; i < order.products.length; i++) {
-        amount += order.products[i].content.amount;
+        amount += order.products[i].amount;
       }
       return amount;
     }
