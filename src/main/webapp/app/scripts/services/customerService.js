@@ -1,6 +1,7 @@
 'use strict';
 angular.module('kantileverAngular').service('customerService', function ($resource) {
     var customerResource = $resource('http://localhost:6789/customers/:customerId', { customerId: '@customerId' }, {
+        save: { method: 'POST' },
         update: { method: 'PUT' }
     });
     this.getCustomers = function () {

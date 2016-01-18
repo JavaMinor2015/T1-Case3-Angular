@@ -26,19 +26,14 @@
             </span>
               </a>
           </li>
-          <!--<div ng-hide="isAuthenticated()">-->
-            <!--<form class="navbar-form navbar-right btn-group">-->
-              <!--<button class="btn btn-default" goto="/login">Login</button>-->
-              <!--<button class="btn btn-default" goto="/register">Register</button>-->
-            <!--</form>-->
-          <!--</div>-->
+
         </ul>
         <ul class="nav navbar-nav">
           <li ng-if="isAuthenticated()"><a href="/#/profile">Profile</a></li>
         </ul>
         <ul ng-if="!isAuthenticated()" class="nav navbar-nav pull-right">
           <li><a href="/#/login">Login</a></li>
-          <li><a href="/#/signup">Sign up</a></li>
+          <li><a ui-sref-active="register" href="/#/register">Sign up</a></li>
         </ul>
         <ul ng-if="isAuthenticated()" class="nav navbar-nav pull-right">
           <li><a ui-sref="logout" href="/#/logout">Logout</a></li>

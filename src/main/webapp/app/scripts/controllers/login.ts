@@ -6,6 +6,7 @@ angular.module('kantileverAngular')
       $auth.login($scope.user)
         .then(function () {
           console.info($auth.getToken());
+
           toastr.success('You have successfully signed in!');
           $location.path('/');
         })

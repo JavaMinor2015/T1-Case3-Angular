@@ -89,6 +89,12 @@ var kantilever = angular.module('kantileverAngular', [
         controller: 'loginController',
         controllerAs: 'login'
       })
+      .state('profile', {
+        url: '/profile',
+        template: null, // to define
+        controller: 'customerController',
+        controllerAs: 'customer'
+      })
       .state('logout', {
         url: '/logout',
         template: null,
@@ -100,11 +106,12 @@ var kantilever = angular.module('kantileverAngular', [
     $authProvider.tokenRoot ="entity";
 
 
+
   });
 
 kantilever.run(
-  [          '$rootScope', '$state', '$stateParams',
-    function ($rootScope,   $state,   $stateParams) {
+  [          '$rootScope', '$state', '$stateParams','$http',
+    function ($rootScope,   $state,   $stateParams, $http) {
 
       // It's very handy to add references to $state and $stateParams to the $rootScope
       // so that you can access them from any scope within your applications.For example,
@@ -112,6 +119,7 @@ kantilever.run(
       // to active whenever 'contacts.list' or one of its decendents is active.
       $rootScope.$state = $state;
       $rootScope.$stateParams = $stateParams;
+      $http.defaults.headers.common['Authorization'] = 'Basic ';
     }
   ]
 );

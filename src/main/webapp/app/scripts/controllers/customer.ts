@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('kantileverAngular').controller('customerController', function ($scope, customerService) {
+angular.module('kantileverAngular').controller('customerController', function ($scope, customerService, $location, $auth, toastr) {
 
   $scope.newCustomer = {
     "firstName": "",
@@ -14,11 +14,25 @@ angular.module('kantileverAngular').controller('customerController', function ($
   $scope.sameAddress = true;
 
   $scope.registerCustomer = function(){
+    console.info('called');
     if ($scope.sameAddress){
+
+
       $scope.setAddress($scope.newCustomer.address)
     }
 
-    customerService.postCustomer($scope.newCustomer);
+
+    $auth.signup($scope.user)
+      .then(function(response) {
+        $auth.setToken(response);
+        $location.path('/');
+        toastr.info('You have successfully created a new account and have been signed-in');
+        customerService.postCustomer($scope.newCustomer);
+      })
+      .catch(function(response) {
+        toastr.error(response.data.message);
+      });
+
     $scope.resetCustomer();
     $scope.registerForm.$setPristine();
   };

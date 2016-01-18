@@ -73,6 +73,11 @@ var kantilever = angular.module('kantileverAngular', [
         templateUrl: 'views/login.html',
         controller: 'loginController',
         controllerAs: 'login'
+    }).state('profile', {
+        url: '/profile',
+        template: null,
+        controller: 'customerController',
+        controllerAs: 'customer'
     }).state('logout', {
         url: '/logout',
         template: null,
@@ -83,13 +88,14 @@ var kantilever = angular.module('kantileverAngular', [
     $authProvider.baseUrl = "http://localhost:6789";
     $authProvider.tokenRoot = "entity";
 });
-kantilever.run(['$rootScope', '$state', '$stateParams', function ($rootScope, $state, $stateParams) {
+kantilever.run(['$rootScope', '$state', '$stateParams', '$http', function ($rootScope, $state, $stateParams, $http) {
     // It's very handy to add references to $state and $stateParams to the $rootScope
     // so that you can access them from any scope within your applications.For example,
     // <li ng-class="{ active: $state.includes('contacts.list') }"> will set the <li>
     // to active whenever 'contacts.list' or one of its decendents is active.
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
+    $http.defaults.headers.common['Authorization'] = 'Basic ';
 }]);
 function skipIfLoggedIn($q, $auth) {
     var deferred = $q.defer();
