@@ -1,7 +1,7 @@
 'use strict';
 
 
-angular.module('kantileverAngular').service('orderService', function ($resource) {
+angular.module('kantileverAngular').service('orderService', function ($resource, $window) {
 
   var orderResource = $resource(
     'http://localhost:6789/customerorders/:orderId1',
@@ -21,14 +21,16 @@ angular.module('kantileverAngular').service('orderService', function ($resource)
   };
 
   this.postOrder = function (order) {
-    orderResource.save(order, function () {
+    orderResource.save(order, function (response) {
+      $window.location.href = '#/orders/' + response.content.orderId;
     }, function () {
       handleError();
     });
   };
 
   this.updateOrder = function (order) {
-    orderResource.update({orderId1: order.id}, order, function () {
+    orderResource.update({orderId1: order.id}, order, function (response) {
+      $window.location.href = '#/orders/' + response.content.orderId;
     }, function () {
       handleError();
     });
