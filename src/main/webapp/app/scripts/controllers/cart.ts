@@ -15,17 +15,16 @@ angular.module('kantileverAngular').controller('cartController', function ($scop
     var isInCart = false;
 
     for (var i = 0; i < $scope.products.length; i++) {
-      if ($scope.products[i].content.id === product.content.id) {
+      if ($scope.products[i].id === product.content.id) {
         isInCart = true;
 
-        $scope.products[i].content.amount += 1;
+        $scope.products[i].amount += 1;
         break;
       }
     }
 
     if (!isInCart) {
       product.content.amount = 1;
-      console.log(product);
       $scope.products.push(product.content);
     }
     $scope.order.totalPrice += product.content.price;
