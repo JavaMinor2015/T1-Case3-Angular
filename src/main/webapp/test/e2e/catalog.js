@@ -38,13 +38,14 @@ describe('E2E: Catalog', function () {
       });
     };
 
+    priceHeader.click();
     var newPrice1 = price1(products);
     var newPrice2 = price2(products);
-    expect(newPrice2).toBeGreaterThan(newPrice1);
+    expect(newPrice1).toBeGreaterThan(newPrice2);
     priceHeader.click();
     newPrice1 = price1(products);
     newPrice2 = price2(products);
-    expect(newPrice1).toBeGreaterThan(newPrice2);
+    expect(newPrice2).toBeGreaterThan(newPrice1);
   });
 
   it('should filter the catalog when the search bar has input', function() {

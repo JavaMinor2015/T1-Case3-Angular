@@ -8,9 +8,9 @@
  */
 angular.module('kantileverAngular').controller('CatalogCtrl', function ($scope, productService) {
     $scope.productService = productService;
+    $scope.products = $scope.productService.getAllProducts();
     $scope.sortType = 'name'; // set the default sort type
     $scope.sortReverse = false; // set the default sort order
     $scope.searchProduct = ''; // set the default search/filter term
-    $scope.products = $scope.productService.getAllProducts();
 });
 //# sourceMappingURL=catalog.js.map
