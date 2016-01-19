@@ -12,7 +12,7 @@ angular.module('kantileverAngular').service('customerService', function ($resour
   );
 
   this.getCustomers = function () {
-    return customerResource.query();
+    return customerResource.get();
   };
 
   this.getCustomer = function (id, scope) {
@@ -24,7 +24,8 @@ angular.module('kantileverAngular').service('customerService', function ($resour
   };
 
   this.postCustomer = function (customer) {
-    customerResource.save(customer, function () {
+    var copiedCustomer = angular.copy(customer);
+    customerResource.save(copiedCustomer, function () {
     }, function () {
       handleError();
     });

@@ -91,7 +91,7 @@ var kantilever = angular.module('kantileverAngular', [
       })
       .state('profile', {
         url: '/profile',
-        template: null, // to define
+        templateUrl: 'views/customer.html',
         controller: 'customerController',
         controllerAs: 'customer'
       })
@@ -99,12 +99,6 @@ var kantilever = angular.module('kantileverAngular', [
         url: '/logout',
         template: null,
         controller: 'LogoutCtrl'
-      })
-      .state('customer', {
-        url: '/profile',
-        templateUrl: 'views/customer.html',
-        controller: 'customerController',
-        controllerAs: 'customer'
       });
 //});
     $urlRouterProvider.otherwise('/');

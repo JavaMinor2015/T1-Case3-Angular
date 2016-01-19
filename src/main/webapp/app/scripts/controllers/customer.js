@@ -16,15 +16,19 @@ angular.module('kantileverAngular').controller('customerController', function ($
         "delivery": false
     };
     $scope.registerCustomer = function () {
-        console.info('called');
         if ($scope.sameAddress) {
             $scope.setAddress($scope.newCustomer.address);
         }
+        var newCustomer = $scope.newCustomer;
         $auth.signup($scope.user).then(function (response) {
-            $auth.setToken(response);
-            $location.path('/');
+            console.info(response);
             toastr.info('You have successfully created a new account and have been signed-in');
-            customerService.postCustomer($scope.newCustomer);
+            customerService.postCustomer(newCustomer);
+            $auth.setToken(response);
+            //$auth.login($scope.user);
+            console.log($auth.getToken());
+            console.log(newCustomer);
+            $location.path('/profile');
         }).catch(function (response) {
             toastr.error(response.data.message);
         });

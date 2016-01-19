@@ -5,7 +5,7 @@ angular.module('kantileverAngular').service('customerService', function ($resour
         update: { method: 'PUT' }
     });
     this.getCustomers = function () {
-        return customerResource.query();
+        return customerResource.get();
     };
     this.getCustomer = function (id, scope) {
         return customerResource.get({ customerId: id }, function (response) {
@@ -15,7 +15,8 @@ angular.module('kantileverAngular').service('customerService', function ($resour
         });
     };
     this.postCustomer = function (customer) {
-        customerResource.save(customer, function () {
+        var copiedCustomer = angular.copy(customer);
+        customerResource.save(copiedCustomer, function () {
         }, function () {
             handleError();
         });
