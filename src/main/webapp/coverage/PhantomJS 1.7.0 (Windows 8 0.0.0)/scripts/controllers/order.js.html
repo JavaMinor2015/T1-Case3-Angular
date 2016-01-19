@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">63.64% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>14/22</span>
+        <span class='fraction'>22/22</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">50% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>1/2</span>
+        <span class='fraction'>2/2</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">50% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>3/6</span>
+        <span class='fraction'>6/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">63.64% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>14/22</span>
+        <span class='fraction'>22/22</span>
       </div>
     </div>
   </div>
-  <div class='status-line medium'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -92,36 +92,36 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
 <span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">6×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
 /**
@@ -136,29 +136,29 @@ angular.module('kantileverAngular').controller('orderController', function ($sco
     $scope.orderInfo = [];
     $scope.completeOrder = function () {
         console.info('Thank you for your order!');
-        <span class="missing-if-branch" title="else path not taken" >E</span>if ($scope.order.orderId === undefined) {
+        if ($scope.order.orderId === undefined) {
             orderService.postOrder($scope.order);
         }
         else {
-<span class="cstat-no" title="statement not covered" >            orderService.updateOrder($scope.order);</span>
+            orderService.updateOrder($scope.order);
         }
         $scope.order = orderService.emptyCart();
     };
-    $scope.getOrder = <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >        var orderid = $routeParams.orderId;</span>
-<span class="cstat-no" title="statement not covered" >        $scope.orderInfo = orderService.setOrderInfo(orderid);</span>
+    $scope.getOrder = function () {
+        var orderid = $routeParams.orderId;
+        $scope.orderInfo = orderService.setOrderInfo(orderid);
     };
     $scope.getOrderList = function () {
         return orderService.getAllOrder();
     };
-    $scope.cancelOrder = <span class="fstat-no" title="function not covered" >function (order) {</span>
-<span class="cstat-no" title="statement not covered" >        order.orderStatus = 'CANCELLED';</span>
-<span class="cstat-no" title="statement not covered" >        orderService.updateOrder(order);</span>
+    $scope.cancelOrder = function (order) {
+        order.orderStatus = 'CANCELLED';
+        orderService.updateOrder(order);
     };
-    $scope.editOrder = <span class="fstat-no" title="function not covered" >function (order) {</span>
-<span class="cstat-no" title="statement not covered" >        localStorage.setItem('order', JSON.stringify(order));</span>
-<span class="cstat-no" title="statement not covered" >        orderService.newOrder = order;</span>
-<span class="cstat-no" title="statement not covered" >        $scope.order = orderService.newOrder;</span>
+    $scope.editOrder = function (order) {
+        localStorage.setItem('order', JSON.stringify(order));
+        orderService.newOrder = order;
+        $scope.order = orderService.newOrder;
         //TODO redirect
     };
     $scope.oldOrders = $scope.getOrderList();
@@ -169,7 +169,7 @@ angular.module('kantileverAngular').controller('orderController', function ($sco
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Jan 19 2016 11:59:07 GMT+0100 (West-Europa (standaardtijd))
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Jan 19 2016 13:14:25 GMT+0100 (West-Europa (standaardtijd))
 </div>
 </div>
 <script src="../../prettify.js"></script>
