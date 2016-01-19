@@ -69,4 +69,18 @@ describe('Controller: cartController', function () {
     scope.emptyCart();
     expect(scope.getCartItemAmount()).toBe(0);
   });
+  it('should reduce the item amount by one when it is removed and there are multiple in the shopping cart', function() {
+    var product = {
+      id: 1,
+      amount: 2,
+      price: 0
+    };
+
+    scope.products.push(product);
+    expect(scope.products.length).toBe(1);
+    expect(scope.products[0].amount).toBe(2);
+    scope.removeProduct(product);
+    expect(scope.products.length).toBe(1);
+    expect(scope.products[0].amount).toBe(1);
+  });
 });

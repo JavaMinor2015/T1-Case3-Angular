@@ -80,6 +80,13 @@ describe('Service: orderService', function () {
   });
 
   it('should get an order from localstorage', function () {
+    //Success
+    expect(window.localStorage.getItem('order')).toBeNull();
+    window.localStorage.setItem('order', JSON.stringify({orderId: 1}));
+    expect(service.fetchOrder()).toEqual({orderId: 1});
+
+    //Fail
+    window.localStorage.clear();
     expect(window.localStorage.getItem('order')).toBeNull();
     var response = {
       'customerId': '0',
@@ -110,6 +117,15 @@ describe('Service: orderService', function () {
     service.createNewOrder();
     expect(service.newOrder.totalPrice).toEqual(0);
     expect(service.newOrder.products.length).toEqual(0);
+  });
+
+  it('should setOderInfo correctly', function() {
+    var id = 1;
+    var response = {orderId: 1};
+    httpBackend.expectGET(baseUrl + '/' + id).respond(200, response);
+    var order = service.setOrderInfo(id);
+    httpBackend.flush();
+    expect(angular.equals(response, order)).toBe(true);
   });
 
 });
