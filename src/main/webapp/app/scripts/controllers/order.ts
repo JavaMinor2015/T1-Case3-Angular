@@ -14,7 +14,6 @@ angular.module('kantileverAngular').controller('orderController', function($scop
 
   $scope.completeOrder = function() {
     console.info('Thank you for your order!');
-    console.log($scope.order);
     if ($scope.order.orderId === undefined){
       orderService.postOrder($scope.order);
     }
@@ -39,7 +38,6 @@ angular.module('kantileverAngular').controller('orderController', function($scop
   };
 
   $scope.editOrder = function(order){
-    console.log(order);
     localStorage.setItem('order', JSON.stringify(order));
     orderService.newOrder = order;
     $scope.order = orderService.newOrder;

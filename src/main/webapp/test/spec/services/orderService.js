@@ -35,7 +35,11 @@ describe('Service: orderService', function () {
   it('should post a order', function () {
     var order = {};
     //Success
-    httpBackend.expectPOST(baseUrl).respond(201, {});
+    httpBackend.expectPOST(baseUrl).respond(201, {
+      content: {
+        orderId: 1
+      }
+    });
     service.postOrder(order);
     httpBackend.flush();
 
@@ -50,7 +54,7 @@ describe('Service: orderService', function () {
       id: 1
     };
     //Success
-    httpBackend.expectPUT(baseUrl + '/' + order.id).respond(201, {});
+    httpBackend.expectPUT(baseUrl + '/' + order.id).respond(201, {content: {orderId: 1}});
     service.updateOrder(order);
     httpBackend.flush();
 
@@ -62,7 +66,7 @@ describe('Service: orderService', function () {
 
   it('should delete a order', function () {
     var order = {
-        id: 1
+      id: 1
     };
     //Success
     httpBackend.expectDELETE(baseUrl + '/' + order.id).respond(201, {});
@@ -75,7 +79,7 @@ describe('Service: orderService', function () {
     httpBackend.flush();
   });
 
-  it('should get an order from localstorage', function() {
+  it('should get an order from localstorage', function () {
     expect(window.localStorage.getItem('order')).toBeNull();
     var response = {
       'customerId': '0',
@@ -87,7 +91,7 @@ describe('Service: orderService', function () {
     expect(service.fetchOrder()).toEqual(response);
   });
 
-  it('should create a new order', function() {
+  it('should create a new order', function () {
     var order = {
       'orderId': '0',
       'customerId': '0',
@@ -96,7 +100,7 @@ describe('Service: orderService', function () {
       'totalPrice': 300,
       'version': 5,
       'products': [
-        { id: 1}, { id: 2}, { id: 3}
+        {id: 1}, {id: 2}, {id: 3}
       ]
     };
 

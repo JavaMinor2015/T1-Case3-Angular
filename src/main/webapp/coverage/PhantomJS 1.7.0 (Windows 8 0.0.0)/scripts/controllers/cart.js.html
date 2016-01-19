@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">97.14% </span>
+        <span class="strong">97.5% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>34/35</span>
+        <span class='fraction'>39/40</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">70% </span>
+        <span class="strong">75% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>7/10</span>
+        <span class='fraction'>9/12</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>5/5</span>
+        <span class='fraction'>6/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">97.14% </span>
+        <span class="strong">97.5% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>34/35</span>
+        <span class='fraction'>39/40</span>
       </div>
     </div>
   </div>
@@ -103,7 +103,16 @@
 58
 59
 60
-61</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -131,6 +140,7 @@
 <span class="cline-any cline-yes">7×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -146,6 +156,14 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -153,13 +171,13 @@
 <span class="cline-any cline-yes">4×</span>
 <span class="cline-any cline-yes">4×</span>
 <span class="cline-any cline-yes">4×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -177,33 +195,42 @@ angular.module('kantileverAngular').controller('cartController', function ($scop
     $scope.addToCart = function (product) {
         var isInCart = false;
         for (var i = 0; i &lt; $scope.products.length; i++) {
-            <span class="missing-if-branch" title="else path not taken" >E</span>if ($scope.products[i].content.id === product.content.id) {
+            <span class="missing-if-branch" title="else path not taken" >E</span>if ($scope.products[i].id === product.content.id) {
                 isInCart = true;
-                $scope.products[i].content.amount += 1;
+                $scope.products[i].amount += 1;
                 break;
             }
         }
         if (!isInCart) {
             product.content.amount = 1;
-            $scope.products.push(product);
+            $scope.products.push(product.content);
         }
         $scope.order.totalPrice += product.content.price;
-        localStorage.setItem('order', JSON.stringify($scope.order));
+        $scope.setLocalStorage($scope.order);
     };
     $scope.removeProduct = function (product) {
+        console.info($scope.products);
         for (var i = 0; i &lt; $scope.products.length; i++) {
-            <span class="missing-if-branch" title="else path not taken" >E</span>if (product.content.id === $scope.products[i].content.id) {
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (product.id === $scope.products[i].id) {
                 var cartProduct = $scope.products[i];
-                <span class="missing-if-branch" title="if path not taken" >I</span>if (cartProduct.content.amount &gt; 1) {
-<span class="cstat-no" title="statement not covered" >                    cartProduct.content.amount -= 1;</span>
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (cartProduct.amount &gt; 1) {
+<span class="cstat-no" title="statement not covered" >                    cartProduct.amount -= 1;</span>
                 }
                 else {
                     $scope.products.splice(i, 1);
                 }
             }
         }
-        $scope.order.totalPrice -= product.content.price;
-        localStorage.setItem('order', JSON.stringify($scope.order));
+        $scope.order.totalPrice -= product.price;
+        $scope.setLocalStorage($scope.order);
+    };
+    $scope.setLocalStorage = function (order) {
+        if ($scope.products.length === 0) {
+            localStorage.removeItem('order');
+        }
+        else {
+            localStorage.setItem('order', JSON.stringify(order));
+        }
     };
     $scope.emptyCart = function () {
         $scope.order = orderService.emptyCart();
@@ -217,7 +244,7 @@ angular.module('kantileverAngular').controller('cartController', function ($scop
         }
         else {
             for (var i = 0; i &lt; order.products.length; i++) {
-                amount += order.products[i].content.amount;
+                amount += order.products[i].amount;
             }
             return amount;
         }
@@ -229,7 +256,7 @@ angular.module('kantileverAngular').controller('cartController', function ($scop
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Jan 18 2016 12:06:08 GMT+0100 (West-Europa (standaardtijd))
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Jan 19 2016 09:25:43 GMT+0100 (West-Europa (standaardtijd))
 </div>
 </div>
 <script src="../../prettify.js"></script>
