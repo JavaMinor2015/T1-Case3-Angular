@@ -5,7 +5,7 @@ describe('Controller: orderController', function () {
   var scope, ctrl, httpBackend;
   var baseUrl = 'http://localhost:6789/customerorders';
 
-  beforeEach(function() {
+  beforeEach(function () {
     module('kantileverAngular');
     inject(function ($controller, _$rootScope_, _$httpBackend_) {
       scope = _$rootScope_.$new();
@@ -19,9 +19,9 @@ describe('Controller: orderController', function () {
     httpBackend.verifyNoOutstandingRequest();
   });
 
-  it('should retrieve a list of old orders', function() {
+  it('should retrieve a list of old orders', function () {
     var response = {
-      content: [{},{},{}],
+      content: [{}, {}, {}],
       _links: {}
     };
     httpBackend.expectGET(baseUrl).respond(response);
@@ -32,21 +32,19 @@ describe('Controller: orderController', function () {
   describe('after instantiation', function () {
     beforeEach(function () {
       var response = {
-        content: [{},{},{}],
+        content: [{}, {}, {}],
         _links: {}
       };
       httpBackend.expectGET(baseUrl).respond(response);
       httpBackend.flush();
     });
 
-    it('should send the order to the backend when order is completed', function(){
+    it('should send the order to the backend when order is completed', function () {
       scope.order = {
-        'orderId': '0',
         'customerId': '0',
         'orderStatus': 'OPEN',
         'deliveryStatus': 'NOT SCHEDULED',
         'totalPrice': 0,
-        'version': 5,
         'products': [
           {
             id: 1
@@ -57,7 +55,7 @@ describe('Controller: orderController', function () {
         ]
       };
 
-      httpBackend.expectPOST(baseUrl + '/' + scope.order.orderId).respond(201, {});
+      httpBackend.expectPOST(baseUrl).respond(201, {content: {orderId: 1}});
       expect(scope.order.products.length).toBe(2);
       scope.completeOrder();
       expect(scope.order.products.length).toBe(0);

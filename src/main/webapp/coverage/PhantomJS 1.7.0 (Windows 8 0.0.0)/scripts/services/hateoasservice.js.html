@@ -95,12 +95,10 @@
 50
 51
 52
-53
-54
-55
-56</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+53</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -112,28 +110,24 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -155,7 +149,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/// &lt;reference path="../app.ts" /&gt;
 'use strict';
-angular.module('kantileverAngular').service('HateoasService', <span class="fstat-no" title="function not covered" >function ($resource) {</span>
+angular.module('kantileverAngular')
+    .service('HateoasService', <span class="fstat-no" title="function not covered" >function ($resource) {</span>
 <span class="cstat-no" title="statement not covered" >    this.getAllItems = <span class="fstat-no" title="function not covered" >function (url) {</span></span>
 <span class="cstat-no" title="statement not covered" >        return $resource(url).query();</span>
     };
@@ -166,29 +161,25 @@ angular.module('kantileverAngular').service('HateoasService', <span class="fstat
 <span class="cstat-no" title="statement not covered" >    this.updateItem = <span class="fstat-no" title="function not covered" >function (hateoasItem) {</span></span>
 <span class="cstat-no" title="statement not covered" >        var link = getLink(hateoasItem, 'update');</span>
 <span class="cstat-no" title="statement not covered" >        var content = getContent(hateoasItem);</span>
-<span class="cstat-no" title="statement not covered" >        $resource(link).update(content, <span class="fstat-no" title="function not covered" >function () {</span></span>
-        }, <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        $resource(link).update(content, <span class="fstat-no" title="function not covered" >function () {</span> }, <span class="fstat-no" title="function not covered" >function () {</span></span>
 <span class="cstat-no" title="statement not covered" >            handleError();</span>
         });
     };
 <span class="cstat-no" title="statement not covered" >    this.nextItem = <span class="fstat-no" title="function not covered" >function (hateoasItem) {</span></span>
 <span class="cstat-no" title="statement not covered" >        var link = getLink(hateoasItem, 'next');</span>
-<span class="cstat-no" title="statement not covered" >        $resource(link).get(<span class="fstat-no" title="function not covered" >function () {</span></span>
-        }, <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        $resource(link).get(<span class="fstat-no" title="function not covered" >function () {</span> }, <span class="fstat-no" title="function not covered" >function () {</span></span>
 <span class="cstat-no" title="statement not covered" >            handleError();</span>
         });
     };
 <span class="cstat-no" title="statement not covered" >    this.prevItem = <span class="fstat-no" title="function not covered" >function (hateoasItem) {</span></span>
 <span class="cstat-no" title="statement not covered" >        var link = getLink(hateoasItem, 'prev');</span>
-<span class="cstat-no" title="statement not covered" >        $resource(link).get(<span class="fstat-no" title="function not covered" >function () {</span></span>
-        }, <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        $resource(link).get(<span class="fstat-no" title="function not covered" >function () {</span> }, <span class="fstat-no" title="function not covered" >function () {</span></span>
 <span class="cstat-no" title="statement not covered" >            handleError();</span>
         });
     };
 <span class="cstat-no" title="statement not covered" >    this.deleteItem = <span class="fstat-no" title="function not covered" >function (hateoasItem) {</span></span>
 <span class="cstat-no" title="statement not covered" >        var link = getLink(hateoasItem, 'update');</span>
-<span class="cstat-no" title="statement not covered" >        $resource(link).delete(<span class="fstat-no" title="function not covered" >function () {</span></span>
-        }, <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        $resource(link).delete(<span class="fstat-no" title="function not covered" >function () {</span> }, <span class="fstat-no" title="function not covered" >function () {</span></span>
 <span class="cstat-no" title="statement not covered" >            handleError();</span>
         });
     };
@@ -214,7 +205,7 @@ angular.module('kantileverAngular').service('HateoasService', <span class="fstat
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Jan 14 2016 14:06:45 GMT+0100 (West-Europa (standaardtijd))
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Jan 19 2016 09:25:43 GMT+0100 (West-Europa (standaardtijd))
 </div>
 </div>
 <script src="../../prettify.js"></script>

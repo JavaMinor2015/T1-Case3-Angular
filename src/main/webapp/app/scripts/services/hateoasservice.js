@@ -1,6 +1,7 @@
 /// <reference path="../app.ts" />
 'use strict';
-angular.module('kantileverAngular').service('HateoasService', function ($resource) {
+angular.module('kantileverAngular')
+    .service('HateoasService', function ($resource) {
     this.getAllItems = function (url) {
         return $resource(url).query();
     };
@@ -11,29 +12,25 @@ angular.module('kantileverAngular').service('HateoasService', function ($resourc
     this.updateItem = function (hateoasItem) {
         var link = getLink(hateoasItem, 'update');
         var content = getContent(hateoasItem);
-        $resource(link).update(content, function () {
-        }, function () {
+        $resource(link).update(content, function () { }, function () {
             handleError();
         });
     };
     this.nextItem = function (hateoasItem) {
         var link = getLink(hateoasItem, 'next');
-        $resource(link).get(function () {
-        }, function () {
+        $resource(link).get(function () { }, function () {
             handleError();
         });
     };
     this.prevItem = function (hateoasItem) {
         var link = getLink(hateoasItem, 'prev');
-        $resource(link).get(function () {
-        }, function () {
+        $resource(link).get(function () { }, function () {
             handleError();
         });
     };
     this.deleteItem = function (hateoasItem) {
         var link = getLink(hateoasItem, 'update');
-        $resource(link).delete(function () {
-        }, function () {
+        $resource(link).delete(function () { }, function () {
             handleError();
         });
     };
