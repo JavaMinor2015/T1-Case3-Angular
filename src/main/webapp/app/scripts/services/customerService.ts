@@ -3,8 +3,11 @@
 angular.module('kantileverAngular').service('customerService', function ($resource, $http) {
 
   var customerResource = $resource(
-    'http://localhost:6789/customers/profile',
-    {customerId: '@customerId'},
+    'http://localhost:6789/customers/:customerId/:profile',
+    {
+      customerId: '@customerId',
+      profile:  '@profile'
+    },
     {
       save: {method: 'POST'},
       update: {method: 'PUT'}
@@ -31,7 +34,7 @@ angular.module('kantileverAngular').service('customerService', function ($resour
   };
 
   this.updateCustomer = function (customer) {
-    customerResource.update({customerId: customer.id}, customer, function () {
+    customerResource.update({profile: 'profile'}, customer, function () {
     }, function () {
       handleError();
     })
