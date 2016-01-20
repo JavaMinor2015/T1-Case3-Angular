@@ -29,48 +29,75 @@ var kantilever = angular.module('kantileverAngular', [
         url: '/about',
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl',
-        controllerAs: 'about'
+        controllerAs: 'about',
+        resolve: {
+            loginRequired: loginRequired
+        }
     }).state('catalog', {
         url: '/catalog',
         templateUrl: 'views/catalog.html',
         controller: 'CatalogCtrl',
-        controllerAs: 'catalog'
+        controllerAs: 'catalog',
+        resolve: {
+            loginRequired: loginRequired
+        }
     }).state('product', {
         url: '/product',
         templateUrl: 'views/product.html',
         controller: 'ProductCtrl',
-        controllerAs: 'product'
+        controllerAs: 'product',
+        resolve: {
+            loginRequired: loginRequired
+        }
     }).state('cart', {
         url: '/cart',
         templateUrl: 'views/cart.html',
         controller: 'cartController',
         controllerAs: 'cart',
-        params: { tabName: 'cart' }
+        params: { tabName: 'cart' },
+        resolve: {
+            loginRequired: loginRequired
+        }
     }).state('confirm', {
         url: '/confirm',
         templateUrl: 'views/orderConfirmation.html',
         controller: 'orderController',
-        controllerAs: 'order'
+        controllerAs: 'order',
+        resolve: {
+            loginRequired: loginRequired
+        }
     }).state('orders', {
         url: '/orders',
         templateUrl: 'views/orderList.html',
         controller: 'orderController',
-        controllerAs: 'order'
+        controllerAs: 'order',
+        resolve: {
+            loginRequired: loginRequired
+        }
     }).state('test', {
         url: '/order/:orderId',
         templateUrl: 'views/order-detail.html',
         controller: 'orderController',
-        controllerAs: 'order'
+        controllerAs: 'order',
+        resolve: {
+            loginRequired: loginRequired
+        }
     }).state('register', {
         url: '/register',
         templateUrl: 'views/registration.html',
         controller: 'customerController',
-        controllerAs: 'customer'
+        controllerAs: 'customer',
+        resolve: {
+            skipIfLoggedIn: skipIfLoggedIn
+        }
     }).state('login', {
         url: '/login',
         templateUrl: 'views/login.html',
         controller: 'loginController',
-        controllerAs: 'login'
+        controllerAs: 'login',
+        resolve: {
+            skipIfLoggedIn: skipIfLoggedIn
+        }
     }).state('profile', {
         url: '/profile',
         templateUrl: 'views/customer.html',
@@ -79,7 +106,10 @@ var kantilever = angular.module('kantileverAngular', [
     }).state('logout', {
         url: '/logout',
         template: null,
-        controller: 'LogoutCtrl'
+        controller: 'LogoutCtrl',
+        resolve: {
+            loginRequired: loginRequired
+        }
     });
     //});
     $urlRouterProvider.otherwise('/');
@@ -104,7 +134,6 @@ function skipIfLoggedIn($q, $auth) {
     }
     return deferred.promise;
 }
-;
 function loginRequired($q, $location, $auth) {
     var deferred = $q.defer();
     if ($auth.isAuthenticated()) {
@@ -115,7 +144,6 @@ function loginRequired($q, $location, $auth) {
     }
     return deferred.promise;
 }
-;
 angular.module('kantileverAngular.services', []);
 angular.module('kantileverAngular.directives', []);
 //# sourceMappingURL=app.js.map
