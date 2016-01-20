@@ -22,9 +22,10 @@ angular.module('kantileverAngular').service('customerService', function ($resour
     });
   };
 
-  this.postCustomer = function (customer) {
+  this.postCustomer = function (customer, callback) {
     var copiedCustomer = angular.copy(customer);
     customerResource.save(copiedCustomer, function () {
+      callback.redirect();
     }, function () {
       handleError();
     });

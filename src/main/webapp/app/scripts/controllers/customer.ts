@@ -27,13 +27,13 @@ angular.module('kantileverAngular').controller('customerController', function ($
     $auth.signup($scope.user)
       .then(function (response) {
         console.info(response);
+
         toastr.info('You have successfully created a new account and have been signed-in');
-        customerService.postCustomer(newCustomer);
+        customerService.postCustomer(newCustomer, $scope);
         $auth.setToken(response);
-        //$auth.login($scope.user);
+
         console.log($auth.getToken());
         console.log(newCustomer);
-        $location.path('/profile');
       })
       .catch(function (response) {
         toastr.error(response.data.message);
@@ -68,6 +68,10 @@ angular.module('kantileverAngular').controller('customerController', function ($
 
   $scope.setCustomer = function (customer) {
     $scope.customer = customer.data.content;
+  };
+
+  $scope.redirect = function () {
+    $location.path('/profile');
   };
 
 });
