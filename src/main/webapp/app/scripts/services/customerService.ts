@@ -6,7 +6,7 @@ angular.module('kantileverAngular').service('customerService', function ($resour
     'http://localhost:6789/customers/:customerId/:profile',
     {
       customerId: '@customerId',
-      profile:  '@profile'
+      profile: '@profile'
     },
     {
       save: {method: 'POST'},
@@ -34,7 +34,7 @@ angular.module('kantileverAngular').service('customerService', function ($resour
   };
 
   this.updateCustomer = function (customer) {
-    customerResource.update({profile: 'profile'}, customer, function () {
+    customerResource.update({profile: "profile"}, customer, function () {
     }, function () {
       handleError();
     })
