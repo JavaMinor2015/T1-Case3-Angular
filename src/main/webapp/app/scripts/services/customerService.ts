@@ -56,12 +56,12 @@ angular.module('kantileverAngular').service('customerService', function ($resour
     console.log('error');
   };
 
-  this.getCustomerProfile = function (scope) {
+  this.getCustomerProfile = function (callback) {
     $http({
       method: 'GET',
       url: 'http://localhost:6789/customers/profile'
     }).then(function (response) {
-      scope.setCustomer(response);
+      callback.setCustomer(response);
     }, function () {
       handleError();
     });

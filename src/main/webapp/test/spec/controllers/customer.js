@@ -49,6 +49,10 @@ describe('Controller: customerController', function() {
     httpBackend.expectPOST(baseUrl).respond(201, {});
     scope.registerCustomer();
     httpBackend.flush();
+
+    httpBackend.expectPOST("http://localhost:6789/auth/signup").respond(500, {});
+    scope.registerCustomer();
+    httpBackend.flush();
   });
 
   it('should register a customer with 2 addresses', function() {
@@ -81,6 +85,33 @@ describe('Controller: customerController', function() {
       deliveryAddress: null,
       orders: [ ]
     });
+  });
+
+  it('should edit a customer', function() {
+    var customer = {
+      id: 1
+    };
+    httpBackend.expectPUT('http://localhost:6789/customers/profile').respond(201, {});
+    scope.editCustomer(customer);
+    httpBackend.flush();
+  });
+
+  it('should get customer profile', function() {
+    httpBackend.expectGET('http://localhost:6789/customers/profile').respond(201, {});
+    scope.getCustomer(scope);
+    httpBackend.flush();
+  });
+
+  it('should set the customer', function() {
+    var customer = {
+      data: {
+        content: {
+          id: 1
+        }
+      }
+    };
+    scope.setCustomer(customer);
+    expect(scope.customer).toBe(customer.data.content);
   });
 
 });
