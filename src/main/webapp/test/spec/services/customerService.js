@@ -96,4 +96,20 @@ describe('Service: customerService', function() {
     httpBackend.flush();
   });
 
+  it('should get a customer profile', function() {
+    var callback = {
+      setCustomer: function(){}
+    };
+    spyOn(callback, 'setCustomer');
+
+    httpBackend.expectGET(baseUrl + '/profile').respond(201, {});
+    service.getCustomerProfile(callback);
+    httpBackend.flush();
+    expect(callback.setCustomer).toHaveBeenCalled();
+
+    httpBackend.expectGET(baseUrl + '/profile').respond(500, {});
+    service.getCustomerProfile(callback);
+    httpBackend.flush();
+  });
+
 });
