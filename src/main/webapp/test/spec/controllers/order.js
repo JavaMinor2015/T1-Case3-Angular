@@ -2,20 +2,21 @@
 
 describe('Controller: orderController', function () {
 
-  var scope, ctrl, httpBackend;
+  var scope, ctrl, httpBackend, state;
   var baseUrl = 'http://localhost:6789/customerorders';
 
-  beforeEach(function () {
-    module('kantileverAngular');
-    inject(function ($controller, _$rootScope_, _$httpBackend_) {
-      scope = _$rootScope_.$new();
-      ctrl = $controller('orderController', {
-        $scope: scope,
-        $routeParams: {orderId: 1}
-      });
-      httpBackend = _$httpBackend_;
+  beforeEach(module('kantileverAngular'));
+  beforeEach(module('stateMock'));
+
+  beforeEach(inject(function ($state, $controller, _$rootScope_, _$httpBackend_) {
+    state = $state;
+    scope = _$rootScope_.$new();
+    ctrl = $controller('orderController', {
+      $scope: scope,
+      $routeParams: {orderId: 1}
     });
-  });
+    httpBackend = _$httpBackend_;
+  }));
 
   afterEach(function () {
     httpBackend.verifyNoOutstandingExpectation();
@@ -91,7 +92,7 @@ describe('Controller: orderController', function () {
       httpBackend.flush();
     });
 
-    it('should get an order by routeparam id', function() {
+    it('should get an order by routeparam id', function () {
       var response = {orderId: 1};
       httpBackend.expectGET(baseUrl + '/' + 1).respond(201, response);
       scope.getOrder();
@@ -99,7 +100,7 @@ describe('Controller: orderController', function () {
       expect(angular.equals(response, scope.orderInfo)).toBe(true);
     });
 
-    it('should cancel an order', function() {
+    it('should cancel an order', function () {
       var order = {
         id: 12345,
         orderId: 1,
@@ -113,7 +114,7 @@ describe('Controller: orderController', function () {
       expect(order.orderStatus).toEqual('CANCELLED');
     });
 
-    it('should edit an order', function() {
+    it('should edit an order', function () {
       var order = {
         orderId: 1
       };

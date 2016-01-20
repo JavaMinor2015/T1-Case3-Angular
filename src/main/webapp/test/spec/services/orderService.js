@@ -2,16 +2,18 @@
 
 describe('Service: orderService', function () {
 
-  var service, httpBackend;
+  var service, httpBackend, state;
   var baseUrl = 'http://localhost:6789/customerorders';
 
-  beforeEach(function () {
-    module('kantileverAngular');
-    inject(function (orderService, _$httpBackend_) {
-      service = orderService;
-      httpBackend = _$httpBackend_;
-    });
-  });
+
+  beforeEach(module('kantileverAngular'));
+  beforeEach(module('stateMock'));
+
+  beforeEach(inject(function ($state, orderService, _$httpBackend_) {
+    state = $state;
+    service = orderService;
+    httpBackend = _$httpBackend_;
+  }));
 
   afterEach(function () {
     httpBackend.verifyNoOutstandingExpectation();

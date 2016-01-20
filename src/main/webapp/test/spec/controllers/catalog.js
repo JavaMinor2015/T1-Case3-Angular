@@ -2,17 +2,18 @@
 
 describe('Controller: CatalogCtrl', function () {
 
-  var scope, ctrl, httpBackend;
+  var scope, ctrl, httpBackend, state;
   var baseUrl = 'http://localhost:6789/products';
 
-  beforeEach(function () {
-    module('kantileverAngular');
-    inject(function ($controller, _$rootScope_, _$httpBackend_) {
-      scope = _$rootScope_.$new();
-      ctrl = $controller('CatalogCtrl', {$scope: scope});
-      httpBackend = _$httpBackend_;
-    });
-  });
+  beforeEach(module('kantileverAngular'));
+  beforeEach(module('stateMock'));
+
+  beforeEach(inject(function ($state, $controller, _$rootScope_, _$httpBackend_) {
+    state = $state;
+    scope = _$rootScope_.$new();
+    ctrl = $controller('CatalogCtrl', {$scope: scope});
+    httpBackend = _$httpBackend_;
+  }));
 
   afterEach(function () {
     httpBackend.verifyNoOutstandingExpectation();

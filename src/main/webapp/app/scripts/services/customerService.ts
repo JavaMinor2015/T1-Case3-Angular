@@ -17,16 +17,17 @@ angular.module('kantileverAngular').service('customerService', function ($resour
     return customerResource.get();
   };
 
-  this.getCustomer = function (id, scope) {
-    return customerResource.get({customerId: id}, function (response) {
+  this.getCustomer = function (id) {
+    return customerResource.get({customerId: id}, function () {
     }, function () {
       handleError();
     });
   };
 
-  this.postCustomer = function (customer) {
+  this.postCustomer = function (customer, callback) {
     var copiedCustomer = angular.copy(customer);
     customerResource.save(copiedCustomer, function () {
+      callback.redirect();
     }, function () {
       handleError();
     });

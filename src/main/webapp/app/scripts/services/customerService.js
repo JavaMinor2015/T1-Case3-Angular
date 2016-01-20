@@ -10,21 +10,22 @@ angular.module('kantileverAngular').service('customerService', function ($resour
     this.getCustomers = function () {
         return customerResource.get();
     };
-    this.getCustomer = function (id, scope) {
-        return customerResource.get({ customerId: id }, function (response) {
+    this.getCustomer = function (id) {
+        return customerResource.get({ customerId: id }, function () {
         }, function () {
             handleError();
         });
     };
-    this.postCustomer = function (customer) {
+    this.postCustomer = function (customer, callback) {
         var copiedCustomer = angular.copy(customer);
         customerResource.save(copiedCustomer, function () {
+            callback.redirect();
         }, function () {
             handleError();
         });
     };
     this.updateCustomer = function (customer) {
-        customerResource.update({ profile: "profile" }, customer, function () {
+        customerResource.update({ profile: 'profile' }, customer, function () {
         }, function () {
             handleError();
         });
