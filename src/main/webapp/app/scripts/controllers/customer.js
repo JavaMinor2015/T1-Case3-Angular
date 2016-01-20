@@ -20,7 +20,8 @@ angular.module('kantileverAngular').controller('customerController', function ($
             $scope.setAddress($scope.newCustomer.address);
         }
         var newCustomer = $scope.newCustomer;
-        $auth.signup($scope.user).then(function (response) {
+        $auth.signup($scope.user)
+            .then(function (response) {
             console.info(response);
             toastr.info('You have successfully created a new account and have been signed-in');
             customerService.postCustomer(newCustomer);
@@ -29,7 +30,8 @@ angular.module('kantileverAngular').controller('customerController', function ($
             console.log($auth.getToken());
             console.log(newCustomer);
             $location.path('/profile');
-        }).catch(function (response) {
+        })
+            .catch(function (response) {
             toastr.error(response.data.message);
         });
         $scope.resetCustomer();
