@@ -7,6 +7,26 @@
  *
  * Main module of the application.
  */
+function skipIfLoggedIn($q, $auth) {
+    var deferred = $q.defer();
+    if ($auth.isAuthenticated()) {
+        deferred.reject();
+    }
+    else {
+        deferred.resolve();
+    }
+    return deferred.promise;
+}
+function loginRequired($q, $location, $auth) {
+    var deferred = $q.defer();
+    if ($auth.isAuthenticated()) {
+        deferred.resolve();
+    }
+    else {
+        $location.path('/login');
+    }
+    return deferred.promise;
+}
 var kantilever = angular.module('kantileverAngular', [
     'ngAnimate',
     'ngCookies',
@@ -124,26 +144,6 @@ kantilever.run(['$rootScope', '$state', '$stateParams', function ($rootScope, $s
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
 }]);
-function skipIfLoggedIn($q, $auth) {
-    var deferred = $q.defer();
-    if ($auth.isAuthenticated()) {
-        deferred.reject();
-    }
-    else {
-        deferred.resolve();
-    }
-    return deferred.promise;
-}
-function loginRequired($q, $location, $auth) {
-    var deferred = $q.defer();
-    if ($auth.isAuthenticated()) {
-        deferred.resolve();
-    }
-    else {
-        $location.path('/login');
-    }
-    return deferred.promise;
-}
 angular.module('kantileverAngular.services', []);
 angular.module('kantileverAngular.directives', []);
 //# sourceMappingURL=app.js.map
