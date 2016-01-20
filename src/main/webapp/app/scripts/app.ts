@@ -108,8 +108,8 @@ var kantilever = angular.module('kantileverAngular', [
   });
 
 kantilever.run(
-  [          '$rootScope', '$state', '$stateParams','$http',
-    function ($rootScope,   $state,   $stateParams, $http) {
+  [          '$rootScope', '$state', '$stateParams',
+    function ($rootScope,   $state,   $stateParams) {
 
       // It's very handy to add references to $state and $stateParams to the $rootScope
       // so that you can access them from any scope within your applications.For example,
