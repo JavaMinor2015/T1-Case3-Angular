@@ -40,9 +40,6 @@ angular.module('kantileverAngular').controller('customerController', function ($
       });
 
     $scope.resetCustomer();
-    $scope.registerForm.$setPristine();
-
-
   };
 
   $scope.editCustomer = function (id) {
@@ -65,13 +62,12 @@ angular.module('kantileverAngular').controller('customerController', function ($
     };
   };
 
-  $scope.getCustomer = function (id) {
-    customerService.getCustomer(id, $scope);
+  $scope.getCustomer = function () {
+    customerService.getCustomerProfile($scope);
   };
 
   $scope.setCustomer = function (customer) {
-    $scope.customer = customer.content;
-    console.log($scope.customer);
+    $scope.customer = customer.data.content;
   };
 
 });

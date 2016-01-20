@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('kantileverAngular').service('customerService', function ($resource) {
+angular.module('kantileverAngular').service('customerService', function ($resource, $http) {
 
   var customerResource = $resource(
     'http://localhost:6789/customers/:customerId',
@@ -16,9 +16,8 @@ angular.module('kantileverAngular').service('customerService', function ($resour
   };
 
   this.getCustomer = function (id, scope) {
-    return customerResource.get({customerId: id}, function(response) {
-      scope.setCustomer(response);
-    }, function() {
+    return customerResource.get({customerId: id}, function (response) {
+    }, function () {
       handleError();
     });
   };
@@ -53,6 +52,17 @@ angular.module('kantileverAngular').service('customerService', function ($resour
 
   var handleError = function () {
     console.log('error');
+  };
+
+  this.getCustomerProfile = function (scope) {
+    $http({
+      method: 'GET',
+      url: 'http://localhost:6789/customers/profile'
+    }).then(function (response) {
+      scope.setCustomer(response);
+    }, function () {
+      handleError();
+    });
   };
 
 });

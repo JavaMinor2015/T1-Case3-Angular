@@ -33,7 +33,6 @@ angular.module('kantileverAngular').controller('customerController', function ($
             toastr.error(response.data.message);
         });
         $scope.resetCustomer();
-        $scope.registerForm.$setPristine();
     };
     $scope.editCustomer = function (id) {
         $scope.customer = $scope.getCustomer(id);
@@ -51,12 +50,11 @@ angular.module('kantileverAngular').controller('customerController', function ($
             orders: []
         };
     };
-    $scope.getCustomer = function (id) {
-        customerService.getCustomer(id, $scope);
+    $scope.getCustomer = function () {
+        customerService.getCustomerProfile($scope);
     };
     $scope.setCustomer = function (customer) {
-        $scope.customer = customer.content;
-        console.log($scope.customer);
+        $scope.customer = customer.data.content;
     };
 });
 //# sourceMappingURL=customer.js.map
