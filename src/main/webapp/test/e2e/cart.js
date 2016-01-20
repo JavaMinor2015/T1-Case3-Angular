@@ -4,12 +4,13 @@ describe('E2E: Cart', function () {
 
     //Login
     browser.get('http://localhost:8080/#/login');
-    var email = element(by.id('email'));
-    var password = element(by.id('password'));
+    var email = element(by.model('user.email'));
+    var password = element(by.model('user.password'));
     var submit = element(by.id('submit'))
     email.sendKeys('e@mail.com');
     password.sendKeys('woop');
     submit.click();
+    browser.waitForAngular();
 
     //Got to catalog page
     browser.get('http://localhost:8080/#/catalog');
