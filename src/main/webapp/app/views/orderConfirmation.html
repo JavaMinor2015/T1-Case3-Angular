@@ -17,13 +17,13 @@
       </tr>
       <tr ng-repeat="product in order.products">
         <td>
-          {{ product.content.name }}
+          {{ product.name }}
         </td>
         <td>
-          {{ product.content.amount }}
+          {{ product.amount }}
         </td>
         <td>
-          {{ (product.content.price) * (product.content.amount) | currency:"€":2 }}
+          {{ (product.price) * (product.amount) | currency:"€":2 }}
         </td>
       </tr>
     </table>

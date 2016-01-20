@@ -1,11 +1,11 @@
 'use strict';
 
 
-angular.module('kantileverAngular').service('orderService', function ($resource) {
+angular.module('kantileverAngular').service('orderService', function ($resource, $window) {
 
   var orderResource = $resource(
-    'http://localhost:6789/customerorders/:orderId',
-    {orderId: '@orderId'},
+    'http://localhost:6789/customerorders/:orderId1',
+    {orderId1: '@orderId1'},
     {
       save: {method: 'POST'},
       update: {method: 'PUT'}
@@ -17,25 +17,27 @@ angular.module('kantileverAngular').service('orderService', function ($resource)
   };
 
   this.getOrder = function (id) {
-    return orderResource.get({orderId: id});
+    return orderResource.get({orderId1: id});
   };
 
   this.postOrder = function (order) {
-    orderResource.save(order, function () {
+    orderResource.save(order, function (response) {
+      $window.location.href = '#/orders/' + response.content.orderId;
     }, function () {
       handleError();
     });
   };
 
   this.updateOrder = function (order) {
-    orderResource.update({orderId: order.id}, order, function () {
+    orderResource.update({orderId1: order.id}, order, function (response) {
+      $window.location.href = '#/orders/' + response.content.orderId;
     }, function () {
       handleError();
     });
   };
 
   this.deleteOrder = function (order) {
-    orderResource.delete({orderId: order.id}, function () {
+    orderResource.delete({orderId1: order.id}, function () {
     }, function () {
       handleError();
     });
@@ -49,12 +51,10 @@ angular.module('kantileverAngular').service('orderService', function ($resource)
   this.fetchOrder = function () {
     if (localStorage.getItem("order") === null) {
       return {
-        'orderId': '0',
         'customerId': '0',
         'orderStatus': 'OPEN',
         'deliveryStatus': 'NOT SCHEDULED',
         'totalPrice': 0,
-        'version': 5,
         'products': []
       }
     }

@@ -33,7 +33,7 @@ describe('Controller: cartController', function () {
       }
     ]
   };
-  
+
   beforeEach(function () {
     module('kantileverAngular');
     inject(function ($controller, _$rootScope_, $window) {
@@ -53,12 +53,13 @@ describe('Controller: cartController', function () {
     scope.addToCart(productJSON);
     scope.addToCart(productJSON);
     scope.addToCart(productJSON);
-    expect(scope.products[0].content.amount).toBe(4);
+    expect(scope.products[0].amount).toBe(4);
   });
   it('should remove an item from the shopping cart', function () {
+    window.localStorage.setItem('order', {});
     scope.addToCart(productJSON);
     expect(scope.getCartItemAmount()).toBe(1);
-    scope.removeProduct(productJSON);
+    scope.removeProduct(productJSON.content);
     expect(scope.getCartItemAmount()).toBe(0);
   });
   it('should remove all items from the shopping cart', function () {
@@ -67,5 +68,19 @@ describe('Controller: cartController', function () {
     expect(scope.getCartItemAmount()).toBe(2);
     scope.emptyCart();
     expect(scope.getCartItemAmount()).toBe(0);
+  });
+  it('should reduce the item amount by one when it is removed and there are multiple in the shopping cart', function() {
+    var product = {
+      id: 1,
+      amount: 2,
+      price: 0
+    };
+
+    scope.products.push(product);
+    expect(scope.products.length).toBe(1);
+    expect(scope.products[0].amount).toBe(2);
+    scope.removeProduct(product);
+    expect(scope.products.length).toBe(1);
+    expect(scope.products[0].amount).toBe(1);
   });
 });
