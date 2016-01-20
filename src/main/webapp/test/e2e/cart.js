@@ -6,7 +6,7 @@ describe('E2E: Cart', function () {
     browser.get('http://localhost:8080/#/login');
     var email = element(by.model('user.email'));
     var password = element(by.model('user.password'));
-    var submit = element(by.id('submit'))
+    var submit = element(by.id('submit'));
     email.sendKeys('e@mail.com');
     password.sendKeys('woop');
     submit.click();
