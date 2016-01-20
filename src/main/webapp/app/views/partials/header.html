@@ -1,4 +1,4 @@
-<div class="header" ng-controller="MainController">
+<div class="header" ng-controller="NavbarCtrl">
   <div class="navbar navbar-default" role="navigation">
     <div class="container">
       <div class="navbar-header">
@@ -12,23 +12,31 @@
 
         <a class="navbar-brand" href="#/">Kantilever</a>
       </div>
-
       <div class="collapse navbar-collapse" id="js-navbar-collapse">
 
         <ul class="nav navbar-nav">
-          <li ng-class="{active:isActive('/')}"><a href="#/">Home</a></li>
-          <li ng-class="{active:isActive('/catalog')}"><a href="#/catalog">Catalog</a></li>
-          <li ng-class="{active:isActive('/orders')}"><a href="#/orders">My Orders</a></li>
+          <li ng-class="{active: $state.includes('home')}"><a ui-sref="home">Home</a></li>
+          <li ng-if="isAuthenticated()" ng-class="{active: $state.includes('catalog')}"><a ui-sref="catalog" href="/#/catalog">Catalog</a></li>
+          <li ng-if="isAuthenticated()" ng-class="{active: $state.includes('orders')}"><a ui-sref="orders" href="/#/orders">My Orders</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right" ng-controller="cartController">
-          <li><a id="cartRedirect" href="#/cart" class="glyphicon glyphicon-shopping-cart">
+          <li><a id="cartRedirect" ui-sref="cart" class="glyphicon glyphicon-shopping-cart">
             <span id="cartAmount">
               {{ getCartItemAmount() }}
             </span>
-          </a></li>
-          <form class="navbar-form navbar-right">
-            <button class="btn" goto="/register">Register</button>
-          </form>
+              </a>
+          </li>
+
+        </ul>
+        <ul class="nav navbar-nav">
+          <li ui-sref="profile" ng-if="isAuthenticated()"><a href="/#/profile">Profile</a></li>
+        </ul>
+        <ul ng-if="!isAuthenticated()" class="nav navbar-nav pull-right">
+          <li><a href="/#/login">Login</a></li>
+          <li><a ui-sref-active="register" href="/#/register">Sign up</a></li>
+        </ul>
+        <ul ng-if="isAuthenticated()" class="nav navbar-nav pull-right">
+          <li><a ui-sref="logout" href="/#/logout">Logout</a></li>
         </ul>
       </div>
     </div>

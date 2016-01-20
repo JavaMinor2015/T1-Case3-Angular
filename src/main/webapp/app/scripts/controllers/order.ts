@@ -7,13 +7,12 @@
  * # CartController
  * Controller
  */
-angular.module('kantileverAngular').controller('orderController', function($scope, $window, orderService,$routeParams) {
+angular.module('kantileverAngular').controller('orderController', function ($scope, $window, orderService, $routeParams) {
 
   $scope.order = orderService.newOrder;
-  $scope.orderInfo= [];
+  $scope.orderInfo = [];
 
   $scope.completeOrder = function() {
-    console.info('Thank you for your order!');
     if ($scope.order.orderId === undefined){
       orderService.postOrder($scope.order);
     }
@@ -23,12 +22,12 @@ angular.module('kantileverAngular').controller('orderController', function($scop
     $scope.order = orderService.emptyCart();
   };
 
-  $scope.getOrder = function(){
+  $scope.getOrder = function () {
     var orderid = $routeParams.orderId;
     $scope.orderInfo = orderService.setOrderInfo(orderid);
   };
 
-  $scope.getOrderList = function(){
+  $scope.getOrderList = function() {
     return orderService.getAllOrder();
   };
 
@@ -43,7 +42,5 @@ angular.module('kantileverAngular').controller('orderController', function($scop
     $scope.order = orderService.newOrder;
     //TODO redirect
   };
-
   $scope.oldOrders = $scope.getOrderList();
-
 });

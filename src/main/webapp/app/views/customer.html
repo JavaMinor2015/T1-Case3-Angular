@@ -1,0 +1,160 @@
+<div class="row top-buffer" ng-init="getCustomer()">
+
+  <form ng-submit="editCustomer(customer)" name="editCustomerForm" novalidate>
+
+    <!--Name-->
+    <div id="name">
+      <a id="nameEdit" ng-click="editmode.customer=true" ng-show="!editmode.customer"
+         class="glyphicon glyphicon-pencil pull-right"></a>
+      <button id="nameSave" ng-click="editmode.customer=false" ng-show="editmode.customer"
+              class="btn btn-success col-lg-1 pull-right" type="submit">Save
+      </button>
+      <h3>Customer Name</h3>
+      <div class="row">
+        <div class="col-xs-2">
+
+          <label for="firstName">First Name:</label>
+        </div>
+        <div class="col-xs-5">
+          <input ng-show=editmode.customer type="text" id="firstName" ng-model="customer.firstName"
+                 class="form-control"
+                 ng-required="true">
+          <label ng-hide="editmode.customer" id="firstNameLabel">{{customer.firstName}}</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-2">
+          <label for="lastName">Last Name:</label>
+        </div>
+        <div class="col-xs-5">
+          <input ng-show=editmode.customer type="text" id="lastName" ng-model="customer.lastName"
+                 class="form-control"
+                 ng-required="true">
+          <label ng-hide="editmode.customer" id="lastNameLabel">{{customer.lastName}}</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-2">
+          <label for="initials">Initials:</label>
+        </div>
+        <div class="col-xs-5">
+          <input ng-show=editmode.customer type="text" id="initials" ng-model="customer.initials"
+                 class="form-control"
+                 ng-required="true">
+          <label ng-hide="editmode.customer" id="initialsLabel">{{customer.initials}}</label>
+        </div>
+      </div>
+    </div>
+
+    <!--Customer Address-->
+
+    <div id="customerAddress">
+      <a id="addressEdit" ng-click="editmode.address=true" ng-show="!editmode.address"
+         class="glyphicon glyphicon-pencil pull-right"></a>
+      <button id="addressSave" ng-click="editmode.address=false" ng-show="editmode.address"
+              class="btn btn-success col-lg-1 pull-right">Save
+      </button>
+      <h3>Customer Address</h3>
+      <div class="row">
+        <div class="col-xs-2">
+          <label for="city">City:</label>
+        </div>
+        <div class="col-xs-5">
+          <input ng-show=editmode.address type="text" id="city" ng-model="customer.address.city"
+                 class="form-control"
+                 ng-required="true">
+          <label ng-hide="editmode.address" id="cityLabel">{{customer.address.city}}</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-2">
+          <label for="streetname">Streetname:</label>
+        </div>
+        <div class="col-xs-5">
+          <input ng-show=editmode.address type="text" id="streetname" ng-model="customer.address.streetname"
+                 class="form-control"
+                 ng-required="true">
+          <label ng-hide="editmode.address" id="streetnameLabel">{{customer.address.streetname}}</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-2">
+          <label for="number">Number:</label>
+        </div>
+        <div class="col-xs-5">
+          <input ng-show=editmode.address type="text" id="number" ng-model="customer.address.number"
+                 class="form-control"
+                 ng-required="true">
+          <label ng-hide="editmode.address" id="numberLabel">{{customer.address.number}}</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-2">
+          <label for="zipcode">Zipcode:</label>
+        </div>
+        <div class="col-xs-5">
+          <input ng-show=editmode.address type="text" id="zipcode" ng-model="customer.address.zipcode"
+                 class="form-control"
+                 ng-required="true">
+          <label ng-hide="editmode.address" id="zipcodeLabel">{{customer.address.zipcode}}</label>
+        </div>
+      </div>
+    </div>
+
+    <!--Delivery Address-->
+
+    <div id="deliveryAddress">
+      <a id="deliveryEdit" ng-click="editmode.delivery=true" ng-show="!editmode.delivery"
+         class="glyphicon glyphicon-pencil pull-right"></a>
+      <button id="deliverySave" ng-click="editmode.delivery=false" ng-show="editmode.delivery"
+              class="btn btn-success col-lg-1 pull-right">Save
+      </button>
+      <h3>Delivery Address</h3>
+      <div class="row">
+        <div class="col-xs-2">
+          <label for="deliveryCity">City:</label>
+        </div>
+        <div class="col-xs-5">
+          <input ng-show=editmode.delivery type="text" id="deliveryCity" ng-model="customer.deliveryAddress.city"
+                 class="form-control"
+                 ng-required="true">
+          <label ng-hide="editmode.delivery" id="deliveryCityLabel">{{customer.deliveryAddress.city}}</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-2">
+          <label for="deliveryStreetname">Streetname:</label>
+        </div>
+        <div class="col-xs-5">
+          <input ng-show=editmode.delivery type="text" id="deliveryStreetname"
+                 ng-model="customer.deliveryAddress.streetname"
+                 class="form-control"
+                 ng-required="true">
+          <label ng-hide="editmode.delivery" id="deliveryStreetnameLabel">{{customer.deliveryAddress.streetname}}</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-2">
+          <label for="deliveryNumber">Number:</label>
+        </div>
+        <div class="col-xs-5">
+          <input ng-show=editmode.delivery type="text" id="deliveryNumber" ng-model="customer.deliveryAddress.number"
+                 class="form-control" ng-required="true">
+          <label ng-hide="editmode.delivery" id="deliveryNumberLabel">{{customer.deliveryAddress.number}}</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-2">
+          <label for="deliveryZipcode">Zipcode:</label>
+        </div>
+        <div class="col-xs-5">
+          <input ng-show=editmode.delivery type="text" id="deliveryZipcode" ng-model="customer.deliveryAddress.zipcode"
+                 class="form-control" ng-required="true">
+          <label ng-hide="editmode.delivery" id="deliveryZipcodeLabel">{{customer.deliveryAddress.zipcode}}</label>
+        </div>
+      </div>
+    </div>
+  </form>
+
+
+</div>
