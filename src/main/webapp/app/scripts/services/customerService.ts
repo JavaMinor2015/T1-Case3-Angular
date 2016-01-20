@@ -1,28 +1,29 @@
 'use strict';
 
-angular.module('kantileverAngular').service('customerService', function ($resource) {
+angular.module('kantileverAngular').service('customerService', function ($resource, $http) {
 
   var customerResource = $resource(
     'http://localhost:6789/customers/profile',
     {customerId: '@customerId'},
     {
+      save: {method: 'POST'},
       update: {method: 'PUT'}
     }
   );
   this.getCustomers = function () {
-    return customerResource.query();
+    return customerResource.get();
   };
 
-  this.getCustomer = function (scope) {
-    return customerResource.get( function(response) {
-      scope.setCustomer(response);
-    }, function() {
+  this.getCustomer = function (id, scope) {
+    return customerResource.get({customerId: id}, function (response) {
+    }, function () {
       handleError();
     });
   };
 
   this.postCustomer = function (customer) {
-    customerResource.save(customer, function () {
+    var copiedCustomer = angular.copy(customer);
+    customerResource.save(copiedCustomer, function () {
     }, function () {
       handleError();
     });
@@ -49,6 +50,17 @@ angular.module('kantileverAngular').service('customerService', function ($resour
 
   var handleError = function () {
     console.log('error');
+  };
+
+  this.getCustomerProfile = function (scope) {
+    $http({
+      method: 'GET',
+      url: 'http://localhost:6789/customers/profile'
+    }).then(function (response) {
+      scope.setCustomer(response);
+    }, function () {
+      handleError();
+    });
   };
 
 });

@@ -1,5 +1,5 @@
 'use strict';
-angular.module('kantileverAngular').service('orderService', function ($resource, $window) {
+angular.module('kantileverAngular').service('orderService', function ($resource) {
     var orderResource = $resource('http://localhost:6789/customerorders/:orderId1', { orderId1: '@orderId1' }, {
         save: { method: 'POST' },
         update: { method: 'PUT' }
@@ -11,15 +11,14 @@ angular.module('kantileverAngular').service('orderService', function ($resource,
         return orderResource.get({ orderId1: id });
     };
     this.postOrder = function (order) {
-        orderResource.save(order, function (response) {
-            $window.location.href = '#/orders/' + response.content.orderId;
+        var copiedOrder = angular.copy(order);
+        orderResource.save(copiedOrder, function () {
         }, function () {
             handleError();
         });
     };
     this.updateOrder = function (order) {
-        orderResource.update({ orderId1: order.id }, order, function (response) {
-            $window.location.href = '#/orders/' + response.content.orderId;
+        orderResource.update({ orderId1: order.id }, order, function () {
         }, function () {
             handleError();
         });

@@ -1,9 +1,8 @@
-<div class="row top-buffer" ng-init="getCustomer(1)">
+<div class="row top-buffer" ng-init="getCustomer()">
 
   <form ng-submit="editCustomer(customer)" name="editCustomerForm" novalidate>
 
     <!--Name-->
-
     <div id="name">
       <a id="nameEdit" ng-click="editmode.customer=true" ng-show="!editmode.customer"
          class="glyphicon glyphicon-pencil pull-right"></a>
@@ -156,5 +155,6 @@
       </div>
     </div>
   </form>
+
 
 </div>

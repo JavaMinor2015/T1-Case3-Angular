@@ -1,5 +1,5 @@
 'use strict';
-angular.module('kantileverAngular').controller('customerController', function ($scope, customerService) {
+angular.module('kantileverAngular').controller('customerController', function ($scope, customerService, $location, $auth, toastr) {
     $scope.newCustomer = {
         "firstName": "",
         "lastName": "",
@@ -19,9 +19,20 @@ angular.module('kantileverAngular').controller('customerController', function ($
         if ($scope.sameAddress) {
             $scope.setAddress($scope.newCustomer.address);
         }
-        customerService.postCustomer($scope.newCustomer);
+        var newCustomer = $scope.newCustomer;
+        $auth.signup($scope.user).then(function (response) {
+            console.info(response);
+            toastr.info('You have successfully created a new account and have been signed-in');
+            customerService.postCustomer(newCustomer);
+            $auth.setToken(response);
+            //$auth.login($scope.user);
+            console.log($auth.getToken());
+            console.log(newCustomer);
+            $location.path('/profile');
+        }).catch(function (response) {
+            toastr.error(response.data.message);
+        });
         $scope.resetCustomer();
-        $scope.registerForm.$setPristine();
     };
     $scope.editCustomer = function (customer) {
         customerService.updateCustomer(customer);
@@ -39,12 +50,11 @@ angular.module('kantileverAngular').controller('customerController', function ($
             orders: []
         };
     };
-    $scope.getCustomer = function (id) {
-        customerService.getCustomer(id, $scope);
+    $scope.getCustomer = function () {
+        customerService.getCustomerProfile($scope);
     };
     $scope.setCustomer = function (customer) {
-        $scope.customer = customer.content;
-        console.log($scope.customer);
+        $scope.customer = customer.data.content;
     };
 });
 //# sourceMappingURL=customer.js.map

@@ -87,28 +87,29 @@ var kantilever = angular.module('kantileverAngular', [
         controller: 'loginController',
         controllerAs: 'login'
       })
-      .state('logout', {
-        url: '/logout',
-        template: null,
-        controller: 'LogoutCtrl'
-      })
-      .state('customer', {
+      .state('profile', {
         url: '/profile',
         templateUrl: 'views/customer.html',
         controller: 'customerController',
         controllerAs: 'customer'
+      })
+      .state('logout', {
+        url: '/logout',
+        template: null,
+        controller: 'LogoutCtrl'
       });
 //});
     $urlRouterProvider.otherwise('/');
     $authProvider.baseUrl = "http://localhost:6789";
-    $authProvider.tokenRoot = "entity";
+    $authProvider.tokenRoot ="entity";
+
 
 
   });
 
 kantilever.run(
-  ['$rootScope', '$state', '$stateParams',
-    function ($rootScope, $state, $stateParams) {
+  [          '$rootScope', '$state', '$stateParams','$http',
+    function ($rootScope,   $state,   $stateParams, $http) {
 
       // It's very handy to add references to $state and $stateParams to the $rootScope
       // so that you can access them from any scope within your applications.For example,
