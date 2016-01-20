@@ -2,23 +2,25 @@
 
 describe('Service: productService', function () {
 
-  var service, httpBackend;
+  var service, httpBackend, state;
   var baseUrl = 'http://localhost:6789/products';
 
-  beforeEach(function () {
-    module('kantileverAngular');
-    inject(function (productService, _$httpBackend_) {
-      service = productService;
-      httpBackend = _$httpBackend_;
-    });
-  });
 
-  afterEach(function() {
+  beforeEach(module('kantileverAngular'));
+  beforeEach(module('stateMock'));
+
+  beforeEach(inject(function ($state, productService, _$httpBackend_) {
+    state = $state;
+    service = productService;
+    httpBackend = _$httpBackend_;
+  }));
+
+  afterEach(function () {
     httpBackend.verifyNoOutstandingExpectation();
     httpBackend.verifyNoOutstandingRequest();
   });
 
-  it('should get all products', function() {
+  it('should get all products', function () {
     //Success
     httpBackend.expectGET(baseUrl).respond(201, {});
     service.getAllProducts();
@@ -30,7 +32,7 @@ describe('Service: productService', function () {
     httpBackend.flush();
   });
 
-  it('should get a specific product', function() {
+  it('should get a specific product', function () {
     var id = 1;
     //Success
     httpBackend.expectGET(baseUrl + '/' + id).respond(201, {});

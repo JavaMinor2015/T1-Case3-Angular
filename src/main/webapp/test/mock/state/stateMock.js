@@ -15,11 +15,11 @@ angular.module('stateMock').service("$state", function($q){
     var promise = deferred.promise;
     deferred.resolve();
     return promise;
-  }
+  };
   this.go = this.transitionTo;
   this.expectTransitionTo = function(stateName){
     this.expectedTransitions.push(stateName);
-  }
+  };
 
 
   this.ensureAllTransitionsHappened = function(){

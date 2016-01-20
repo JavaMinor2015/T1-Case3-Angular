@@ -13,7 +13,6 @@ angular.module('kantileverAngular').controller('orderController', function ($sco
   $scope.orderInfo = [];
 
   $scope.completeOrder = function() {
-    console.info('Thank you for your order!');
     if ($scope.order.orderId === undefined){
       orderService.postOrder($scope.order);
     }
