@@ -24,9 +24,7 @@ var kantilever = angular.module('kantileverAngular', [
 }).config(function ($routeProvider, $stateProvider, $urlRouterProvider, $authProvider) {
     $stateProvider.state('home', {
         url: '/',
-        controller: 'MainCtrl',
-        templateUrl: 'views/main.html',
-        controllerAs: 'main'
+        templateUrl: 'views/main.html'
     }).state('about', {
         url: '/about',
         templateUrl: 'views/about.html',

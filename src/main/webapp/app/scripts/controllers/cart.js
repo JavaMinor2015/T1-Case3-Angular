@@ -23,7 +23,7 @@ angular.module('kantileverAngular').controller('cartController', function ($scop
             $scope.products.push(product.content);
         }
         $scope.order.totalPrice += product.content.price;
-        localStorage.setItem('order', JSON.stringify($scope.order));
+        $scope.setLocalStorage($scope.order);
     };
     $scope.removeProduct = function (product) {
         for (var i = 0; i < $scope.products.length; i++) {
@@ -38,7 +38,15 @@ angular.module('kantileverAngular').controller('cartController', function ($scop
             }
         }
         $scope.order.totalPrice -= product.price;
-        localStorage.setItem('order', JSON.stringify($scope.order));
+        $scope.setLocalStorage($scope.order);
+    };
+    $scope.setLocalStorage = function (order) {
+        if ($scope.products.length === 0) {
+            localStorage.removeItem('order');
+        }
+        else {
+            localStorage.setItem('order', JSON.stringify(order));
+        }
     };
     $scope.emptyCart = function () {
         $scope.order = orderService.emptyCart();

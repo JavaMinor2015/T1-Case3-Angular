@@ -30,9 +30,7 @@ var kantilever = angular.module('kantileverAngular', [
     $stateProvider
       .state('home', {
         url: '/',
-        controller: 'MainCtrl',
         templateUrl: 'views/main.html',
-        controllerAs: 'main',
       })
       .state('about', {
         url: '/about',

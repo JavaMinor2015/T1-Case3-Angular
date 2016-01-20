@@ -7,8 +7,8 @@ angular.module('kantileverAngular').service('customerService', function ($resour
     this.getCustomers = function () {
         return customerResource.get();
     };
-    this.getCustomer = function (id, scope) {
-        return customerResource.get({ customerId: id }, function (response) {
+    this.getCustomer = function (id) {
+        return customerResource.get({ customerId: id }, function () {
         }, function () {
             handleError();
         });
