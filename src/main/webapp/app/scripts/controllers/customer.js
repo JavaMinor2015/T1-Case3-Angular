@@ -20,20 +20,22 @@ angular.module('kantileverAngular').controller('customerController', function ($
             $scope.setAddress($scope.newCustomer.address);
         }
         var newCustomer = $scope.newCustomer;
-        $auth.signup($scope.user).then(function (response) {
+        $auth.signup($scope.user)
+            .then(function (response) {
             console.info(response);
             toastr.info('You have successfully created a new account and have been signed-in');
             customerService.postCustomer(newCustomer, $scope);
             $auth.setToken(response);
             console.log($auth.getToken());
             console.log(newCustomer);
-        }).catch(function (response) {
+        })
+            .catch(function (response) {
             toastr.error(response.data.message);
         });
         $scope.resetCustomer();
     };
-    $scope.editCustomer = function (id) {
-        $scope.customer = $scope.getCustomer(id);
+    $scope.editCustomer = function (customer) {
+        customerService.updateCustomer(customer);
     };
     $scope.setAddress = function (address) {
         $scope.newCustomer.deliveryAddress = address;

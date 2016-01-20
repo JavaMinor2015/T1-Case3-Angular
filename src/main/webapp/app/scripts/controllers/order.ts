@@ -23,7 +23,7 @@ angular.module('kantileverAngular').controller('orderController', function ($sco
     $scope.order = orderService.emptyCart();
   };
 
-  $scope.getOrder = function() {
+  $scope.getOrder = function () {
     var orderid = $routeParams.orderId;
     $scope.orderInfo = orderService.setOrderInfo(orderid);
   };

@@ -1,6 +1,6 @@
 'use strict';
 angular.module('kantileverAngular').service('customerService', function ($resource, $http) {
-    var customerResource = $resource('http://localhost:6789/customers/:customerId', { customerId: '@customerId' }, {
+    var customerResource = $resource('http://localhost:6789/customers/profile', { customerId: '@customerId' }, {
         save: { method: 'POST' },
         update: { method: 'PUT' }
     });
@@ -21,8 +21,7 @@ angular.module('kantileverAngular').service('customerService', function ($resour
             handleError();
         });
     };
-    this.updateCustomer = function (hateoasItem) {
-        var customer = getContent(hateoasItem);
+    this.updateCustomer = function (customer) {
         customerResource.update({ customerId: customer.id }, customer, function () {
         }, function () {
             handleError();
