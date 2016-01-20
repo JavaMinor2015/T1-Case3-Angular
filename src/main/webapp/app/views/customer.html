@@ -1,6 +1,6 @@
 <div class="row top-buffer" ng-init="getCustomer(1)">
 
-  <form ng-submit="registerCustomer()" name="editCustomerForm" novalidate>
+  <form ng-submit="editCustomer(customer)" name="editCustomerForm" novalidate>
 
     <!--Name-->
 
@@ -8,7 +8,7 @@
       <a id="nameEdit" ng-click="editmode.customer=true" ng-show="!editmode.customer"
          class="glyphicon glyphicon-pencil pull-right"></a>
       <button id="nameSave" ng-click="editmode.customer=false" ng-show="editmode.customer"
-              class="btn btn-success col-lg-1 pull-right">Save
+              class="btn btn-success col-lg-1 pull-right" type="submit">Save
       </button>
       <h3>Customer Name</h3>
       <div class="row">

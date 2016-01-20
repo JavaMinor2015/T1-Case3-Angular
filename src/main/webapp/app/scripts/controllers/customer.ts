@@ -21,14 +21,12 @@ angular.module('kantileverAngular').controller('customerController', function ($
     if ($scope.sameAddress){
       $scope.setAddress($scope.newCustomer.address)
     }
-
     customerService.postCustomer($scope.newCustomer);
     $scope.resetCustomer();
     $scope.registerForm.$setPristine();
   };
-  $scope.editCustomer = function(id){
-    $scope.customer = $scope.getCustomer(id);
-
+  $scope.editCustomer = function(customer){
+    customerService.updateCustomer(customer);
   };
 
   $scope.setAddress = function(address) {
