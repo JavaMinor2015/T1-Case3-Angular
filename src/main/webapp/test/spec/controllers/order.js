@@ -13,7 +13,7 @@ describe('Controller: orderController', function () {
     scope = _$rootScope_.$new();
     ctrl = $controller('orderController', {
       $scope: scope,
-      $routeParams: {orderId: 1}
+      $stateParams: {orderId: 1}
     });
     httpBackend = _$httpBackend_;
   }));
@@ -29,7 +29,7 @@ describe('Controller: orderController', function () {
       content: [{}, {}, {}],
       _links: {}
     };
-    httpBackend.expectGET(baseUrl).respond(response);
+    httpBackend.expectGET(baseUrl + '/myorders').respond(response);
     httpBackend.flush();
     expect(scope.oldOrders.content.length).toBe(response.content.length);
   });
@@ -92,7 +92,7 @@ describe('Controller: orderController', function () {
       httpBackend.flush();
     });
 
-    it('should get an order by routeparam id', function () {
+    it('should get an order by stateparam id', function () {
       var response = {orderId: 1};
       httpBackend.expectGET(baseUrl + '/' + 1).respond(201, response);
       scope.getOrder();
