@@ -1,4 +1,4 @@
-# t2-c3-angular
+# T1-Case3-angular
 
 This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
 version 0.14.0.
