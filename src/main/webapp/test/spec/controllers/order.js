@@ -40,7 +40,7 @@ describe('Controller: orderController', function () {
         content: [{}, {}, {}],
         _links: {}
       };
-      httpBackend.expectGET(baseUrl).respond(response);
+      httpBackend.expectGET(baseUrl + '/myorders').respond(response);
       httpBackend.flush();
     });
 
