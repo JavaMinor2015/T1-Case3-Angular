@@ -37,15 +37,19 @@ var kantilever = angular.module('kantileverAngular', [
     'toastr',
     'ui.router',
     'satellizer'
-]).controller('MainController', function ($scope, $location) {
+])
+    .controller('MainController', function ($scope, $location) {
     $scope.isActive = function (route) {
         return route === $location.path();
     };
-}).config(function ($routeProvider, $stateProvider, $urlRouterProvider, $authProvider) {
-    $stateProvider.state('home', {
+})
+    .config(function ($routeProvider, $stateProvider, $urlRouterProvider, $authProvider) {
+    $stateProvider
+        .state('home', {
         url: '/',
         templateUrl: 'views/main.html'
-    }).state('about', {
+    })
+        .state('about', {
         url: '/about',
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl',
@@ -53,7 +57,8 @@ var kantilever = angular.module('kantileverAngular', [
         resolve: {
             loginRequired: loginRequired
         }
-    }).state('catalog', {
+    })
+        .state('catalog', {
         url: '/catalog',
         templateUrl: 'views/catalog.html',
         controller: 'CatalogCtrl',
@@ -61,7 +66,8 @@ var kantilever = angular.module('kantileverAngular', [
         resolve: {
             loginRequired: loginRequired
         }
-    }).state('product', {
+    })
+        .state('product', {
         url: '/product',
         templateUrl: 'views/product.html',
         controller: 'ProductCtrl',
@@ -69,7 +75,8 @@ var kantilever = angular.module('kantileverAngular', [
         resolve: {
             loginRequired: loginRequired
         }
-    }).state('cart', {
+    })
+        .state('cart', {
         url: '/cart',
         templateUrl: 'views/cart.html',
         controller: 'cartController',
@@ -78,7 +85,8 @@ var kantilever = angular.module('kantileverAngular', [
         resolve: {
             loginRequired: loginRequired
         }
-    }).state('confirm', {
+    })
+        .state('confirm', {
         url: '/confirm',
         templateUrl: 'views/orderConfirmation.html',
         controller: 'orderController',
@@ -86,7 +94,8 @@ var kantilever = angular.module('kantileverAngular', [
         resolve: {
             loginRequired: loginRequired
         }
-    }).state('orders', {
+    })
+        .state('orders', {
         url: '/orders',
         templateUrl: 'views/orderList.html',
         controller: 'orderController',
@@ -94,7 +103,8 @@ var kantilever = angular.module('kantileverAngular', [
         resolve: {
             loginRequired: loginRequired
         }
-    }).state('test', {
+    })
+        .state('test', {
         url: '/order/:orderId',
         templateUrl: 'views/order-detail.html',
         controller: 'orderController',
@@ -102,7 +112,8 @@ var kantilever = angular.module('kantileverAngular', [
         resolve: {
             loginRequired: loginRequired
         }
-    }).state('register', {
+    })
+        .state('register', {
         url: '/register',
         templateUrl: 'views/registration.html',
         controller: 'customerController',
@@ -110,7 +121,8 @@ var kantilever = angular.module('kantileverAngular', [
         resolve: {
             skipIfLoggedIn: skipIfLoggedIn
         }
-    }).state('login', {
+    })
+        .state('login', {
         url: '/login',
         templateUrl: 'views/login.html',
         controller: 'loginController',
@@ -118,12 +130,14 @@ var kantilever = angular.module('kantileverAngular', [
         resolve: {
             skipIfLoggedIn: skipIfLoggedIn
         }
-    }).state('profile', {
+    })
+        .state('profile', {
         url: '/profile',
         templateUrl: 'views/customer.html',
         controller: 'customerController',
         controllerAs: 'customer'
-    }).state('logout', {
+    })
+        .state('logout', {
         url: '/logout',
         template: null,
         controller: 'LogoutCtrl',
@@ -136,14 +150,16 @@ var kantilever = angular.module('kantileverAngular', [
     $authProvider.baseUrl = "http://localhost:6789";
     $authProvider.tokenRoot = "entity";
 });
-kantilever.run(['$rootScope', '$state', '$stateParams', function ($rootScope, $state, $stateParams) {
-    // It's very handy to add references to $state and $stateParams to the $rootScope
-    // so that you can access them from any scope within your applications.For example,
-    // <li ng-class="{ active: $state.includes('contacts.list') }"> will set the <li>
-    // to active whenever 'contacts.list' or one of its decendents is active.
-    $rootScope.$state = $state;
-    $rootScope.$stateParams = $stateParams;
-}]);
+kantilever.run(['$rootScope', '$state', '$stateParams',
+    function ($rootScope, $state, $stateParams) {
+        // It's very handy to add references to $state and $stateParams to the $rootScope
+        // so that you can access them from any scope within your applications.For example,
+        // <li ng-class="{ active: $state.includes('contacts.list') }"> will set the <li>
+        // to active whenever 'contacts.list' or one of its decendents is active.
+        $rootScope.$state = $state;
+        $rootScope.$stateParams = $stateParams;
+    }
+]);
 angular.module('kantileverAngular.services', []);
 angular.module('kantileverAngular.directives', []);
 //# sourceMappingURL=app.js.map

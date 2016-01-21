@@ -28,7 +28,7 @@ angular.module('kantileverAngular').controller('orderController', function ($sco
   };
 
   $scope.getOrderList = function() {
-    return orderService.getAllOrder();
+    return orderService.getMyOrders();
   };
 
   $scope.cancelOrder = function(order){
