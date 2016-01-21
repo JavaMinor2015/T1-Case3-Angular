@@ -6,7 +6,7 @@
  * # CartController
  * Controller
  */
-angular.module('kantileverAngular').controller('orderController', function ($scope, $window, orderService, $routeParams) {
+angular.module('kantileverAngular').controller('orderController', function ($scope, $window, orderService, $stateParams) {
     $scope.order = orderService.newOrder;
     $scope.orderInfo = [];
     $scope.completeOrder = function () {
@@ -19,11 +19,11 @@ angular.module('kantileverAngular').controller('orderController', function ($sco
         $scope.order = orderService.emptyCart();
     };
     $scope.getOrder = function () {
-        var orderid = $routeParams.orderId;
+        var orderid = $stateParams.orderId;
         $scope.orderInfo = orderService.setOrderInfo(orderid);
     };
     $scope.getOrderList = function () {
-        return orderService.getAllOrder();
+        return orderService.getMyOrders();
     };
     $scope.cancelOrder = function (order) {
         order.orderStatus = 'CANCELLED';

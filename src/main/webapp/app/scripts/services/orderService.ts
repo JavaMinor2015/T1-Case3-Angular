@@ -16,6 +16,10 @@ angular.module('kantileverAngular').service('orderService', function ($resource,
     return orderResource.get();
   };
 
+  this.getMyOrders = function() {
+    return orderResource.get({ orderId1: 'myorders'});
+  };
+
   this.getOrder = function (id) {
     return orderResource.get({orderId1: id});
   };
