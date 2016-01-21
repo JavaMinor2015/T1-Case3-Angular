@@ -19,6 +19,9 @@ describe("E2E: Customer", function () {
     browser.get('http://localhost:8080/#/profile');
   });
 
+  afterEach(function () {
+    browser.executeScript('window.localStorage.clear();');
+  });
   it("should show the customers name data in edit mode", function () {
 
     var nameEdit = element(by.id("nameEdit"));
