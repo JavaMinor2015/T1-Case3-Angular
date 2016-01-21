@@ -55,15 +55,15 @@
 
     <!--User details -->
     <label>Email</label>
-    <input class="form-control validate" type="email" ng-model="user.email" placeholder="Email" ng-required="true">
+    <input class="form-control validate" id="email" type="email" ng-model="user.email" placeholder="Email" ng-required="true">
 
     <label>Password</label>
-    <input password-strength class="form-control validate" type="password" ng-model="user.password"
+    <input password-strength class="form-control validate" id="password1" type="password" ng-model="user.password"
            placeholder="Password" ng-required="true">
 
     <label>Retype the Password</label>
 
-    <input password-match="user.password" class="form-control validate" type="password" name="confirmPassword"
+    <input password-match="user.password" class="form-control validate" id="password2" type="password" name="confirmPassword"
            ng-model="confirmPassword" placeholder="Confirm Password" ng-required="true">
     <span class="ion-key form-control-feedback"></span>
 

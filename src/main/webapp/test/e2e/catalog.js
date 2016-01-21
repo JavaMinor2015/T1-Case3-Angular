@@ -1,5 +1,9 @@
 describe('E2E: Catalog', function () {
 
+  beforeAll(function () {
+    console.log('Start testing catalog.js');
+  });
+
   beforeEach(function () {
     //Login
     browser.get('http://localhost:8080/#/login');
@@ -15,8 +19,16 @@ describe('E2E: Catalog', function () {
     browser.get('http://localhost:8080/#/catalog');
   });
 
+  afterEach(function () {
+    browser.executeScript('window.localStorage.clear();');
+  });
+
+  afterAll(function () {
+    console.log('Done testing cart.js');
+  });
+
   it('should add an item to the shopping cart when the button is pressed', function () {
-    var addButton = element(by.id('add'));
+    var addButton = element.all(by.id("add")).get(0);
     var cartAmountSpan = element(by.id('cartAmount'));
     expect(cartAmountSpan.getText()).toEqual('0');
     addButton.click();
