@@ -1,5 +1,9 @@
 describe('E2E: Cart', function () {
 
+  beforeAll(function () {
+    console.log('Start testing cart.js');
+  });
+
   beforeEach(function () {
 
     //Login
@@ -30,8 +34,12 @@ describe('E2E: Cart', function () {
     browser.executeScript('window.localStorage.clear();');
   });
 
+  afterAll(function () {
+    console.log('Done testing cart.js');
+  });
+
   it('should reduce the number of cartitems when remove is clicked', function () {
-    var removeButton = element(by.id('remove'));
+    var removeButton = element.all(by.id("remove")).get(0);
     var cartAmount = element(by.id('cartAmount'));
 
     expect(cartAmount.getText()).toEqual('3');
@@ -40,8 +48,8 @@ describe('E2E: Cart', function () {
   });
 
   it('should reduce the amount when remove is clicked and amount > 1', function () {
-    var removeButton = element(by.id('remove'));
-    var amount = element(by.id('amount'));
+    var removeButton = element.all(by.id("remove")).get(0);
+    var amount = element.all(by.id("amount")).get(0);
     var products = by.repeater('product in products');
 
     expect(element.all(products).count()).toBe(2);

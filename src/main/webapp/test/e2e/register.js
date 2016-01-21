@@ -1,11 +1,19 @@
 describe('E2E: Register', function () {
 
+  beforeAll(function () {
+    console.log('Start testing register.js');
+  });
+
   beforeEach(function () {
     browser.get('http://localhost:8080/#/register');
   });
 
   afterEach(function () {
     browser.executeScript('window.localStorage.clear();');
+  });
+
+  afterAll(function () {
+    console.log('Done testing register.js');
   });
 
   it('should hide/show the deliveryaddress fields when the checkbox is checked', function(){

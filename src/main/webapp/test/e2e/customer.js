@@ -4,6 +4,10 @@
 
 describe("E2E: Customer", function () {
 
+  beforeAll(function () {
+    console.log('Start testing customer.js');
+  });
+
   beforeEach(function () {
     //Login
     browser.get('http://localhost:8080/#/login');
@@ -22,6 +26,11 @@ describe("E2E: Customer", function () {
   afterEach(function () {
     browser.executeScript('window.localStorage.clear();');
   });
+
+  afterAll(function () {
+    console.log('Done testing customer.js');
+  });
+
   it("should show the customers name data in edit mode", function () {
 
     var nameEdit = element(by.id("nameEdit"));
@@ -37,6 +46,7 @@ describe("E2E: Customer", function () {
     expect(initialsInput.isDisplayed()).toBe(true);
 
   });
+
   it("should show the customers address data in edit mode", function () {
 
     var addressEdit = element(by.id("addressEdit"));

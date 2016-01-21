@@ -1,11 +1,15 @@
 describe('E2E: Catalog', function () {
 
+  beforeAll(function () {
+    console.log('Start testing catalog.js');
+  });
+
   beforeEach(function () {
     //Login
     browser.get('http://localhost:8080/#/login');
     var email = element(by.model('user.email'));
     var password = element(by.model('user.password'));
-    var submit = element(by.id('submit'));
+    var submit = element(by.id('submit'))
     email.sendKeys('e@mail.com');
     password.sendKeys('woop');
     submit.click();
@@ -19,9 +23,12 @@ describe('E2E: Catalog', function () {
     browser.executeScript('window.localStorage.clear();');
   });
 
+  afterAll(function () {
+    console.log('Done testing cart.js');
+  });
+
   it('should add an item to the shopping cart when the button is pressed', function () {
-    var products = by.repeater('product in products.content');
-    var addButton = element(products.row(0)).element(by.id('add'));
+    var addButton = element.all(by.id("add")).get(0);
     var cartAmountSpan = element(by.id('cartAmount'));
     expect(cartAmountSpan.getText()).toEqual('0');
     addButton.click();
@@ -29,8 +36,8 @@ describe('E2E: Catalog', function () {
   });
 
   it('should sort the catalog by name when name is clicked', function () {
-    var products = by.repeater('product in products.content');
     var nameHeader = element(by.id('sortName'));
+    var products = by.repeater('product in products.content');
     var name1 = element(products.row(0)).element(by.id('name'));
     var name2 = element(products.row(1)).element(by.id('name'));
 
@@ -42,6 +49,7 @@ describe('E2E: Catalog', function () {
   it('should sort the catalog by price when price is clicked', function () {
     var priceHeader = element(by.id('sortPrice'));
     var products = by.repeater('product in products.content');
+
     var price1 = function (products) {
       return element(products.row(0)).element(by.id('price')).getText().then(function (text) {
         return parseFloat(text.substring(1).replace(',', ''));
