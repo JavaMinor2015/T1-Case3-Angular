@@ -30,8 +30,8 @@ angular.module('kantileverAngular').controller('customerController', function ($
         customerService.postCustomer(newCustomer, $scope);
         $auth.setToken(response);
       })
-      .catch(function (response) {
-        toastr.error(response.data.message);
+      .catch(function () {
+        toastr.error('User already exists!');
       });
 
     $scope.resetCustomer();

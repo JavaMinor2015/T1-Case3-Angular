@@ -13,8 +13,8 @@ angular.module('kantileverAngular')
                 $location.path('/login');
             }
         })
-            .catch(function (error) {
-            toastr.error(error.data.message, error.status);
+            .catch(function () {
+            toastr.error('User already exists!');
         });
     };
 });

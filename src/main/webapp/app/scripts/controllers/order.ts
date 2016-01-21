@@ -7,7 +7,7 @@
  * # CartController
  * Controller
  */
-angular.module('kantileverAngular').controller('orderController', function ($scope, $window, orderService, $routeParams) {
+angular.module('kantileverAngular').controller('orderController', function ($scope, $window, orderService, $stateParams) {
 
   $scope.order = orderService.newOrder;
   $scope.orderInfo = [];
@@ -23,7 +23,7 @@ angular.module('kantileverAngular').controller('orderController', function ($sco
   };
 
   $scope.getOrder = function () {
-    var orderid = $routeParams.orderId;
+    var orderid = $stateParams.orderId;
     $scope.orderInfo = orderService.setOrderInfo(orderid);
   };
 

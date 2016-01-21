@@ -1,11 +1,10 @@
-<div class="row top-buffer">
+<div class="row top-buffer" ng-init="getOrder()">
   <div class="row">
     <h3>Order details</h3>
   </div>
-  {{orderInfo}}
   <div class="row">
     <label>Order number: </label> {{orderInfo.content.orderId}}<br/>
-    <label>Order status: </label> {{orderInfo.content.orderStatus}}<br/>
+    <label>Order status: </label> {{orderInfo.content.orderStatus.toUpperCase()}}<br/>
     <label>Delivery status: </label> {{orderInfo.content.deliveryStatus}}
   </div>
 
