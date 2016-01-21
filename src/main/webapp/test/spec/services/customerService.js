@@ -2,16 +2,17 @@
 
 describe('Service: customerService', function() {
 
-  var service, httpBackend;
+  var service, httpBackend, state;
   var baseUrl = 'http://localhost:6789/customers';
 
-  beforeEach(function () {
-    module('kantileverAngular');
-    inject(function(customerService, _$httpBackend_) {
-      service = customerService;
-      httpBackend = _$httpBackend_;
-    });
-  });
+  beforeEach(module('kantileverAngular'));
+  beforeEach(module('stateMock'));
+
+  beforeEach(inject(function($state, customerService, _$httpBackend_) {
+    state = $state;
+    service = customerService;
+    httpBackend = _$httpBackend_;
+  }));
 
   afterEach(function () {
     httpBackend.verifyNoOutstandingExpectation();
@@ -20,12 +21,12 @@ describe('Service: customerService', function() {
 
   it('should get all customers', function() {
     //Success
-    httpBackend.expectGET(baseUrl).respond(201, []);
+    httpBackend.expectGET(baseUrl).respond(201, {});
     service.getCustomers();
     httpBackend.flush();
 
     //Fail
-    httpBackend.expectGET(baseUrl).respond(500, []);
+    httpBackend.expectGET(baseUrl).respond(500, {});
     service.getCustomers();
     httpBackend.flush();
   });
@@ -45,34 +46,35 @@ describe('Service: customerService', function() {
 
   it('should post a customer', function() {
     var customer = {};
+    var callback = {
+      redirect: function(){}
+    };
+    spyOn(callback, 'redirect');
+
     //Success
     httpBackend.expectPOST(baseUrl).respond(201, {});
-    service.postCustomer(customer);
+    service.postCustomer(customer, callback);
     httpBackend.flush();
+    expect(callback.redirect).toHaveBeenCalled();
 
     //Fail
     httpBackend.expectPOST(baseUrl).respond(500, {});
-    service.postCustomer(customer);
+    service.postCustomer(customer, callback);
     httpBackend.flush();
   });
 
   it('should update a customer', function() {
-    var hateoasItem = {
-      content: {
-        id: 1
-      },
-      links: {
-
-      }
+    var customer = {
+      id: 1
     };
     //Success
-    httpBackend.expectPUT(baseUrl + '/' + hateoasItem.content.id).respond(201, {});
-    service.updateCustomer(hateoasItem);
+    httpBackend.expectPUT(baseUrl + '/' + customer.id).respond(201, {});
+    service.updateCustomer(customer);
     httpBackend.flush();
 
     //Fail
-    httpBackend.expectPUT(baseUrl + '/' + hateoasItem.content.id).respond(500, {});
-    service.updateCustomer(hateoasItem);
+    httpBackend.expectPUT(baseUrl + '/' + customer.id).respond(500, {});
+    service.updateCustomer(customer);
     httpBackend.flush();
   });
 
@@ -91,6 +93,22 @@ describe('Service: customerService', function() {
     //Fail
     httpBackend.expectDELETE(baseUrl + '/' + hateoasItem.content.id).respond(500, {});
     service.deleteCustomer(hateoasItem);
+    httpBackend.flush();
+  });
+
+  it('should get a customer profile', function() {
+    var callback = {
+      setCustomer: function(){}
+    };
+    spyOn(callback, 'setCustomer');
+
+    httpBackend.expectGET(baseUrl + '/profile').respond(201, {});
+    service.getCustomerProfile(callback);
+    httpBackend.flush();
+    expect(callback.setCustomer).toHaveBeenCalled();
+
+    httpBackend.expectGET(baseUrl + '/profile').respond(500, {});
+    service.getCustomerProfile(callback);
     httpBackend.flush();
   });
 

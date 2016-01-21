@@ -1,11 +1,34 @@
 describe('E2E: Catalog', function () {
 
+  beforeAll(function () {
+    console.log('Start testing catalog.js');
+  });
+
   beforeEach(function () {
+    //Login
+    browser.get('http://localhost:8080/#/login');
+    var email = element(by.model('user.email'));
+    var password = element(by.model('user.password'));
+    var submit = element(by.id('submit'))
+    email.sendKeys('e@mail.com');
+    password.sendKeys('woop');
+    submit.click();
+    browser.waitForAngular();
+
+    //Got to catalog page
     browser.get('http://localhost:8080/#/catalog');
   });
 
+  afterEach(function () {
+    browser.executeScript('window.localStorage.clear();');
+  });
+
+  afterAll(function () {
+    console.log('Done testing cart.js');
+  });
+
   it('should add an item to the shopping cart when the button is pressed', function () {
-    var addButton = element(by.id('add'));
+    var addButton = element.all(by.id("add")).get(0);
     var cartAmountSpan = element(by.id('cartAmount'));
     expect(cartAmountSpan.getText()).toEqual('0');
     addButton.click();
@@ -38,13 +61,14 @@ describe('E2E: Catalog', function () {
       });
     };
 
+    priceHeader.click();
     var newPrice1 = price1(products);
     var newPrice2 = price2(products);
-    expect(newPrice2).toBeGreaterThan(newPrice1);
+    expect(newPrice1).toBeGreaterThan(newPrice2);
     priceHeader.click();
     newPrice1 = price1(products);
     newPrice2 = price2(products);
-    expect(newPrice1).toBeGreaterThan(newPrice2);
+    expect(newPrice2).toBeGreaterThan(newPrice1);
   });
 
   it('should filter the catalog when the search bar has input', function() {

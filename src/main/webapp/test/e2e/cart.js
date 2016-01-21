@@ -1,6 +1,22 @@
-describe('E2E: Cart', function() {
+describe('E2E: Cart', function () {
 
-  beforeEach(function() {
+  beforeAll(function () {
+    console.log('Start testing cart.js');
+  });
+
+  beforeEach(function () {
+
+    //Login
+    browser.get('http://localhost:8080/#/login');
+    var email = element(by.model('user.email'));
+    var password = element(by.model('user.password'));
+    var submit = element(by.id('submit'));
+    email.sendKeys('e@mail.com');
+    password.sendKeys('woop');
+    submit.click();
+    browser.waitForAngular();
+
+    //Got to catalog page
     browser.get('http://localhost:8080/#/catalog');
     var products = by.repeater('product in products.content');
     var addButton1 = element(products.row(0)).element(by.id('add'));
@@ -14,12 +30,16 @@ describe('E2E: Cart', function() {
     cartRedirect.click();
   });
 
-  afterEach(function() {
+  afterEach(function () {
     browser.executeScript('window.localStorage.clear();');
   });
 
-  it('should reduce the number of cartitems when remove is clicked', function() {
-    var removeButton = element(by.id('remove'));
+  afterAll(function () {
+    console.log('Done testing cart.js');
+  });
+
+  it('should reduce the number of cartitems when remove is clicked', function () {
+    var removeButton = element.all(by.id("remove")).get(0);
     var cartAmount = element(by.id('cartAmount'));
 
     expect(cartAmount.getText()).toEqual('3');
@@ -27,9 +47,9 @@ describe('E2E: Cart', function() {
     expect(cartAmount.getText()).toEqual('2');
   });
 
-  it('should reduce the amount when remove is clicked and amount > 1', function() {
-    var removeButton = element(by.id('remove'));
-    var amount = element(by.id('amount'));
+  it('should reduce the amount when remove is clicked and amount > 1', function () {
+    var removeButton = element.all(by.id("remove")).get(0);
+    var amount = element.all(by.id("amount")).get(0);
     var products = by.repeater('product in products');
 
     expect(element.all(products).count()).toBe(2);
@@ -39,7 +59,7 @@ describe('E2E: Cart', function() {
     expect(element.all(products).count()).toBe(2);
   });
 
-  it('should remove a product from the cart when remove is clicked and amount = 1', function() {
+  it('should remove a product from the cart when remove is clicked and amount = 1', function () {
     var products = by.repeater('product in products');
     var removeButton = element(products.row(1)).element(by.id('remove'));
     var amount = element(products.row(1)).element(by.id('amount'));
@@ -50,7 +70,7 @@ describe('E2E: Cart', function() {
     expect(element.all(products).count()).toBe(1);
   });
 
-  it('should empty the cart and hide the buttons when empty cart is clicked', function() {
+  it('should empty the cart and hide the buttons when empty cart is clicked', function () {
     var removeButton = element(by.id('empty'));
     var cartAmount = element(by.id('cartAmount'));
     var products = by.repeater('product in products');

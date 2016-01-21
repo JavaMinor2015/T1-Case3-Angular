@@ -2,7 +2,7 @@
 
 describe('Controller: customerController', function() {
 
-  var scope, ctrl, httpBackend;
+  var scope, ctrl, httpBackend, state;
   var baseUrl = 'http://localhost:6789/customers';
 
   var customer = {
@@ -26,14 +26,15 @@ describe('Controller: customerController', function() {
     orders: [ ]
   };
 
-  beforeEach(function() {
-    module('kantileverAngular');
-    inject(function ($controller, _$rootScope_, _$httpBackend_) {
-      scope = _$rootScope_.$new();
-      ctrl = $controller('customerController', {$scope: scope});
-      httpBackend = _$httpBackend_;
-    });
-  });
+  beforeEach(module('kantileverAngular'));
+  beforeEach(module('stateMock'));
+
+  beforeEach(inject(function ($state, $controller, _$rootScope_, _$httpBackend_) {
+    state = $state;
+    scope = _$rootScope_.$new();
+    ctrl = $controller('customerController', {$scope: scope});
+    httpBackend = _$httpBackend_;
+  }));
 
   afterEach(function () {
     httpBackend.verifyNoOutstandingExpectation();
@@ -43,33 +44,25 @@ describe('Controller: customerController', function() {
   it('should register a customer with 1 address', function() {
     angular.copy(customer, scope.newCustomer);
     scope.sameAddress = true;
-    scope.registerForm = {
-      $valid: true,
-      $setPristine: function () {
-      }
-    };
-    spyOn(scope.registerForm, '$setPristine');
 
+    httpBackend.expectPOST("http://localhost:6789/auth/signup").respond(201, {});
     httpBackend.expectPOST(baseUrl).respond(201, {});
     scope.registerCustomer();
     httpBackend.flush();
-    expect(scope.registerForm.$setPristine).toHaveBeenCalled();
+
+    httpBackend.expectPOST("http://localhost:6789/auth/signup").respond(500, {});
+    scope.registerCustomer();
+    httpBackend.flush();
   });
 
   it('should register a customer with 2 addresses', function() {
     angular.copy(customer, scope.newCustomer);
     scope.sameAddress = false;
-    scope.registerForm = {
-      $valid: true,
-      $setPristine: function () {
-      }
-    };
-    spyOn(scope.registerForm, '$setPristine');
 
+    httpBackend.expectPOST('http://localhost:6789/auth/signup').respond(201, {});
     httpBackend.expectPOST(baseUrl).respond(201, {});
     scope.registerCustomer();
     httpBackend.flush();
-    expect(scope.registerForm.$setPristine).toHaveBeenCalled();
   });
 
   it('should set an address', function() {
@@ -92,6 +85,33 @@ describe('Controller: customerController', function() {
       deliveryAddress: null,
       orders: [ ]
     });
+  });
+
+  it('should edit a customer', function() {
+    var customer = {
+      id: 1
+    };
+    httpBackend.expectPUT('http://localhost:6789/customers/' + customer.id).respond(201, {});
+    scope.editCustomer(customer);
+    httpBackend.flush();
+  });
+
+  it('should get customer profile', function() {
+    httpBackend.expectGET('http://localhost:6789/customers/profile').respond(201, {});
+    scope.getCustomer(scope);
+    httpBackend.flush();
+  });
+
+  it('should set the customer', function() {
+    var customer = {
+      data: {
+        content: {
+          id: 1
+        }
+      }
+    };
+    scope.setCustomer(customer);
+    expect(scope.customer).toBe(customer.data.content);
   });
 
 });

@@ -17,24 +17,19 @@
       </tr>
       <tr ng-repeat="product in order.products">
         <td>
-          {{ product.content.name }}
+          {{ product.name }}
         </td>
         <td>
-          {{ product.content.amount }}
+          {{ product.amount }}
         </td>
         <td>
-          {{ (product.content.price) * (product.content.amount) | currency:"€":2 }}
+          {{ (product.price) * (product.amount) | currency:"€":2 }}
         </td>
       </tr>
     </table>
     <strong>
       Total: {{order.totalPrice | currency:"€":2}}
     </strong>
-  </div>
-
-  <div class="row top-buffer">
-    <h3>Customer details</h3>
-    Out of scope for now
   </div>
 
   <div class="row top-buffer">

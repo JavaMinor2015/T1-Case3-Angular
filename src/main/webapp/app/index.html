@@ -1,4 +1,3 @@
-<script src="scripts/services/hateoasservice.js"></script>
 <html>
 <head>
   <meta charset="utf-8">
@@ -8,6 +7,11 @@
   <!--StyleSheets-->
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
   <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/styles.css">
+  <link rel="stylesheet" href="styles/angular-toastr.css">
+  <script src="https://npmcdn.com/angular-toastr/dist/angular-toastr.tpls.js"></script>
+  <link rel="stylesheet" href="https://npmcdn.com/angular-toastr/dist/angular-toastr.css" />
+
 
   <!-- bower:js -->
   <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -17,27 +21,33 @@
   <script src="bower_components/angular-cookies/angular-cookies.js"></script>
   <script src="bower_components/angular-resource/angular-resource.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
   <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
   <script src="bower_components/angular-touch/angular-touch.js"></script>
-
+  <script src="bower_components/angular-messages/angular-messages.js"></script>
+  <script src="bower_components/satellizer/satellizer.js"></script>
+  <script src="bower_components/angular-toastr/dist/angular-toastr.js"></script>
+  <script src="bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
   <!--Class Scripts -->
   <script src="scripts/app.js"></script>
 
   <!--Controller Scripts -->
-  <script src="scripts/controllers/main.js"></script>
   <script src="scripts/controllers/order.js"></script>
   <script src="scripts/controllers/catalog.js"></script>
   <script src="scripts/controllers/cart.js"></script>
   <script src="scripts/controllers/customer.js"></script>
+  <script src="scripts/controllers/login.js"></script>
+  <script src="scripts/controllers/navbar.js"></script>
+  <script src="scripts/controllers/logout.js"></script>
 
 
   <!-- Angular Directives -->
   <script src="scripts/directives/goto.js"></script>
+  <script src="scripts/directives/passwordMatch.js"></script>
 
   <!-- Angular Services -->
   <script src="scripts/services/orderService.js"></script>
   <script src="scripts/services/product.js"></script>
-  <script src="scripts/services/hateoasservice.js"></script>
   <script src="scripts/services/customerService.js"></script>
 
 
@@ -46,7 +56,7 @@
 <header data-ng-include="'views/partials/header.html'"></header>
 
   <div class="container">
-    <div ng-view=""></div>
+    <div ui-view=""></div>
   </div>
 
 <footer class="top-buffer" data-ng-include="'views/partials/footer.html'"></footer>

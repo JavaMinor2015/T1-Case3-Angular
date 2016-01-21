@@ -2,23 +2,23 @@
 
   <table class="table">
     <tr>
-      <th>Order Date</th>
+      <th>Order State</th>
       <th>Order ID</th>
       <th>Total Amount</th>
       <th>More info</th>
     </tr>
     <tr ng-repeat="order in oldOrders.content">
       <td>
-        {{order.content.orderStatus}}
+        {{order.orderStatus.toUpperCase()}}
       </td>
       <td>
-        {{order.content.orderId}}
+        {{order.id}}
       </td>
       <td>
-        {{order.content.totalPrice}}
+        {{order.totalPrice | currency:"€":2}}
       </td>
       <td>
-        <a href="#/orders/{{order.content.orderId}}" ng-click="getOrder(order.content.orderId)">view more...</a>
+        <a ui-sref="test({orderId: order.orderId})" href="/#/orders/{{order.orderId}}"  ng-click="getOrder()">view more...</a>
       </td>
     </tr>
   </table>

@@ -6,22 +6,35 @@
  * # CartController
  * Controller
  */
-angular.module('kantileverAngular').controller('orderController', function ($scope, $window, orderService, $routeParams) {
+angular.module('kantileverAngular').controller('orderController', function ($scope, $location, orderService, $stateParams) {
     $scope.order = orderService.newOrder;
     $scope.orderInfo = [];
     $scope.completeOrder = function () {
-        console.info('Thank you for your order!');
-        orderService.postOrder($scope.order);
+        if ($scope.order.orderId === undefined) {
+            orderService.postOrder($scope.order);
+        }
+        else {
+            orderService.updateOrder($scope.order);
+        }
         $scope.order = orderService.emptyCart();
-        $window.location.href = '#/orders/' + $routeParams.orderId;
     };
     $scope.getOrder = function () {
-        var orderid = $routeParams.orderId;
+        var orderid = $stateParams.orderId;
         $scope.orderInfo = orderService.setOrderInfo(orderid);
-        console.info($scope.orderInfo);
     };
     $scope.getOrderList = function () {
-        return orderService.getAllOrder();
+        return orderService.getMyOrders();
+    };
+    $scope.cancelOrder = function (order) {
+        order.orderStatus = 'CANCELLED';
+        orderService.updateOrder(order);
+    };
+    $scope.editOrder = function (order) {
+        localStorage.setItem('order', JSON.stringify(order));
+        orderService.newOrder = order;
+        $scope.order = orderService.newOrder;
+        //TODO redirect
+        $location.path('/cart');
     };
     $scope.oldOrders = $scope.getOrderList();
 });
