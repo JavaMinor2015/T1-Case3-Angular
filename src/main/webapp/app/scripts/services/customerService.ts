@@ -34,7 +34,7 @@ angular.module('kantileverAngular').service('customerService', function ($resour
   };
 
   this.updateCustomer = function (customer) {
-    customerResource.update({profile: "profile"}, customer, function () {
+    customerResource.update({customerId: customer.id}, customer, function () {
     }, function () {
       handleError();
     })

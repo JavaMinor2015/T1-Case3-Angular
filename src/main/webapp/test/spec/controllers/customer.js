@@ -91,7 +91,7 @@ describe('Controller: customerController', function() {
     var customer = {
       id: 1
     };
-    httpBackend.expectPUT('http://localhost:6789/customers/profile').respond(201, {});
+    httpBackend.expectPUT('http://localhost:6789/customers/' + customer.id).respond(201, {});
     scope.editCustomer(customer);
     httpBackend.flush();
   });

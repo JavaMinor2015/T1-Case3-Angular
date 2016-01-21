@@ -6,7 +6,7 @@
  * # CartController
  * Controller
  */
-angular.module('kantileverAngular').controller('orderController', function ($scope, $window, orderService, $stateParams) {
+angular.module('kantileverAngular').controller('orderController', function ($scope, $location, orderService, $stateParams) {
     $scope.order = orderService.newOrder;
     $scope.orderInfo = [];
     $scope.completeOrder = function () {
@@ -34,6 +34,7 @@ angular.module('kantileverAngular').controller('orderController', function ($sco
         orderService.newOrder = order;
         $scope.order = orderService.newOrder;
         //TODO redirect
+        $location.path('/cart');
     };
     $scope.oldOrders = $scope.getOrderList();
 });

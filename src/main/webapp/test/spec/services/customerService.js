@@ -68,12 +68,12 @@ describe('Service: customerService', function() {
       id: 1
     };
     //Success
-    httpBackend.expectPUT(baseUrl + '/profile').respond(201, {});
+    httpBackend.expectPUT(baseUrl + '/' + customer.id).respond(201, {});
     service.updateCustomer(customer);
     httpBackend.flush();
 
     //Fail
-    httpBackend.expectPUT(baseUrl + '/profile').respond(500, {});
+    httpBackend.expectPUT(baseUrl + '/' + customer.id).respond(500, {});
     service.updateCustomer(customer);
     httpBackend.flush();
   });

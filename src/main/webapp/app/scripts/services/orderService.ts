@@ -26,7 +26,7 @@ angular.module('kantileverAngular').service('orderService', function ($resource,
 
   this.postOrder = function (order) {
     orderResource.save(order, function (response) {
-      $window.location.href = '#/orders/' + response.content.orderId;
+      $window.location.href = '#/order/' + response.content.orderId;
     }, function () {
       handleError();
     });
@@ -34,7 +34,7 @@ angular.module('kantileverAngular').service('orderService', function ($resource,
 
   this.updateOrder = function (order) {
     orderResource.update({orderId1: order.id}, order, function (response) {
-      $window.location.href = '#/orders/' + response.content.orderId;
+      $window.location.href = '#/order/' + response.content.orderId;
     }, function () {
       handleError();
     });
